@@ -1,0 +1,35 @@
+<?php
+
+namespace Botble\Analytics\GA4;
+
+use Google\Analytics\Data\V1beta\RunReportResponse;
+
+class AnalyticsResponse
+{
+    public RunReportResponse $googleResponse;
+
+    public array $table;
+
+    public array $metricAggregationsTable;
+
+    public function setGoogleResponse(RunReportResponse $googleResponse): self
+    {
+        $this->googleResponse = $googleResponse;
+
+        return $this;
+    }
+
+    public function setTable(array $table): self
+    {
+        $this->table = $table;
+
+        return $this;
+    }
+
+    public function setMetricAggregationsTable(array $metricAggregationsTable): self
+    {
+        $this->metricAggregationsTable = $metricAggregationsTable;
+
+        return $this;
+    }
+}
