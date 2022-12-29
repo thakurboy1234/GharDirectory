@@ -7,13 +7,13 @@
     <title>Document</title>
     <style>.loader {
         /* the colors */
-        --c1: #F77825;
-        --c2: #D3CE3D;
-        --c3: #60B99A;
-        --c4: #554236;
+        --c1: #fff70d;
+        --c2: #fb1313;
+        --c3: #1be19c;
+        --c4: #81e410;
         /**/
 
-        width: 180px; /* control the size */
+        width: 40px; /* control the size */
         aspect-ratio: 8/5;
         --_g: no-repeat radial-gradient(#000 68%,#0000 71%);
         -webkit-mask: var(--_g),var(--_g),var(--_g);
