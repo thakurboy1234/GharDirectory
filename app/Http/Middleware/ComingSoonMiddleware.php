@@ -18,16 +18,16 @@ class ComingSoonMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-    //    return view('comingSoon');
-    $html ="<div>
-    <center>
-    <h1 >Coming Soon....</h1>
-    </center>
-</div>";
+        $html =
+            "<div>
+            <center>
+            <h1 >Coming Soon....</h1>
+            </center>
+        </div>";
 
-echo $html;die;
+        echo $html;
+        die;
 
-        dd(11);
         return $next($request);
     }
 }
