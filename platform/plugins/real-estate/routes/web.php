@@ -4,7 +4,6 @@ use Botble\RealEstate\Models\Category;
 use Botble\RealEstate\Models\Project;
 use Botble\RealEstate\Models\Property;
 
-Route::group(['namespace' => 'Theme\FlexHome\Http\Controllers', 'middleware' => ['web', 'core','comingSoonMiddleware']], function () {
 Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' => ['web', 'core']], function () {
     Route::group([
         'prefix' => BaseHelper::getAdminPrefix() . '/real-estate',
@@ -129,6 +128,9 @@ Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' 
             ]);
         });
     });
+
+
+    Route::group(['namespace' => 'Theme\FlexHome\Http\Controllers', 'middleware' => ['web', 'core','comingSoonMiddleware']], function () {
 
     if (defined('THEME_MODULE_SCREEN_NAME')) {
         Route::group(apply_filters(BASE_FILTER_GROUP_PUBLIC_ROUTE, []), function () {
