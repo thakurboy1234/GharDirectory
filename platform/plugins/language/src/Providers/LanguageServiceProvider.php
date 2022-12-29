@@ -82,21 +82,21 @@ class LanguageServiceProvider extends ServiceProvider
         if (! $this->app->runningInConsole()) {
             add_filter(BASE_FILTER_GROUP_PUBLIC_ROUTE, [$this, 'addLanguageMiddlewareToPublicRoute'], 958);
 
-            Event::listen(RouteMatched::class, function () {
-                dashboard_menu()
-                    ->registerItem([
-                        'id' => 'cms-plugins-language',
-                        'priority' => 2,
-                        'parent_id' => 'cms-core-settings',
-                        'name' => 'plugins/language::language.name',
-                        'icon' => null,
-                        'url' => route('languages.index'),
-                        'permissions' => ['languages.index'],
-                    ]);
+            // Event::listen(RouteMatched::class, function () {
+            //     dashboard_menu()
+            //         ->registerItem([
+            //             'id' => 'cms-plugins-language',
+            //             'priority' => 2,
+            //             'parent_id' => 'cms-core-settings',
+            //             'name' => 'plugins/language::language.name',
+            //             'icon' => null,
+            //             'url' => route('languages.index'),
+            //             'permissions' => ['languages.index'],
+            //         ]);
 
-                Assets::addScriptsDirectly('vendor/core/plugins/language/js/language-global.js')
-                    ->addStylesDirectly(['vendor/core/plugins/language/css/language.css']);
-            });
+            //     Assets::addScriptsDirectly('vendor/core/plugins/language/js/language-global.js')
+            //         ->addStylesDirectly(['vendor/core/plugins/language/css/language.css']);
+            // });
 
             $this->app->booted(function () {
                 if (defined('THEME_OPTIONS_MODULE_SCREEN_NAME')) {

@@ -49,18 +49,18 @@ class SlugServiceProvider extends ServiceProvider
         $this->app->register(EventServiceProvider::class);
         $this->app->register(CommandServiceProvider::class);
 
-        Event::listen(RouteMatched::class, function () {
-            dashboard_menu()
-                ->registerItem([
-                    'id' => 'cms-packages-slug-permalink',
-                    'priority' => 5,
-                    'parent_id' => 'cms-core-settings',
-                    'name' => 'packages/slug::slug.permalink_settings',
-                    'icon' => null,
-                    'url' => route('slug.settings'),
-                    'permissions' => ['setting.options'],
-                ]);
-        });
+        // Event::listen(RouteMatched::class, function () {
+        //     dashboard_menu()
+        //         ->registerItem([
+        //             'id' => 'cms-packages-slug-permalink',
+        //             'priority' => 5,
+        //             'parent_id' => 'cms-core-settings',
+        //             'name' => 'packages/slug::slug.permalink_settings',
+        //             'icon' => null,
+        //             'url' => route('slug.settings'),
+        //             'permissions' => ['setting.options'],
+        //         ]);
+        // });
 
         $this->app->booted(function () {
             $this->app->register(FormServiceProvider::class);

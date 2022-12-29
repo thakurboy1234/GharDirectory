@@ -199,60 +199,60 @@ class BaseServiceProvider extends ServiceProvider
      */
     public function registerDefaultMenus()
     {
-        dashboard_menu()
-            ->registerItem([
-                'id' => 'cms-core-platform-administration',
-                'priority' => 999,
-                'parent_id' => null,
-                'name' => 'core/base::layouts.platform_admin',
-                'icon' => 'fa fa-user-shield',
-                'url' => null,
-                'permissions' => ['users.index'],
-            ])
-            ->registerItem([
-                'id' => 'cms-core-system-information',
-                'priority' => 5,
-                'parent_id' => 'cms-core-platform-administration',
-                'name' => 'core/base::system.info.title',
-                'icon' => null,
-                'url' => route('system.info'),
-                'permissions' => [ACL_ROLE_SUPER_USER],
-            ])
-            ->registerItem([
-                'id' => 'cms-core-system-cache',
-                'priority' => 6,
-                'parent_id' => 'cms-core-platform-administration',
-                'name' => 'core/base::cache.cache_management',
-                'icon' => null,
-                'url' => route('system.cache'),
-                'permissions' => [ACL_ROLE_SUPER_USER],
-            ]);
+        // dashboard_menu()
+        //     ->registerItem([
+        //         'id' => 'cms-core-platform-administration',
+        //         'priority' => 999,
+        //         'parent_id' => null,
+        //         'name' => 'core/base::layouts.platform_admin',
+        //         'icon' => 'fa fa-user-shield',
+        //         'url' => null,
+        //         'permissions' => ['users.index'],
+        //     ])
+        //     ->registerItem([
+        //         'id' => 'cms-core-system-information',
+        //         'priority' => 5,
+        //         'parent_id' => 'cms-core-platform-administration',
+        //         'name' => 'core/base::system.info.title',
+        //         'icon' => null,
+        //         'url' => route('system.info'),
+        //         'permissions' => [ACL_ROLE_SUPER_USER],
+        //     ])
+        //     ->registerItem([
+        //         'id' => 'cms-core-system-cache',
+        //         'priority' => 6,
+        //         'parent_id' => 'cms-core-platform-administration',
+        //         'name' => 'core/base::cache.cache_management',
+        //         'icon' => null,
+        //         'url' => route('system.cache'),
+        //         'permissions' => [ACL_ROLE_SUPER_USER],
+        //     ]);
 
-        if (config('core.base.general.enabled_cleanup_database', true)) {
-            dashboard_menu()
-                ->registerItem([
-                    'id' => 'cms-core-system-cleanup',
-                    'priority' => 999,
-                    'parent_id' => 'cms-core-platform-administration',
-                    'name' => 'core/base::system.cleanup.title',
-                    'icon' => null,
-                    'url' => route('system.cleanup'),
-                    'permissions' => [ACL_ROLE_SUPER_USER],
-                ]);
-        }
+        // if (config('core.base.general.enabled_cleanup_database', true)) {
+        //     dashboard_menu()
+        //         ->registerItem([
+        //             'id' => 'cms-core-system-cleanup',
+        //             'priority' => 999,
+        //             'parent_id' => 'cms-core-platform-administration',
+        //             'name' => 'core/base::system.cleanup.title',
+        //             'icon' => null,
+        //             'url' => route('system.cleanup'),
+        //             'permissions' => [ACL_ROLE_SUPER_USER],
+        //         ]);
+        // }
 
-        if (config('core.base.general.enable_system_updater')) {
-            dashboard_menu()
-                ->registerItem([
-                    'id' => 'cms-core-system-updater',
-                    'priority' => 999,
-                    'parent_id' => 'cms-core-platform-administration',
-                    'name' => 'core/base::system.updater',
-                    'icon' => null,
-                    'url' => route('system.updater'),
-                    'permissions' => [ACL_ROLE_SUPER_USER],
-                ]);
-        }
+        // if (config('core.base.general.enable_system_updater')) {
+        //     dashboard_menu()
+        //         ->registerItem([
+        //             'id' => 'cms-core-system-updater',
+        //             'priority' => 999,
+        //             'parent_id' => 'cms-core-platform-administration',
+        //             'name' => 'core/base::system.updater',
+        //             'icon' => null,
+        //             'url' => route('system.updater'),
+        //             'permissions' => [ACL_ROLE_SUPER_USER],
+        //         ]);
+        // }
     }
 
     protected function configureIni()

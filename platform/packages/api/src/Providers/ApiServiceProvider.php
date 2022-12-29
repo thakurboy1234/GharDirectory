@@ -34,22 +34,22 @@ class ApiServiceProvider extends ServiceProvider
             $this->loadRoutes(['api']);
         }
 
-        Event::listen(RouteMatched::class, function () {
-            if (ApiHelper::enabled()) {
-                $this->app['router']->pushMiddlewareToGroup('api', ForceJsonResponseMiddleware::class);
-            }
+        // Event::listen(RouteMatched::class, function () {
+        //     if (ApiHelper::enabled()) {
+        //         $this->app['router']->pushMiddlewareToGroup('api', ForceJsonResponseMiddleware::class);
+        //     }
 
-            dashboard_menu()
-                ->registerItem([
-                    'id' => 'cms-packages-api',
-                    'priority' => 9999,
-                    'parent_id' => 'cms-core-settings',
-                    'name' => 'packages/api::api.settings',
-                    'icon' => null,
-                    'url' => route('api.settings'),
-                    'permissions' => ['api.settings'],
-                ]);
-        });
+        //     dashboard_menu()
+        //         ->registerItem([
+        //             'id' => 'cms-packages-api',
+        //             'priority' => 9999,
+        //             'parent_id' => 'cms-core-settings',
+        //             'name' => 'packages/api::api.settings',
+        //             'icon' => null,
+        //             'url' => route('api.settings'),
+        //             'permissions' => ['api.settings'],
+        //         ]);
+        // });
 
         $this->app->booted(function () {
             config([

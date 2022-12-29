@@ -38,21 +38,21 @@ class PageServiceProvider extends ServiceProvider
             ->loadRoutes()
             ->loadMigrations();
 
-        Event::listen(RouteMatched::class, function () {
-            dashboard_menu()->registerItem([
-                'id' => 'cms-core-page',
-                'priority' => 2,
-                'parent_id' => null,
-                'name' => 'packages/page::pages.menu_name',
-                'icon' => 'fa fa-book',
-                'url' => route('pages.index'),
-                'permissions' => ['pages.index'],
-            ]);
+        // Event::listen(RouteMatched::class, function () {
+        //     dashboard_menu()->registerItem([
+        //         'id' => 'cms-core-page',
+        //         'priority' => 2,
+        //         'parent_id' => null,
+        //         'name' => 'packages/page::pages.menu_name',
+        //         'icon' => 'fa fa-book',
+        //         'url' => route('pages.index'),
+        //         'permissions' => ['pages.index'],
+        //     ]);
 
-            if (function_exists('admin_bar')) {
-                admin_bar()->registerLink(trans('packages/page::pages.menu_name'), route('pages.create'), 'add-new', 'pages.create');
-            }
-        });
+        //     if (function_exists('admin_bar')) {
+        //         admin_bar()->registerLink(trans('packages/page::pages.menu_name'), route('pages.create'), 'add-new', 'pages.create');
+        //     }
+        // });
 
         if (function_exists('shortcode')) {
             view()->composer(['packages/page::themes.page'], function (View $view) {

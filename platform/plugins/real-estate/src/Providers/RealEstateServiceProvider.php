@@ -201,24 +201,24 @@ class RealEstateServiceProvider extends ServiceProvider
                     'icon' => 'fa fa-bed',
                     'permissions' => ['projects.index'],
                 ])
-                ->registerItem([
-                    'id' => 'cms-plugins-property',
-                    'priority' => 0,
-                    'parent_id' => 'cms-plugins-real-estate',
-                    'name' => 'plugins/real-estate::property.name',
-                    'icon' => null,
-                    'url' => route('property.index'),
-                    'permissions' => ['property.index'],
-                ])
-                ->registerItem([
-                    'id' => 'cms-plugins-project',
-                    'priority' => 1,
-                    'parent_id' => 'cms-plugins-real-estate',
-                    'name' => 'plugins/real-estate::project.name',
-                    'icon' => null,
-                    'url' => route('project.index'),
-                    'permissions' => ['project.index'],
-                ])
+                // ->registerItem([
+                //     'id' => 'cms-plugins-property',
+                //     'priority' => 0,
+                //     'parent_id' => 'cms-plugins-real-estate',
+                //     'name' => 'plugins/real-estate::property.name',
+                //     'icon' => null,
+                //     'url' => route('property.index'),
+                //     'permissions' => ['property.index'],
+                // ])
+                // ->registerItem([
+                //     'id' => 'cms-plugins-project',
+                //     'priority' => 1,
+                //     'parent_id' => 'cms-plugins-real-estate',
+                //     'name' => 'plugins/real-estate::project.name',
+                //     'icon' => null,
+                //     'url' => route('project.index'),
+                //     'permissions' => ['project.index'],
+                // ])
                 ->registerItem([
                     'id' => 'cms-plugins-re-feature',
                     'priority' => 2,
@@ -228,42 +228,42 @@ class RealEstateServiceProvider extends ServiceProvider
                     'url' => route('property_feature.index'),
                     'permissions' => ['property_feature.index'],
                 ])
-                ->registerItem([
-                    'id' => 'cms-plugins-facility',
-                    'priority' => 3,
-                    'parent_id' => 'cms-plugins-real-estate',
-                    'name' => 'plugins/real-estate::facility.name',
-                    'icon' => null,
-                    'url' => route('facility.index'),
-                    'permissions' => ['facility.index'],
-                ])
-                ->registerItem([
-                    'id' => 'cms-plugins-investor',
-                    'priority' => 3,
-                    'parent_id' => 'cms-plugins-real-estate',
-                    'name' => 'plugins/real-estate::investor.name',
-                    'icon' => null,
-                    'url' => route('investor.index'),
-                    'permissions' => ['investor.index'],
-                ])
-                ->registerItem([
-                    'id' => 'cms-plugins-real-estate-settings',
-                    'priority' => 999,
-                    'parent_id' => 'cms-plugins-real-estate',
-                    'name' => 'plugins/real-estate::real-estate.settings',
-                    'icon' => null,
-                    'url' => route('real-estate.settings'),
-                    'permissions' => ['real-estate.settings'],
-                ])
-                ->registerItem([
-                    'id' => 'cms-plugins-consult',
-                    'priority' => 6,
-                    'parent_id' => null,
-                    'name' => 'plugins/real-estate::consult.name',
-                    'icon' => 'fas fa-headset',
-                    'url' => route('consult.index'),
-                    'permissions' => ['consult.index'],
-                ])
+                // ->registerItem([
+                //     'id' => 'cms-plugins-facility',
+                //     'priority' => 3,
+                //     'parent_id' => 'cms-plugins-real-estate',
+                //     'name' => 'plugins/real-estate::facility.name',
+                //     'icon' => null,
+                //     'url' => route('facility.index'),
+                //     'permissions' => ['facility.index'],
+                // ])
+                // ->registerItem([
+                //     'id' => 'cms-plugins-investor',
+                //     'priority' => 3,
+                //     'parent_id' => 'cms-plugins-real-estate',
+                //     'name' => 'plugins/real-estate::investor.name',
+                //     'icon' => null,
+                //     'url' => route('investor.index'),
+                //     'permissions' => ['investor.index'],
+                // ])
+                // ->registerItem([
+                //     'id' => 'cms-plugins-real-estate-settings',
+                //     'priority' => 999,
+                //     'parent_id' => 'cms-plugins-real-estate',
+                //     'name' => 'plugins/real-estate::real-estate.settings',
+                //     'icon' => null,
+                //     'url' => route('real-estate.settings'),
+                //     'permissions' => ['real-estate.settings'],
+                // ])
+                // ->registerItem([
+                //     'id' => 'cms-plugins-consult',
+                //     'priority' => 6,
+                //     'parent_id' => null,
+                //     'name' => 'plugins/real-estate::consult.name',
+                //     'icon' => 'fas fa-headset',
+                //     'url' => route('consult.index'),
+                //     'permissions' => ['consult.index'],
+                // ])
                 ->registerItem([
                     'id' => 'cms-plugins-real-estate-category',
                     'priority' => 4,
@@ -272,29 +272,29 @@ class RealEstateServiceProvider extends ServiceProvider
                     'icon' => null,
                     'url' => route('property_category.index'),
                     'permissions' => ['property_category.index'],
-                ])
-                ->registerItem([
-                    'id' => 'cms-plugins-real-estate-account',
-                    'priority' => 22,
-                    'parent_id' => null,
-                    'name' => 'plugins/real-estate::account.name',
-                    'icon' => 'fa fa-users',
-                    'url' => route('account.index'),
-                    'permissions' => ['account.index'],
                 ]);
+                // ->registerItem([
+                //     'id' => 'cms-plugins-real-estate-account',
+                //     'priority' => 22,
+                //     'parent_id' => null,
+                //     'name' => 'plugins/real-estate::account.name',
+                //     'icon' => 'fa fa-users',
+                //     'url' => route('account.index'),
+                //     'permissions' => ['account.index'],
+                // ]);
 
-            if (RealEstateHelper::isEnabledCreditsSystem()) {
-                dashboard_menu()
-                    ->registerItem([
-                        'id' => 'cms-plugins-package',
-                        'priority' => 23,
-                        'parent_id' => null,
-                        'name' => 'plugins/real-estate::package.name',
-                        'icon' => 'fas fa-money-check-alt',
-                        'url' => route('package.index'),
-                        'permissions' => ['package.index'],
-                    ]);
-            }
+            // if (RealEstateHelper::isEnabledCreditsSystem()) {
+            //     dashboard_menu()
+            //         ->registerItem([
+            //             'id' => 'cms-plugins-package',
+            //             'priority' => 23,
+            //             'parent_id' => null,
+            //             'name' => 'plugins/real-estate::package.name',
+            //             'icon' => 'fas fa-money-check-alt',
+            //             'url' => route('package.index'),
+            //             'permissions' => ['package.index'],
+            //         ]);
+            // }
         });
 
         if (class_exists('ApiHelper')) {

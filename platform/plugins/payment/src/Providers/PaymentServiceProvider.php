@@ -36,35 +36,35 @@ class PaymentServiceProvider extends ServiceProvider
             ->loadMigrations()
             ->publishAssets();
 
-        Event::listen(RouteMatched::class, function () {
-            dashboard_menu()
-                ->registerItem([
-                    'id' => 'cms-plugins-payments',
-                    'priority' => 800,
-                    'parent_id' => null,
-                    'name' => 'plugins/payment::payment.name',
-                    'icon' => 'fas fa-credit-card',
-                    'url' => route('payment.index'),
-                    'permissions' => ['payment.index'],
-                ])
-                ->registerItem([
-                    'id' => 'cms-plugins-payments-all',
-                    'priority' => 0,
-                    'parent_id' => 'cms-plugins-payments',
-                    'name' => 'plugins/payment::payment.transactions',
-                    'icon' => null,
-                    'url' => route('payment.index'),
-                    'permissions' => ['payment.index'],
-                ])
-                ->registerItem([
-                    'id' => 'cms-plugins-payment-methods',
-                    'priority' => 1,
-                    'parent_id' => 'cms-plugins-payments',
-                    'name' => 'plugins/payment::payment.payment_methods',
-                    'icon' => null,
-                    'url' => route('payments.methods'),
-                    'permissions' => ['payments.settings'],
-                ]);
-        });
+        // Event::listen(RouteMatched::class, function () {
+        //     dashboard_menu()
+        //         ->registerItem([
+        //             'id' => 'cms-plugins-payments',
+        //             'priority' => 800,
+        //             'parent_id' => null,
+        //             'name' => 'plugins/payment::payment.name',
+        //             'icon' => 'fas fa-credit-card',
+        //             'url' => route('payment.index'),
+        //             'permissions' => ['payment.index'],
+        //         ])
+        //         ->registerItem([
+        //             'id' => 'cms-plugins-payments-all',
+        //             'priority' => 0,
+        //             'parent_id' => 'cms-plugins-payments',
+        //             'name' => 'plugins/payment::payment.transactions',
+        //             'icon' => null,
+        //             'url' => route('payment.index'),
+        //             'permissions' => ['payment.index'],
+        //         ])
+        //         ->registerItem([
+        //             'id' => 'cms-plugins-payment-methods',
+        //             'priority' => 1,
+        //             'parent_id' => 'cms-plugins-payments',
+        //             'name' => 'plugins/payment::payment.payment_methods',
+        //             'icon' => null,
+        //             'url' => route('payments.methods'),
+        //             'permissions' => ['payments.settings'],
+        //         ]);
+        // });
     }
 }

@@ -179,17 +179,17 @@ class MediaServiceProvider extends ServiceProvider
             ),
         ]);
 
-        Event::listen(RouteMatched::class, function () {
-            dashboard_menu()->registerItem([
-                'id' => 'cms-core-media',
-                'priority' => 995,
-                'parent_id' => null,
-                'name' => 'core/media::media.menu_name',
-                'icon' => 'far fa-images',
-                'url' => route('media.index'),
-                'permissions' => ['media.index'],
-            ]);
-        });
+        // Event::listen(RouteMatched::class, function () {
+        //     dashboard_menu()->registerItem([
+        //         'id' => 'cms-core-media',
+        //         'priority' => 995,
+        //         'parent_id' => null,
+        //         'name' => 'core/media::media.menu_name',
+        //         'icon' => 'far fa-images',
+        //         'url' => route('media.index'),
+        //         'permissions' => ['media.index'],
+        //     ]);
+        // });
 
         $this->commands([
             GenerateThumbnailCommand::class,

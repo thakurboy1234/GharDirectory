@@ -62,35 +62,35 @@ class AclServiceProvider extends ServiceProvider
 
         $this->garbageCollect();
 
-        Event::listen(RouteMatched::class, function () {
-            dashboard_menu()
-                ->registerItem([
-                    'id' => 'cms-core-role-permission',
-                    'priority' => 2,
-                    'parent_id' => 'cms-core-platform-administration',
-                    'name' => 'core/acl::permissions.role_permission',
-                    'icon' => null,
-                    'url' => route('roles.index'),
-                    'permissions' => ['roles.index'],
-                ])
-                ->registerItem([
-                    'id' => 'cms-core-user',
-                    'priority' => 3,
-                    'parent_id' => 'cms-core-platform-administration',
-                    'name' => 'core/acl::users.users',
-                    'icon' => null,
-                    'url' => route('users.index'),
-                    'permissions' => ['users.index'],
-                ]);
+        // Event::listen(RouteMatched::class, function () {
+        //     dashboard_menu()
+        //         ->registerItem([
+        //             'id' => 'cms-core-role-permission',
+        //             'priority' => 2,
+        //             'parent_id' => 'cms-core-platform-administration',
+        //             'name' => 'core/acl::permissions.role_permission',
+        //             'icon' => null,
+        //             'url' => route('roles.index'),
+        //             'permissions' => ['roles.index'],
+        //         ])
+        //         ->registerItem([
+        //             'id' => 'cms-core-user',
+        //             'priority' => 3,
+        //             'parent_id' => 'cms-core-platform-administration',
+        //             'name' => 'core/acl::users.users',
+        //             'icon' => null,
+        //             'url' => route('users.index'),
+        //             'permissions' => ['users.index'],
+        //         ]);
 
-            /**
-             * @var Router $router
-             */
-            $router = $this->app['router'];
+        //     /**
+        //      * @var Router $router
+        //      */
+        //     $router = $this->app['router'];
 
-            $router->aliasMiddleware('auth', Authenticate::class);
-            $router->aliasMiddleware('guest', RedirectIfAuthenticated::class);
-        });
+        //     $router->aliasMiddleware('auth', Authenticate::class);
+        //     $router->aliasMiddleware('guest', RedirectIfAuthenticated::class);
+        // });
 
         $this->app->booted(function () {
             config()->set(['auth.providers.users.model' => User::class]);

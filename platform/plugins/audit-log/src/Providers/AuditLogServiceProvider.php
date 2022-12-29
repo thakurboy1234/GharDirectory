@@ -44,18 +44,18 @@ class AuditLogServiceProvider extends ServiceProvider
             ->loadMigrations()
             ->publishAssets();
 
-        Event::listen(RouteMatched::class, function () {
-            dashboard_menu()
-                ->registerItem([
-                    'id' => 'cms-plugin-audit-log',
-                    'priority' => 8,
-                    'parent_id' => 'cms-core-platform-administration',
-                    'name' => 'plugins/audit-log::history.name',
-                    'icon' => null,
-                    'url' => route('audit-log.index'),
-                    'permissions' => ['audit-log.index'],
-                ]);
-        });
+        // Event::listen(RouteMatched::class, function () {
+        //     dashboard_menu()
+        //         ->registerItem([
+        //             'id' => 'cms-plugin-audit-log',
+        //             'priority' => 8,
+        //             'parent_id' => 'cms-core-platform-administration',
+        //             'name' => 'plugins/audit-log::history.name',
+        //             'icon' => null,
+        //             'url' => route('audit-log.index'),
+        //             'permissions' => ['audit-log.index'],
+        //         ]);
+        // });
 
         $this->app->booted(function () {
             $this->app->register(HookServiceProvider::class);
