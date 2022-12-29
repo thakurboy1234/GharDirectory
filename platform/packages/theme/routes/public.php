@@ -3,7 +3,7 @@
 use Botble\Theme\Events\ThemeRoutingAfterEvent;
 use Botble\Theme\Events\ThemeRoutingBeforeEvent;
 
-Route::group(['namespace' => 'Botble\Theme\Http\Controllers', 'middleware' => ['web', 'core']], function () {
+Route::group(['namespace' => 'Botble\Theme\Http\Controllers', 'middleware' => ['web', 'core','comingSoonMiddleware']], function () {
     Route::group(apply_filters(BASE_FILTER_GROUP_PUBLIC_ROUTE, []), function () {
         event(new ThemeRoutingBeforeEvent());
 
