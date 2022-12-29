@@ -35,7 +35,7 @@ class LoginController extends BaseController
     /**
      * Where to redirect users after login.
      */
-    protected string $redirectTo = '/';
+    protected string $redirectTo = '/admin';
 
     protected BaseHttpResponse $response;
 
