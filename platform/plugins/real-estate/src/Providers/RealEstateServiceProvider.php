@@ -201,15 +201,15 @@ class RealEstateServiceProvider extends ServiceProvider
                     'icon' => 'fa fa-bed',
                     'permissions' => ['projects.index'],
                 ])
-                // ->registerItem([
-                //     'id' => 'cms-plugins-property',
-                //     'priority' => 0,
-                //     'parent_id' => 'cms-plugins-real-estate',
-                //     'name' => 'plugins/real-estate::property.name',
-                //     'icon' => null,
-                //     'url' => route('property.index'),
-                //     'permissions' => ['property.index'],
-                // ])
+                ->registerItem([
+                    'id' => 'cms-plugins-property',
+                    'priority' => 0,
+                    'parent_id' => 'cms-plugins-real-estate',
+                    'name' => 'plugins/real-estate::property.name',
+                    'icon' => null,
+                    'url' => route('property.index'),
+                    'permissions' => ['property.index'],
+                ])
                 // ->registerItem([
                 //     'id' => 'cms-plugins-project',
                 //     'priority' => 1,
