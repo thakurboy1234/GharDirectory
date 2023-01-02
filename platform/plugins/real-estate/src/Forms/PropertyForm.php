@@ -296,7 +296,7 @@ class PropertyForm extends FormAbstract
                 'label' => trans('plugins/real-estate::property.form.period'),
                 'label_attr' => ['class' => 'control-label required'],
                 'wrapper' => [
-                    // 'class' => 'form-group mb-3 period-form-group col-md-4' . ($this->getModel()->type != PropertyTypeEnum::RENT ? ' hidden' : null),
+                    'class' => 'form-group mb-3 period-form-group col-md-4' . ($this->getModel()->type != PropertyTypeEnum::RENT ? ' hidden' : null),
                 ],
                 'attr' => [
                     'class' => 'form-control select-search-full',
