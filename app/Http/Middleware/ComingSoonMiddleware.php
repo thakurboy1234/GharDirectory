@@ -19,7 +19,7 @@ class ComingSoonMiddleware
     public function handle(Request $request, Closure $next)
     {
 
-        // return response()->view('coming_soon');
-        return $next($request);
+        return response()->view('coming_soon');
+        // return $next($request);
     }
 }
