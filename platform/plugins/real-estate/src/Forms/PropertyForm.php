@@ -19,6 +19,7 @@ use Botble\RealEstate\Repositories\Interfaces\ProjectInterface;
 use Botble\RealEstate\Repositories\Interfaces\PropertyInterface;
 use RealEstateHelper;
 use stdClass;
+use Botble\RealEstate\Enums\PropertyStatusEnumWithoutRentTemp;
 
 class PropertyForm extends FormAbstract
 {
@@ -345,8 +346,8 @@ class PropertyForm extends FormAbstract
                 'attr' => [
                     'class' => 'form-control select-search-full',
                 ],
-                'choices' => PropertyStatusEnum::labels(),
-                'selected' => (string)$this->model->status ?: PropertyStatusEnum::SELLING,
+                'choices' => PropertyStatusEnumWithoutRentTemp::labels(),
+                'selected' => (string)$this->model->status ?: PropertyStatusEnumWithoutRentTemp::SELLING,
             ])
             ->add('moderation_status', 'customSelect', [
                 'label' => trans('plugins/real-estate::property.moderation_status'),
