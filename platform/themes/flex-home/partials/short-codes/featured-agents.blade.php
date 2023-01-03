@@ -1,4 +1,4 @@
-<div class="padtop70">
+<div style="display: none" class="padtop70">
     <div class="box_shadow">
         <div class="container-fluid w90">
             <div class="homehouse projecthome">

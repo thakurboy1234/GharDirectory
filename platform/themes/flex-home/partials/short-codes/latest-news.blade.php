@@ -1,5 +1,5 @@
 @if (is_plugin_active('blog'))
-    <div class="box_shadow" style="margin-bottom: 0;padding-bottom: 80px;">
+    <div style="display: none" class="box_shadow" style="margin-bottom: 0;padding-bottom: 80px;">
         <div class="container-fluid w90">
             <div class="discover">
                 <div class="row">
