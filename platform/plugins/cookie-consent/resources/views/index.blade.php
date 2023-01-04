@@ -1,4 +1,4 @@
-@if ($cookieConsentConfig['enabled'] && !$alreadyConsentedWithCookies)
+{{-- @if ($cookieConsentConfig['enabled'] && !$alreadyConsentedWithCookies)
 
     <div class="js-cookie-consent cookie-consent cookie-consent-{{ theme_option('cookie_consent_style', 'full-width') }}" style="background-color: {{ theme_option('cookie_consent_background_color', '#000') }} !important; color: {{ theme_option('cookie_consent_text_color', '#fff') }} !important;">
         <div class="cookie-consent-body" style="max-width: {{ theme_option('cookie_consent_max_width', 1170) }}px;">
@@ -19,4 +19,4 @@
     <div data-site-cookie-domain="{{ config('session.domain') ?? request()->getHost() }}"></div>
     <div data-site-session-secure="{{ config('session.secure') ? ';secure' : null }}"></div>
 
-@endif
+@endif --}}
