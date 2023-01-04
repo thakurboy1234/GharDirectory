@@ -2,19 +2,19 @@
     $categories = get_property_categories(['indent' => '↳', 'conditions' => ['status' => \Botble\Base\Enums\BaseStatusEnum::PUBLISHED]]);
     $backgroundImage = $shortcode->background_image ?: theme_option('home_banner');
     $enableProjectsSearch = $shortcode->enable_search_projects_on_homepage_search ? $shortcode->enable_search_projects_on_homepage_search == 'yes' : (theme_option('enable_search_projects_on_homepage_search', 'yes') == 'yes');
-    $defaultSearchType = $shortcode->default_home_search_type ?: theme_option('default_home_search_type', 'sale');
+    $defaultSearchType = $shortcode->default_home_search_type ?: theme_option('default_home_search_type', 'project');
 @endphp
 <div class="home_banner" style="background-image: url({{ $backgroundImage ? RvMedia::getImageUrl($backgroundImage) : Theme::asset()->url('images/banner.jpg') }})">
     <div class="topsearch">
         @if (theme_option('home_banner_description'))<h1 class="text-center text-white mb-4 banner-text-description">{{ $shortcode->title ?: theme_option('home_banner_description') }}</h1>@endif
-        <form @if ($enableProjectsSearch && $defaultSearchType == 'project') action="{{ route('public.properties') }}" @else action="{{ route('public.properties') }}" @endif method="GET" id="frmhomesearch">
-            {{-- <div style="display: none" class="typesearch" id="hometypesearch">
-                @if ($enableProjectsSearch)
+        <form @if ($enableProjectsSearch && $defaultSearchType == 'project') action="{{ route('public.projects') }}" @else action="{{ route('public.properties') }}" @endif method="GET" id="frmhomesearch">
+            <div class="typesearch" id="hometypesearch">
+                {{-- @if ($enableProjectsSearch)
                     <a href="javascript:void(0)" @if ($defaultSearchType == 'project') class="active" @endif rel="project" data-url="{{ route('public.projects') }}">{{ __('Projects') }}</a>
-                @endif
-                <a href="javascript:void(0)" rel="sale" @if ($defaultSearchType == 'sale') class="active" @endif data-url="{{ route('public.properties') }}">{{ __('Sale') }}</a>
-                <a href="javascript:void(0)" rel="rent" @if ($defaultSearchType == 'rent') class="active" @endif data-url="{{ route('public.properties') }}">{{ __('Rent') }}</a>
-            </div> --}}
+                @endif --}}
+                {{-- <a href="javascript:void(0)" rel="sale" @if ($defaultSearchType == 'sale') class="active" @endif data-url="{{ route('public.properties') }}">{{ __('Sale') }}</a> --}}
+                {{-- <a href="javascript:void(0)" rel="rent" @if ($defaultSearchType == 'rent') class="active" @endif data-url="{{ route('public.properties') }}">{{ __('Rent') }}</a> --}}
+            </div>
             <div class="input-group input-group-lg">
 
                 <input type="hidden" name="type" @if ($enableProjectsSearch && $defaultSearchType == 'project') value="project" @else value="{{ $defaultSearchType ?: 'sale' }}" @endif id="txttypesearch">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="far fa-location"></i></span>
+                    <span class="input-group-text"><i class="fas fa-location-arrow "></i></span>
                 </div>
                 <div class="location-input" data-url="{{ route('public.ajax.cities') }}">
                     <input type="hidden" name="city_id">
