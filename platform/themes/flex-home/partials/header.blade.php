@@ -35,7 +35,7 @@
                                 @foreach(json_decode(theme_option('social_links'), true) as $socialLink)
                                     @if (count($socialLink) == 3)
                                         <a href="{{ $socialLink[2]['value'] }}"
-                                           title="{{ $socialLink[0]['value'] }}">
+                                           title="{{ $socialLink[0]['value'] }}" target="_blank">
                                             <i class="{{ $socialLink[1]['value'] }}"></i>
                                         </a>
                                     @endif
