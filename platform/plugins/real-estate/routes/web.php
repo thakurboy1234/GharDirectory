@@ -130,7 +130,7 @@ Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' 
     });
 
 
-    Route::group([ 'middleware' => ['web', 'core','comingSoonMiddleware']], function () {
+    Route::group([ 'middleware' => ['web', 'core']], function () {
 
     if (defined('THEME_MODULE_SCREEN_NAME')) {
         Route::group(apply_filters(BASE_FILTER_GROUP_PUBLIC_ROUTE, []), function () {
