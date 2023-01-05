@@ -119,7 +119,7 @@
                         </div>
                     </div>
                 @endif
-                @if ($property->project_id && $project = $property->project)
+                {{-- @if ($property->project_id && $project = $property->project)
                     <div class="row pb-3">
                         <div class="col-sm-12">
                             <h5 class="headifhouse">{{ __("Project's information") }}</h5>
@@ -144,7 +144,7 @@
                             </div>
                         </div>
                     </div>
-                @endif
+                @endif --}}
                 <br>
                 @if ($property->latitude && $property->longitude)
                     {!! Theme::partial('real-estate.elements.traffic-map-modal', ['location' => $property->location . ', ' . $property->city_name]) !!}
