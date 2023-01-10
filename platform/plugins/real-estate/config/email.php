@@ -56,7 +56,7 @@ return [
             'title' => 'Confirm email',
             'description' => 'Send email to user when they register an account to verify their email',
             'subject' => 'Confirm Email Notification',
-            'can_off' => false,
+            'can_off' => true,
             'variables' => [
                 'verify_link' => 'Verify email link',
             ],
@@ -65,7 +65,7 @@ return [
             'title' => 'Reset password',
             'description' => 'Send email to user when requesting reset password',
             'subject' => 'Reset Password',
-            'can_off' => false,
+            'can_off' => true,
             'variables' => [
                 'reset_link' => 'Reset password link',
             ],
