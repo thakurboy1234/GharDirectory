@@ -41,6 +41,17 @@ return [
                 'account_email' => 'Account email',
             ],
         ],
+        'new-account-registered' => [
+            'title' => 'New Account registered',
+            'description' => 'Send a notification to vendor when  account registered',
+            'subject' => 'Thanks for register on our site {{ site_title }}',
+            'can_off' => true,
+            'enabled' => false,
+            'variables' => [
+                'account_name' => 'Account name',
+                'account_email' => 'Account email',
+            ],
+        ],
         'confirm-email' => [
             'title' => 'Confirm email',
             'description' => 'Send email to user when they register an account to verify their email',

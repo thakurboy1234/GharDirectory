@@ -183,6 +183,13 @@ class RegisterController extends Controller
         event(new Registered($account = $this->create($request->input())));
 
         EmailHandler::setModule(REAL_ESTATE_MODULE_SCREEN_NAME)
+        ->setVariableValues([
+            'account_name' =>  $account->name,
+            'account_email' => $account->email,
+            ])
+            ->sendUsingTemplate('new-account-registered', $account->email,);
+
+        EmailHandler::setModule(REAL_ESTATE_MODULE_SCREEN_NAME)
             ->setVariableValues([
                 'account_name' => $account->name,
                 'account_email' => $account->email,
