@@ -3,6 +3,7 @@
 use Botble\RealEstate\Models\Category;
 use Botble\RealEstate\Models\Project;
 use Botble\RealEstate\Models\Property;
+use Illuminate\Support\Facades\Auth;
 
 Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' => ['web', 'core']], function () {
     Route::group([
@@ -130,209 +131,223 @@ Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' 
     });
 
 
-    Route::group([ 'middleware' => ['web', 'core']], function () {
+    Route::group(['middleware' => ['web', 'core']], function () {
 
-    if (defined('THEME_MODULE_SCREEN_NAME')) {
-        Route::group(apply_filters(BASE_FILTER_GROUP_PUBLIC_ROUTE, []), function () {
-            Route::get(SlugHelper::getPrefix(Project::class, 'projects'), 'PublicController@getProjects')
-                ->name('public.projects');
+        if (defined('THEME_MODULE_SCREEN_NAME')) {
+            Route::group(apply_filters(BASE_FILTER_GROUP_PUBLIC_ROUTE, []), function () {
+                Route::get(SlugHelper::getPrefix(Project::class, 'projects'), 'PublicController@getProjects')
+                    ->name('public.projects');
 
-            Route::get(SlugHelper::getPrefix(Project::class, 'projects') . '/{slug}', 'PublicController@getProject');
+                Route::get(SlugHelper::getPrefix(Project::class, 'projects') . '/{slug}', 'PublicController@getProject');
 
-            Route::get(SlugHelper::getPrefix(Property::class, 'properties'), 'PublicController@getProperties')
-                ->name('public.properties');
-
-            Route::get(
-                SlugHelper::getPrefix(Category::class, 'property-category') . '/{slug}',
-                'PublicController@getPropertyCategory'
-            )
-                ->name('public.property-category');
-
-            Route::get(
-                SlugHelper::getPrefix(Property::class, 'properties') . '/{slug}',
-                'PublicController@getProperty'
-            );
-
-            Route::post('send-consult', 'PublicController@postSendConsult')
-                ->name('public.send.consult');
-
-            Route::get('currency/switch/{code?}', [
-                'as' => 'public.change-currency',
-                'uses' => 'PublicController@changeCurrency',
-            ]);
-
-            Route::group(['as' => 'public.account.'], function () {
-                Route::group(['middleware' => ['account.guest']], function () {
-                    Route::get('login', 'LoginController@showLoginForm')
-                        ->name('login');
-                    Route::post('login', 'LoginController@login')
-                        ->name('login.post');
-
-                    Route::get('register', 'RegisterController@showRegistrationForm')
-                        ->name('register');
-                    Route::post('register', 'RegisterController@register')
-                        ->name('register.post');
-
-                    Route::get('verify', 'RegisterController@getVerify')
-                        ->name('verify');
-
-                    Route::get(
-                        'password/request',
-                        'ForgotPasswordController@showLinkRequestForm'
-                    )
-                        ->name('password.request');
-                    Route::post(
-                        'password/email',
-                        'ForgotPasswordController@sendResetLinkEmail'
-                    )
-                        ->name('password.email');
-                    Route::post('password/reset', 'ResetPasswordController@reset')
-                        ->name('password.update');
-                    Route::get(
-                        'password/reset/{token}',
-                        'ResetPasswordController@showResetForm'
-                    )
-                        ->name('password.reset');
-                });
-
-                Route::group([
-                    'middleware' => [
-                        setting(
-                            'verify_account_email',
-                            false
-                        ) ? 'account.guest' : 'account',
-                    ],
-                ], function () {
-                    Route::get(
-                        'register/confirm/resend',
-                        'RegisterController@resendConfirmation'
-                    )
-                        ->name('resend_confirmation');
-                    Route::get('register/confirm/{user}', 'RegisterController@confirm')
-                        ->name('confirm');
-                });
-            });
-
-            Route::get('feed/properties', [
-                'as' => 'feeds.properties',
-                'uses' => 'PublicController@getPropertyFeeds',
-            ]);
-        });
-
-        Route::group(['middleware' => ['account'], 'as' => 'public.account.'], function () {
-            Route::group(['prefix' => 'account'], function () {
-                Route::post('logout', 'LoginController@logout')
-                    ->name('logout');
-
-                Route::get('dashboard', [
-                    'as' => 'dashboard',
-                    'uses' => 'PublicAccountController@getDashboard',
-                ]);
-
-                Route::get('settings', [
-                    'as' => 'settings',
-                    'uses' => 'PublicAccountController@getSettings',
-                ]);
-
-                Route::post('settings', [
-                    'as' => 'post.settings',
-                    'uses' => 'PublicAccountController@postSettings',
-                ]);
-
-                Route::get('security', [
-                    'as' => 'security',
-                    'uses' => 'PublicAccountController@getSecurity',
-                ]);
-
-                Route::put('security', [
-                    'as' => 'post.security',
-                    'uses' => 'PublicAccountController@postSecurity',
-                ]);
-
-                Route::post('avatar', [
-                    'as' => 'avatar',
-                    'uses' => 'PublicAccountController@postAvatar',
-                ]);
-
-                Route::get('packages', [
-                    'as' => 'packages',
-                    'uses' => 'PublicAccountController@getPackages',
-                ]);
-
-                Route::get('transactions', [
-                    'as' => 'transactions',
-                    'uses' => 'PublicAccountController@getTransactions',
-                ]);
-            });
-
-            Route::group(['prefix' => 'account/ajax'], function () {
-                Route::get('activity-logs', [
-                    'as' => 'activity-logs',
-                    'uses' => 'PublicAccountController@getActivityLogs',
-                ]);
-
-                Route::get('transactions', [
-                    'as' => 'ajax.transactions',
-                    'uses' => 'PublicAccountController@ajaxGetTransactions',
-                ]);
-
-                Route::post('upload', [
-                    'as' => 'upload',
-                    'uses' => 'PublicAccountController@postUpload',
-                ]);
-
-                Route::post('upload-from-editor', [
-                    'as' => 'upload-from-editor',
-                    'uses' => 'PublicAccountController@postUploadFromEditor',
-                ]);
-
-                Route::get('packages', 'PublicAccountController@ajaxGetPackages')
-                    ->name('ajax.packages');
-                Route::put('packages', 'PublicAccountController@ajaxSubscribePackage')
-                    ->name('ajax.package.subscribe');
-            });
-
-            Route::group(['prefix' => 'account/properties', 'as' => 'properties.'], function () {
-                Route::resource('', 'AccountPropertyController')
-                    ->parameters(['' => 'property']);
-
-                Route::post('renew/{id}', [
-                    'as' => 'renew',
-                    'uses' => 'AccountPropertyController@renew',
-                ]);
-            });
-
-            Route::group(['prefix' => 'account'], function () {
-                Route::get('packages/{id}/subscribe', 'PublicAccountController@getSubscribePackage')
-                    ->name('package.subscribe');
+                Route::get(SlugHelper::getPrefix(Property::class, 'properties'), 'PublicController@getProperties')
+                    ->name('public.properties');
 
                 Route::get(
-                    'packages/{id}/subscribe/callback',
-                    'PublicAccountController@getPackageSubscribeCallback'
+                    SlugHelper::getPrefix(Category::class, 'property-category') . '/{slug}',
+                    'PublicController@getPropertyCategory'
                 )
-                    ->name('package.subscribe.callback');
-            });
-        });
-    }
+                    ->name('public.property-category');
 
-    Route::group(['prefix' => 'payments'], function () {
-        Route::post('checkout', 'CheckoutController@postCheckout')->name('payments.checkout');
+                Route::get(
+                    SlugHelper::getPrefix(Property::class, 'properties') . '/{slug}',
+                    'PublicController@getProperty'
+                );
+
+                Route::post('send-consult', 'PublicController@postSendConsult')
+                    ->name('public.send.consult');
+
+                Route::get('currency/switch/{code?}', [
+                    'as' => 'public.change-currency',
+                    'uses' => 'PublicController@changeCurrency',
+                ]);
+
+                Route::group(['as' => 'public.account.'], function () {
+                    Route::group(['middleware' => ['account.guest']], function () {
+                        Route::get('login', 'LoginController@showLoginForm')
+                            ->name('login');
+                        Route::post('login', 'LoginController@login')
+                            ->name('login.post');
+
+                        Route::get('register', 'RegisterController@showRegistrationForm')
+                            ->name('register');
+                        Route::post('register', 'RegisterController@register')
+                            ->name('register.post');
+
+                        Route::get('verify', 'RegisterController@getVerify')
+                            ->name('verify');
+
+                        Route::get(
+                            'password/request',
+                            'ForgotPasswordController@showLinkRequestForm'
+                        )
+                            ->name('password.request');
+                        Route::post(
+                            'password/email',
+                            'ForgotPasswordController@sendResetLinkEmail'
+                        )
+                            ->name('password.email');
+                        Route::post('password/reset', 'ResetPasswordController@reset')
+                            ->name('password.update');
+                        Route::get(
+                            'password/reset/{token}',
+                            'ResetPasswordController@showResetForm'
+                        )
+                            ->name('password.reset');
+                    });
+
+                    Route::group([
+                        'middleware' => [
+                            setting(
+                                'verify_account_email',
+                                false
+                            ) ? 'account.guest' : 'account',
+                        ],
+                    ], function () {
+                        Route::get(
+                            'register/confirm/resend',
+                            'RegisterController@resendConfirmation'
+                        )
+                            ->name('resend_confirmation');
+                        Route::get('register/confirm/{user}', 'RegisterController@confirm')
+                            ->name('confirm');
+                    });
+                });
+
+                Route::get('feed/properties', [
+                    'as' => 'feeds.properties',
+                    'uses' => 'PublicController@getPropertyFeeds',
+                ]);
+            });
+
+            Route::group(['middleware' => ['account'], 'as' => 'public.account.'], function () {
+                Route::group(['prefix' => 'account'], function () {
+                    Route::post('logout', 'LoginController@logout')
+                        ->name('logout');
+
+                    Route::get('dashboard', [
+                        'as' => 'dashboard',
+                        'uses' => 'PublicAccountController@getDashboard',
+                    ]);
+
+                    Route::get('settings', [
+                        'as' => 'settings',
+                        'uses' => 'PublicAccountController@getSettings',
+                    ]);
+
+                    Route::post('settings', [
+                        'as' => 'post.settings',
+                        'uses' => 'PublicAccountController@postSettings',
+                    ]);
+
+                    Route::get('security', [
+                        'as' => 'security',
+                        'uses' => 'PublicAccountController@getSecurity',
+                    ]);
+
+                    Route::put('security', [
+                        'as' => 'post.security',
+                        'uses' => 'PublicAccountController@postSecurity',
+                    ]);
+
+                    Route::post('avatar', [
+                        'as' => 'avatar',
+                        'uses' => 'PublicAccountController@postAvatar',
+                    ]);
+
+                    Route::get('packages', [
+                        'as' => 'packages',
+                        'uses' => 'PublicAccountController@getPackages',
+                    ]);
+
+                    Route::get('transactions', [
+                        'as' => 'transactions',
+                        'uses' => 'PublicAccountController@getTransactions',
+                    ]);
+                });
+
+                Route::group(['prefix' => 'account/ajax'], function () {
+                    Route::get('activity-logs', [
+                        'as' => 'activity-logs',
+                        'uses' => 'PublicAccountController@getActivityLogs',
+                    ]);
+
+                    Route::get('transactions', [
+                        'as' => 'ajax.transactions',
+                        'uses' => 'PublicAccountController@ajaxGetTransactions',
+                    ]);
+
+                    Route::post('upload', [
+                        'as' => 'upload',
+                        'uses' => 'PublicAccountController@postUpload',
+                    ]);
+
+                    Route::post('upload-from-editor', [
+                        'as' => 'upload-from-editor',
+                        'uses' => 'PublicAccountController@postUploadFromEditor',
+                    ]);
+
+                    Route::get('packages', 'PublicAccountController@ajaxGetPackages')
+                        ->name('ajax.packages');
+                    Route::put('packages', 'PublicAccountController@ajaxSubscribePackage')
+                        ->name('ajax.package.subscribe');
+                });
+
+                Route::group(['prefix' => 'account/properties', 'as' => 'properties.'], function () {
+                    Route::resource('', 'AccountPropertyController')
+                        ->parameters(['' => 'property']);
+
+                    Route::post('renew/{id}', [
+                        'as' => 'renew',
+                        'uses' => 'AccountPropertyController@renew',
+                    ]);
+                });
+
+                Route::group(['prefix' => 'account'], function () {
+                    Route::get('packages/{id}/subscribe', 'PublicAccountController@getSubscribePackage')
+                        ->name('package.subscribe');
+
+                    // Route::post(
+                    //     'packages/{id}/subscribe/callback',
+                    //     'PublicAccountController@getPackageSubscribeCallback'
+                    // )
+                    //     ->name('package.subscribe.callback');
+                });
+            });
+        }
+
+        Route::group(['prefix' => 'payments'], function () {
+            Route::post('checkout', 'CheckoutController@postCheckout')->name('payments.checkout');
+            Route::post('payu/checkout', 'CheckoutController@payuCheckout')->name('payments.payu.checkout');
+        });
+    });
+
+    Route::group([
+        'namespace' => 'Botble\LanguageAdvanced\Http\Controllers',
+        'middleware' => ['web', 'core'],
+    ], function () {
+        Route::group([
+            'prefix' => 'account',
+            'as' => 'public.account.',
+            'middleware' => ['account'],
+        ], function () {
+            Route::post('language-advanced/save/{id}', [
+                'as' => 'language-advanced.save',
+                'uses' => 'LanguageAdvancedController@save',
+            ]);
+        });
     });
 });
+
 
 Route::group([
-    'namespace' => 'Botble\LanguageAdvanced\Http\Controllers',
-    'middleware' => ['web', 'core'],
+    'namespace' => 'Botble\RealEstate\Http\Controllers','prefix' => 'account','as' => 'public.account.'
 ], function () {
-    Route::group([
-        'prefix' => 'account',
-        'as' => 'public.account.',
-        'middleware' => ['account'],
-    ], function () {
-        Route::post('language-advanced/save/{id}', [
-            'as' => 'language-advanced.save',
-            'uses' => 'LanguageAdvancedController@save',
-        ]);
+    Route::post(
+        'packages/{id}/subscribe/callback',
+        'PublicAccountController@getPackageSubscribeCallback'
+    )->name('package.subscribe.callback');
+});
+    Route::get('check',function(){
+        return dd(Auth::check() );
     });
-});
-});

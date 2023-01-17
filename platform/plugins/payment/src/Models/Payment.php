@@ -39,6 +39,8 @@ class Payment extends BaseModel
         'customer_type',
         'refunded_amount',
         'refund_note',
+        'token',
+        'token_status',
     ];
 
     /**

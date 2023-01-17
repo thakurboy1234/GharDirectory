@@ -66,7 +66,24 @@
                     razorpay.open();
                     _self.removeAttr('disabled');
                     _self.html(submitInitialText);
-                } else {
+                }else if(method === 'payu') {
+                        let url= $('.payment-checkout-form').data('app_url')+"/payments/payu/checkout";
+                        $.ajax({
+                            type:'post',
+                            url:url ,
+                            data: $('form').serialize() ,
+                            success:function(data) {
+                                if(data.status){
+                                    $('#apand_payu_form').append(data.html);
+                                    $('#payuForm').submit();
+                                }else{
+                                    alert('Payment faild for same resun ..... ');
+                                }
+                            }
+                        });
+                        }
+
+                else {
                     form.submit();
                 }
             });

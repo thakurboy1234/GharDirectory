@@ -89,7 +89,23 @@ BPayment.init = function () {
                     form.submit();
                 }
             });
-        } else {
+        }else if($('input[name=payment_method]:checked').val() === 'payu') {
+           let url= $('.payment-checkout-form').data('app_url')+"/payments/payu/checkout";
+           $.ajax({
+                type:'post',
+                url:url ,
+                data: $('form').serialize() ,
+                success:function(data) {
+                    if(data.status){
+                        $('#apand_payu_form').append(data.html);
+                        $('#payuForm').submit();
+                    }else{
+                        alert('Payment faild for same resun ..... ');
+                    }
+                }
+             });
+        }
+        else {
             form.submit();
         }
     });

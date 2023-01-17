@@ -20,6 +20,7 @@ use Botble\RealEstate\Http\Resources\AccountResource;
 use Botble\RealEstate\Http\Resources\ActivityLogResource;
 use Botble\RealEstate\Http\Resources\PackageResource;
 use Botble\RealEstate\Http\Resources\TransactionResource;
+use Botble\RealEstate\Models\Account;
 use Botble\RealEstate\Models\Package;
 use Botble\RealEstate\Repositories\Interfaces\AccountActivityLogInterface;
 use Botble\RealEstate\Repositories\Interfaces\AccountInterface;
@@ -38,6 +39,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealEstateHelper;
@@ -275,26 +279,42 @@ class PublicAccountController extends Controller
      * @throws FileNotFoundException
      * @throws Throwable
      */
-    protected function savePayment(Package $package, ?string $chargeId, TransactionInterface $transactionRepository, bool $force = false)
+    protected function savePayment(Package $package, ?string $chargeId, TransactionInterface $transactionRepository, $request, bool $force = false)
     {
         if (! RealEstateHelper::isEnabledCreditsSystem()) {
             abort(404);
         }
-
+        Log::info('savePayment '.Auth::check());
         $payment = app(PaymentInterface::class)->getFirstBy(['charge_id' => $chargeId]);
 
         if (! $payment && ! $force) {
             return false;
         }
-
+        if( $payment->status == PaymentStatusEnum::COMPLETED){
+            return false;
+        }
+        $payment->update([
+            'status'=>PaymentStatusEnum::COMPLETED
+        ]);
+        Log::info('update '.Auth::check());
+        $account='';
+        if(auth('account')->user() != null ){
         $account = auth('account')->user();
+        }else{
+        $account = Account::class::find($request->userid);
+        }
+
+        // dd($account);
 
         if (($payment && $payment->status == PaymentStatusEnum::COMPLETED) || $force) {
+            // dd(11);
             $account->credits += $package->number_of_listings;
             $account->save();
 
             $account->packages()->attach($package);
         }
+        // dd(12);
+        Log::info('update '.Auth::check());
 
         $transactionRepository->createOrUpdate([
             'user_id' => 0,
@@ -302,7 +322,9 @@ class PublicAccountController extends Controller
             'credits' => $package->number_of_listings,
             'payment_id' => $payment ? $payment->id : null,
         ]);
+        // dump($transactionRepository);
 
+        // dd(110);
         if (! $package->total_price) {
             EmailHandler::setModule(REAL_ESTATE_MODULE_SCREEN_NAME)
                 ->setVariableValues([
@@ -331,7 +353,7 @@ class PublicAccountController extends Controller
                 'package_discount' => ($package->percent_discount ?: 0) . '%' . ($package->percent_discount > 0 ? ' (Save ' . format_price($package->price - $package->total_price) . ')' : ''),
                 'package_total' => format_price($package->total_price) . ' for ' . $package->number_of_listings . ' credits',
             ])
-            ->sendUsingTemplate('payment-receipt', auth('account')->user()->email);
+            ->sendUsingTemplate('payment-receipt', $account->email);
 
         return true;
     }
@@ -370,23 +392,31 @@ class PublicAccountController extends Controller
         PackageInterface $packageRepository,
         TransactionInterface $transactionRepository,
         BaseHttpResponse $response
-    ) {
+        ) {
+
+           Log::info('getPackageSubscribeCallback '.Auth::check());
+        $charge_id= $request->input('charge_id');
+        if($request->input('type')=='payu'){
+            $charge_id= trim($charge_id,"pay_");
+        }
+
         if (! RealEstateHelper::isEnabledCreditsSystem()) {
             abort(404);
         }
+        Log::info('RealEstateHelper::isEnabledCreditsSystem() '.Auth::check());
 
         $package = $packageRepository->findOrFail($packageId);
-
+        // dd($package);
         if (is_plugin_active('paypal') && $request->input('type') == PAYPAL_PAYMENT_METHOD_NAME) {
             $validator = Validator::make($request->input(), [
                 'amount' => 'required|numeric',
                 'currency' => 'required',
             ]);
-
+            // dd('getPackageSubscribeCallback');
             if ($validator->fails()) {
                 return $response->setError()->setMessage($validator->getMessageBag()->first());
             }
-
+            // dd(11);
             $payPalService = app(PayPalPaymentService::class);
 
             $paymentStatus = $payPalService->getPaymentStatus($request);
@@ -396,21 +426,23 @@ class PublicAccountController extends Controller
 
                 $payPalService->afterMakePayment($request->input());
 
-                $this->savePayment($package, $chargeId, $transactionRepository);
+                $this->savePayment($package, $chargeId, $transactionRepository,$request);
 
                 return $response
-                    ->setNextUrl(route('public.account.packages'))
-                    ->setMessage(trans('plugins/real-estate::package.add_credit_success'));
+                ->setNextUrl(route('public.account.packages'))
+                ->setMessage(trans('plugins/real-estate::package.add_credit_success'));
             }
 
+            // dd('getPackageSubscribeCallback end');
             return $response
                 ->setError()
                 ->setNextUrl(route('public.account.packages'))
                 ->setMessage($payPalService->getErrorMessage());
         }
+        Log::info('savePayment '.Auth::check());
 
-        $this->savePayment($package, $request->input('charge_id'), $transactionRepository);
-
+        $this->savePayment($package, $charge_id, $transactionRepository,$request);
+        // dd(11111);
         if (! $request->has('success') || $request->input('success')) {
             return $response
                 ->setNextUrl(route('public.account.packages'))
@@ -591,5 +623,12 @@ class PublicAccountController extends Controller
         ]);
 
         return $response->setData(TransactionResource::collection($transactions))->toApiResponse();
+    }
+
+    public function callback(Request $request)
+    {
+        dd($request->all());
+        dump(Crypt::decryptString('eyJpdiI6Ikw3azNLWXdCQWJLbzZXZlVPZkFFM1E9PSIsInZhbHVlIjoidGorQUVscTRNNW13bGFLWFZieW9Vdz09IiwibWFjIjoiM2RhMmYxOTc1YzQyZGE4MTA1N2M5MThhNThhZmQyMzE5MmQxZDQ1YmNhNGMyZGFjMDgwYTNlNzMwODM2YjFlZCIsInRhZyI6IiJ9'));
+        dd(Crypt::encryptString('123'));
     }
 }

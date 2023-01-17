@@ -5,7 +5,9 @@
 
 <div class="checkout-wrapper">
     <div>
-        <form action="{{ $action }}" method="post" class="payment-checkout-form">
+        {{-- {{dd(get_payment_setting())}} --}}
+
+        <form  data-app_url="{{env('APP_URL')}}" action="{{ $action }}" method="post" class="payment-checkout-form">
             @csrf
             <input type="hidden" name="name" value="{{ $name }}">
             <input type="hidden" name="amount" value="{{ $amount }}">
@@ -50,6 +52,17 @@
                         </div>
                     </li>
                 @endif
+                <li class="list-group-item">
+                    <input class="magic-radio js_payment_method" type="radio" name="payment_method" id="payment_payu"
+                        {{-- @if ($selecting == \Botble\Payment\Enums\PaymentMethodEnum::BANK_TRANSFER) checked @endif --}}
+                        value="payu" data-bs-toggle="collapse" data-bs-target=".payment_bank_transfer_wrap"
+                        data-toggle="collapse" data-target=".payment_bank_transfer_wrap" data-parent=".list_payment_method">
+                    <label for="payment_payu" class="text-start">PayU</label>
+                    <div class="payment_bank_transfer_wrap payment_collapse_wrap collapse @if ($selecting == \Botble\Payment\Enums\PaymentMethodEnum::BANK_TRANSFER) show @endif" style="padding: 15px 0;">
+                        {{-- <p>{!! BaseHelper::clean(setting('payment_bank_transfer_description')) !!}</p> --}}
+                    </div>
+                </li>
+
             </ul>
 
             <br>
@@ -58,6 +71,9 @@
             </div>
         </form>
     </div>
+</div>
+<div style="display: none;" id="apand_payu_form" >
+
 </div>
 
 {!! apply_filters(PAYMENT_FILTER_FOOTER_ASSETS, null) !!}
