@@ -67,7 +67,7 @@
                     _self.removeAttr('disabled');
                     _self.html(submitInitialText);
                 }else if(method === 'payu') {
-                        let url= $('.payment-checkout-form').data('app_url')+"/payments/payu/checkout";
+                        let url= $('.payment-checkout-form').data('app_url')+"payments/payu/checkout";
                         $.ajax({
                             type:'post',
                             url:url ,

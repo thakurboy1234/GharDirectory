@@ -97,7 +97,7 @@ BPayment.init = function () {
         }
       });
     } else if ($('input[name=payment_method]:checked').val() === 'payu') {
-      var url = $('.payment-checkout-form').data('app_url') + "/payments/payu/checkout";
+      var url = $('.payment-checkout-form').data('app_url') + "payments/payu/checkout";
       $.ajax({
         type: 'post',
         url: url,
