@@ -73,14 +73,12 @@ BPayment.init = function () {
   });
   $(document).off('click', '.payment-checkout-btn').on('click', '.payment-checkout-btn', function (event) {
     event.preventDefault();
-    alert('sadf');
     var _self = $(this);
     var form = _self.closest('form');
     _self.attr('disabled', 'disabled');
     var submitInitialText = _self.html();
     _self.html('<i class="fa fa-gear fa-spin"></i> ' + _self.data('processing-text'));
     if ($('input[name=payment_method]:checked').val() === 'stripe' && $('.stripe-card-wrapper').length > 0) {
-      // console.log('asdfsa');
       Stripe.setPublishableKey($('#payment-stripe-key').data('value'));
       Stripe.card.createToken(form, function (status, response) {
         if (response.error) {
@@ -96,22 +94,24 @@ BPayment.init = function () {
           form.submit();
         }
       });
-    } else if ($('input[name=payment_method]:checked').val() === 'payu') {
-      var url = $('.payment-checkout-form').data('app_url') + "payments/payu/checkout";
-      $.ajax({
-        type: 'post',
-        url: url,
-        data: $('form').serialize(),
-        success: function success(data) {
-          if (data.status) {
-            $('#apand_payu_form').append(data.html);
-            $('#payuForm').submit();
-          } else {
-            alert('Payment faild for same resun ..... ');
-          }
-        }
-      });
-    } else {
+    }
+    // else if($('input[name=payment_method]:checked').val() === 'payu') {
+    //    let url= $('.payment-checkout-form').data('app_url')+"/payments/payu/checkout";
+    //    $.ajax({
+    //         type:'post',
+    //         url:url ,
+    //         data: $('form').serialize() ,
+    //         success:function(data) {
+    //             if(data.status){
+    //                 $('#apand_payu_form').append(data.html);
+    //                 $('#payuForm').submit();
+    //             }else{
+    //                 alert('Payment faild for same resun ..... ');
+    //             }
+    //         }
+    //      });
+    // }
+    else {
       form.submit();
     }
   });
