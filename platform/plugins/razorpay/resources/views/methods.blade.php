@@ -68,8 +68,8 @@
                     _self.html(submitInitialText);
                 }else if(method === 'payu') {
                         let actionUrl= $('.payment-checkout-form').data('app_url')+"payments/payu/checkout";
-                        console.log('actionUrl  '. actionUrl);
-                        console.log($('form').serialize());
+                        // console.log('actionUrl  '. actionUrl);
+                        // console.log($('form').serialize());
                         $.ajax({
                             type:'post',
                             url:actionUrl,
