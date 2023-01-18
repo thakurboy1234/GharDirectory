@@ -6,7 +6,7 @@
             <input class="select-city-state form-control" id="location" name="location"
                 value="{{ request()->input('location') }}" placeholder="{{ __('City, State') }}"
                 autocomplete="off">
-            <i class="far fa-location"></i>
+            <i class="fas fa-location-arrow"></i>
         </div>
         <div class="spinner-icon">
             <i class="fas fa-spin fa-spinner"></i>

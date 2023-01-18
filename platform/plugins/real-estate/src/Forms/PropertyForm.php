@@ -20,6 +20,7 @@ use Botble\RealEstate\Repositories\Interfaces\PropertyInterface;
 use RealEstateHelper;
 use stdClass;
 use Botble\RealEstate\Enums\PropertyStatusEnumWithoutRentTemp;
+use Botble\RealEstate\Enums\PropertyTypeEnumWithoutRent;
 
 class PropertyForm extends FormAbstract
 {
@@ -124,8 +125,9 @@ class PropertyForm extends FormAbstract
             ->add('type', 'customSelect', [
                 'label' => trans('plugins/real-estate::property.form.type'),
                 'label_attr' => ['class' => 'control-label required'],
-                // 'choices' => PropertyTypeEnum::labels(), //remove rent from properties type by tushar
-                'choices' => ["sale" => "Sale"],
+                // 'choices' => PropertyTypeEnum::labels(),
+                'choices' => PropertyTypeEnumWithoutRent::labels(), //remove rent from properties type
+                // 'choices' => ["sale" => "Sale"],
 
             ])
             ->add('is_featured', 'onOff', [
