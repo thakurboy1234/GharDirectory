@@ -307,11 +307,12 @@ Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' 
                     Route::get('packages/{id}/subscribe', 'PublicAccountController@getSubscribePackage')
                         ->name('package.subscribe');
 
-                    // Route::post(
-                    //     'packages/{id}/subscribe/callback',
-                    //     'PublicAccountController@getPackageSubscribeCallback'
-                    // )
-                    //     ->name('package.subscribe.callback');
+                        Route::get(
+                            'packages/{id}/subscribe/callback',
+                            'PublicAccountController@getPackageSubscribeCallback'
+                        )
+                            ->name('package.subscribe.callback');
+
                 });
             });
         }
@@ -344,9 +345,9 @@ Route::group([
     'namespace' => 'Botble\RealEstate\Http\Controllers','prefix' => 'account','as' => 'public.account.'
 ], function () {
     Route::post(
-        'packages/{id}/subscribe/callback',
-        'PublicAccountController@getPackageSubscribeCallback'
-    )->name('package.subscribe.callback');
+        'packages/{id}/subscribe/callback/payu',
+        'PayuPublicAccountController@getPackageSubscribeCallback'
+    );
 });
     Route::get('check',function(){
         return dd(Auth::check() );

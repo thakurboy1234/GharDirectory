@@ -130,7 +130,7 @@ class CheckoutController extends Controller
         $data['charge_id'] = $payuPaymentService->execute($paymentData);
 
         $data['message'] = 0;
-        $data['checkoutUrl'] = $request->input('callback_url') . '?charge_id=' . $data['charge_id']. '&userid=' . Auth('account')->user()->id;
+        $data['checkoutUrl'] = $request->input('callback_url') . '/payu?charge_id=' . $data['charge_id']. '&userid=' . Auth('account')->user()->id;
         // dd($data);
         Log::info('checkoutUrl '.Auth::check());
         // dd($paymentData);
