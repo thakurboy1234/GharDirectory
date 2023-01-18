@@ -16,6 +16,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class CheckoutController extends Controller
 {
@@ -130,7 +131,9 @@ class CheckoutController extends Controller
         $data['charge_id'] = $payuPaymentService->execute($paymentData);
 
         $data['message'] = 0;
-        $data['checkoutUrl'] = $request->input('callback_url') . '/payu?charge_id=' . $data['charge_id']. '&userid=' . Auth('account')->user()->id;
+        $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+        $urlcheck = Crypt::encryptString($txnid);
+        $data['checkoutUrl'] = $request->input('callback_url') . '/payu?charge_id=' . $data['charge_id']. '&userid=' . Auth('account')->user()->id . '&check='.$urlcheck;
         // dd($data);
         Log::info('checkoutUrl '.Auth::check());
         // dd($paymentData);
@@ -140,7 +143,6 @@ class CheckoutController extends Controller
         // $salt = 'eJSbxabBVZ';
         $PAYU_BASE_URL = env('PAYU_BASE_URL','https://test.payu.in');
 
-        $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
 
 
         $action = $PAYU_BASE_URL . '/_payment';

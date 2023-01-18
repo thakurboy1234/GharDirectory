@@ -284,15 +284,15 @@ class PayuPublicAccountController extends Controller
         if (! RealEstateHelper::isEnabledCreditsSystem()) {
             abort(404);
         }
+        // dd(11);
         // Log::info('savePayment '.Auth::check());
         $payment = app(PaymentInterface::class)->getFirstBy(['charge_id' => $chargeId]);
         if (! $payment && ! $force) {
             return false;
         }
-        // if( $payment->status == PaymentStatusEnum::COMPLETED){
-        //     dd($payment);
-        //     return false;
-        // }
+        if( $payment->status == PaymentStatusEnum::COMPLETED){
+            return false;
+        }
         // dd(1);
         $payment->update([
             'status'=>PaymentStatusEnum::COMPLETED
@@ -396,8 +396,15 @@ class PayuPublicAccountController extends Controller
         TransactionInterface $transactionRepository,
         BaseHttpResponse $response
         ) {
-            // dd($request->all());
-            // Log::info('getPackageSubscribeCallback '.Auth::check());
+            if($request->check != ''){
+              $checkCallbackViaPayu= Crypt::decryptString($request->check);
+              if($checkCallbackViaPayu !== $request->txnid){
+                return false;
+              }
+            }else{
+               return false;
+            }
+
             $charge_id= $request->input('charge_id');
             if($request->type == 'payu'){
                 if($request->input('type')=='payu'){
