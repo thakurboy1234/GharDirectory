@@ -108,7 +108,6 @@
                         </div>
 
                         <div class="form-group text-center">
-                            {{-- <input type="reset" id="reset" value="Reset" class="btn btn-blue btn-full fw6"> --}}
                             <button type="reset" id="reset" value="Reset" class="btn btn-blue btn-full fw6" style="width:50px;display: none">
                                 <i class="fas fa-retweet-alt"></i>
                             </button>
@@ -147,17 +146,13 @@ function handle(type) {
         eyeicon.removeClass('fa-eye').addClass('fa-eye-slash');
     }
 }
-
-</script>
-<script>
-    $(function(){
-    // Hide submit button if either field is empty
-    $('#reset').hide();
-        $('form input').keyup(function(){
-            $('#reset').show();
-            $('#reset').click(function(){
-                $(this).hide();
+$(document).ready(function(){
+            $('form input').keyup(function(){
+                $('#reset').show();
+                $('#reset').click(function(){
+                    $(this).hide();
             })
         })
 });
 </script>
+
