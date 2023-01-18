@@ -108,6 +108,13 @@
                         </div>
 
                         <div class="form-group text-center">
+                            {{-- <input type="reset" id="reset" value="Reset" class="btn btn-blue btn-full fw6"> --}}
+                            <button type="reset" id="reset" value="Reset" class="btn btn-blue btn-full fw6" style="width:50px;">
+                                <i class="fas fa-retweet-alt"></i>
+                            </button>
+                        </div>
+
+                        <div class="form-group text-center">
                             <p>{{ __('Have an account already?') }} <a href="{{ route('public.account.login') }}" class="d-block d-sm-inline-block text-sm-left text-center">{{ __('Login') }}</a></p>
                         </div>
 
@@ -141,4 +148,16 @@ function handle(type) {
     }
 }
 
+</script>
+<script>
+    $(function(){
+    // Hide submit button if either field is empty
+    $('#reset').hide();
+        $('form input').keyup(function(){
+            $('#reset').show();
+            $('#reset').click(function(){
+                $(this).hide();
+            })
+        })
+});
 </script>
