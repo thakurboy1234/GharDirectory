@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -7,7 +8,7 @@
                     <br>
                     @include(Theme::getThemeNamespace() . '::views.real-estate.account.auth.includes.messages')
                     <br>
-                    <form method="POST" action="{{ route('public.account.register') }}">
+                    <form method="POST" action="{{ route('public.account.register') }}" id="register_form">
                         @csrf
                         <div class="form-group">
                             <input id="first_name" type="text"
@@ -96,9 +97,11 @@
                         </div>
 
                         @if (is_plugin_active('captcha') && setting('enable_captcha') && setting('real_estate_enable_recaptcha_in_register_page', 0))
-                            <div class="form-group mb-3">
+                            <div class="form-group mb-3 captcha">
                                 {!! Captcha::display() !!}
+                                <span id="captcha_jq" value=""></span>
                             </div>
+
                         @endif
 
                         <div class="form-group">
@@ -126,33 +129,112 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js"></script>
+
 <script>
+    function handle(type) {
+        if(type == 'password'){
+            var password = document.getElementById('password')
+            var eyeicon = $('#eyeicon')
+        }
+        else{
+            var password = document.getElementById('password-confirm')
+            var eyeicon = $('#eyeicon_confirm')
+        }
 
-function handle(type) {
-    if(type == 'password'){
-        var password = document.getElementById('password')
-        var eyeicon = $('#eyeicon')
-    }
-    else{
-        var password = document.getElementById('password-confirm')
-        var eyeicon = $('#eyeicon_confirm')
+        if (password.type == "password") {
+            password.type = "text"
+            eyeicon.removeClass('fa-eye-slash').addClass('fa-eye');
+        } else {
+            password.type = "password"
+            eyeicon.removeClass('fa-eye').addClass('fa-eye-slash');
+        }
     }
 
-    if (password.type == "password") {
-        password.type = "text"
-        eyeicon.removeClass('fa-eye-slash').addClass('fa-eye');
-    } else {
-        password.type = "password"
-        eyeicon.removeClass('fa-eye').addClass('fa-eye-slash');
-    }
-}
-$(document).ready(function(){
-            $('form input').keyup(function(){
-                $('#reset').show();
-                $('#reset').click(function(){
-                    $(this).hide();
+    $(document).ready(function(){
+    $("#register_form").validate({
+
+        rules: {
+            first_name: {
+                required: true,
+                maxlength: 50
+            },
+
+            last_name: {
+                required: true,
+            },
+
+            username: {
+                required: true,
+            },
+
+            email: {
+                required: true,
+            },
+
+            phone: {
+                required: true,
+                number: true,
+                minlength:10,
+                maxlength:10,
+            },
+            password: {
+                required: true,
+                minlength: 6
+            },
+            password_confirmation: {
+                required: true,
+                minlength: 6
+            },
+
+        },
+        messages: {
+            first_name: {
+                required: "First Name is required.",
+            },
+            last_name: {
+                required: "Last Name is required.",
+            },
+            username: {
+                required: "Username is required.",
+            },
+            email: {
+                required: "Email is required.",
+            },
+            phone: {
+                required: "Phone Number is required.",
+            },
+            password: {
+                required: "Password is required.",
+            },
+            password_confirmation: {
+                required: "Confirm-Password is required.",
+            },
+        },
+
+    });
+    $('#register_form').on('submit', function(e) {
+        if (grecaptcha.getResponse() == "") {
+            e.preventDefault();
+            $('#captcha_jq').text('Captcha is Invalid.');
+            $('#captcha_jq').css("color", "red");
+            $('#captcha_jq').css("font-size", "12px");
+        } else {
+            $('#captcha_jq').hide();
+        }
+    });
+    });
+
+    $(document).ready(function(){
+    $('#register_form input').keyup(function(){
+        $('#reset').show();
+            $('#reset').click(function(){
+                $(this).hide();
+                $("form"). validate(). resetForm();
+                $('#captcha_jq').hide();
             })
-        })
-});
-</script>
+    })
+    });
+ </script>
 
