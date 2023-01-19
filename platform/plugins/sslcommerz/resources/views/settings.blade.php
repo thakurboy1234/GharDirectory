@@ -4,7 +4,7 @@
     <tr class="border-pay-row">
         <td class="border-pay-col"><i class="fa fa-theme-payments"></i></td>
         <td style="width: 20%;">
-            <img class="filter-black" src="{{ url('vendor/core/plugins/sslcommerz/images/sslcommerz.png') }}"
+            <img class="pay-filter-black" src="{{ url('vendor/core/plugins/sslcommerz/images/sslcommerz.png') }}"
                  alt="SslCommerz">
         </td>
         <td class="border-right">
