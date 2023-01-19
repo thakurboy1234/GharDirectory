@@ -2543,5 +2543,27 @@ main {
         width: 100% !important;
     }
 }
+.form-group .error {
+    font-size: 12px;
+    color: red;
+}
+
+span#eyeicon {
+    float: right;
+    margin-left: -25px;
+    margin-top: -26px;
+    position: relative;
+    font-size: large;
+    z-index: 2;
+}
+
+span#eyeicon_confirm {
+    float: right;
+    margin-left: -25px;
+    margin-top: -26px;
+    position: relative;
+    font-size: large;
+    z-index: 2;
+}
 
 /* purgecss end ignore */

@@ -179,7 +179,7 @@ class RegisterController extends Controller
         }
 
         $this->validator($request->input())->validate();
-
+dd(1231231321);
         event(new Registered($account = $this->create($request->input())));
 
         EmailHandler::setModule(REAL_ESTATE_MODULE_SCREEN_NAME)
