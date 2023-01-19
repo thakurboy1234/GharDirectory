@@ -71,7 +71,12 @@
                                    class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                                    name="password" required
                                    placeholder="{{ trans('plugins/real-estate::dashboard.password') }}">
-                                    <span  class="fa fa-fw fa-eye-slash viewpass mr-4 text-muted" onclick="handle('password')" id="eyeicon"></span>
+                                    <span style="  float: right;
+                                    margin-left: -25px;
+                                    margin-top: -26px;
+                                    position: relative;
+                                    font-size: large;
+                                    z-index: 2;"  class="fa fa-fw fa-eye-slash viewpass mr-4 text-muted" onclick="handle('password')" id="eyeicon"></span>
                             @if ($errors->has('password'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('password') }}</strong>
@@ -83,7 +88,12 @@
                             <input id="password-confirm" type="password" class="form-control"
                                    name="password_confirmation" required
                                    placeholder="{{ trans('plugins/real-estate::dashboard.password-confirmation') }}">
-                                   <span class="fa fa-fw fa-eye-slash viewpass mr-4 text-muted" onclick="handle('confirm_password')" id="eyeicon_confirm"></span>
+                                   <span style="  float: right;
+                                    margin-left: -25px;
+                                    margin-top: -26px;
+                                    position: relative;
+                                    font-size: large;
+                                    z-index: 2;" class="fa fa-fw fa-eye-slash viewpass mr-4 text-muted" onclick="handle('confirm_password')" id="eyeicon_confirm"></span>
                         </div>
 
                         @if (is_plugin_active('captcha') && setting('enable_captcha') && setting('real_estate_enable_recaptcha_in_register_page', 0))
@@ -120,6 +130,111 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js"></script>
 
+<script>
+    function handle(type) {
+        if(type == 'password'){
+            var password = document.getElementById('password')
+            var eyeicon = $('#eyeicon')
+        }
+        else{
+            var password = document.getElementById('password-confirm')
+            var eyeicon = $('#eyeicon_confirm')
+        }
 
+        if (password.type == "password") {
+            password.type = "text"
+            eyeicon.removeClass('fa-eye-slash').addClass('fa-eye');
+        } else {
+            password.type = "password"
+            eyeicon.removeClass('fa-eye').addClass('fa-eye-slash');
+        }
+    }
+
+    $(document).ready(function(){
+    $("#register_form").validate({
+
+        rules: {
+            first_name: {
+                required: true,
+                maxlength: 50
+            },
+
+            last_name: {
+                required: true,
+            },
+
+            username: {
+                required: true,
+            },
+
+            email: {
+                required: true,
+            },
+
+            phone: {
+                required: true,
+                number: true,
+                minlength:10,
+                maxlength:10,
+            },
+            password: {
+                required: true,
+                minlength: 6
+            },
+            password_confirmation: {
+                required: true,
+                minlength: 6
+            },
+
+        },
+        messages: {
+            first_name: {
+                required: "First Name is required.",
+            },
+            last_name: {
+                required: "Last Name is required.",
+            },
+            username: {
+                required: "Username is required.",
+            },
+            email: {
+                required: "Email is required.",
+            },
+            phone: {
+                required: "Phone Number is required.",
+            },
+            password: {
+                required: "Password is required.",
+            },
+            password_confirmation: {
+                required: "Confirm-Password is required.",
+            },
+        },
+
+    });
+    $('#register_form').on('submit', function(e) {
+        if (grecaptcha.getResponse() == "") {
+            e.preventDefault();
+            $('#captcha_jq').text('Captcha is Invalid.');
+            $('#captcha_jq').css("color", "red");
+            $('#captcha_jq').css("font-size", "12px");
+        } else {
+            $('#captcha_jq').hide();
+        }
+    });
+    });
+
+    $(document).ready(function(){
+    $('#register_form input').keyup(function(){
+        $('#reset').show();
+            $('#reset').click(function(){
+                $(this).hide();
+                $("form"). validate(). resetForm();
+                $('#captcha_jq').hide();
+            })
+    })
+    });
+ </script>
 
