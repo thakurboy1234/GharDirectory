@@ -52,16 +52,19 @@
                         </div>
                     </li>
                 @endif
+
+                @if (get_payment_setting('status', 'payu') == 1)
                 <li class="list-group-item">
                     <input class="magic-radio js_payment_method" type="radio" name="payment_method" id="payment_payu"
-                        {{-- @if ($selecting == \Botble\Payment\Enums\PaymentMethodEnum::BANK_TRANSFER) checked @endif --}}
-                        value="payu" data-bs-toggle="collapse" data-bs-target=".payment_bank_transfer_wrap"
-                        data-toggle="collapse" data-target=".payment_bank_transfer_wrap" data-parent=".list_payment_method">
+                        @if ($selecting == \Botble\Payment\Enums\PaymentMethodEnum::PAYU) checked @endif
+                        value="payu" data-bs-toggle="collapse" data-bs-target=".payment_payu_wrap"
+                        data-toggle="collapse" data-target=".payment_payu_wrap" data-parent=".list_payment_method">
                     <label for="payment_payu" class="text-start">PayU</label>
-                    <div class="payment_bank_transfer_wrap payment_collapse_wrap collapse @if ($selecting == \Botble\Payment\Enums\PaymentMethodEnum::BANK_TRANSFER) show @endif" style="padding: 15px 0;">
-                        {{-- <p>{!! BaseHelper::clean(setting('payment_bank_transfer_description')) !!}</p> --}}
+                    <div class="payment_payu_wrap payment_collapse_wrap collapse @if ($selecting == \Botble\Payment\Enums\PaymentMethodEnum::PAYU) show @endif" style="padding: 15px 0;">
+                        <p>{!! BaseHelper::clean(setting('payment_payu_description')) !!}</p>
                     </div>
                 </li>
+                @endif
 
             </ul>
 

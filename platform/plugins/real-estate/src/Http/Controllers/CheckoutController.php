@@ -136,11 +136,14 @@ class CheckoutController extends Controller
         $data['checkoutUrl'] = $request->input('callback_url') . '/payu?charge_id=' . $data['charge_id']. '&userid=' . Auth('account')->user()->id . '&check='.$urlcheck;
         // dd($data);
         Log::info('checkoutUrl '.Auth::check());
-        // dd($paymentData);
-        $MERCHANT_KEY = 'dke7p5s2';
-        $salt = 'JzBVnkPKdy';
-        //    $MERCHANT_KEY = 'WJfoOMVi';
-        // $salt = 'eJSbxabBVZ';
+
+        // $MERCHANT_KEY = 'dke7p5s2';
+        // $salt = 'JzBVnkPKdy';
+
+        $MERCHANT_KEY = get_payment_setting('key', PAYU_PAYMENT_METHOD_NAME);
+        $salt = get_payment_setting('secret', PAYU_PAYMENT_METHOD_NAME);
+
+
         $PAYU_BASE_URL = env('PAYU_BASE_URL','https://test.payu.in');
 
 
@@ -173,9 +176,17 @@ class CheckoutController extends Controller
         $hash = strtolower(hash('sha512', $hash_string));
         Log::info('return '.Auth::check());
 
-        return response()->json([
-            'status' => true,
-            'html' => view('plugins/payment::partials.payu-checkout-model',compact('hash','action','MERCHANT_KEY','txnid','posted','data','salt','returnUrl'))->render()]);
+        if(isset($MERCHANT_KEY) &&  isset($salt)){
+            return response()->json([
+                'status' => true,
+                'html' => view('plugins/payment::partials.payu-checkout-model',compact('hash','action','MERCHANT_KEY','txnid','posted','data','salt','returnUrl'))->render()
+            ]);
+        }else{
+            return response()->json([
+                'status' => false,
+                'msg'=>'please check key and salt........ ',
+            ]);
+        }
 
         // dd($paymentData);
 

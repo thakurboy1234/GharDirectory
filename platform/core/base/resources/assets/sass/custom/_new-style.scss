@@ -224,6 +224,11 @@ input[type="checkbox"]:checked:after {
     width: 125px !important;
 }
 
+.pay-filter-black {
+    filter: grayscale(1);
+    height: 35px;
+}
+
 .button-loading {
     border: 1px solid #c4cdd5;
     cursor: default;
