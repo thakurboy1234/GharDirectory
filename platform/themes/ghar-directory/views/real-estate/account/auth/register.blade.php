@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -7,7 +8,7 @@
                     <br>
                     @include(Theme::getThemeNamespace() . '::views.real-estate.account.auth.includes.messages')
                     <br>
-                    <form method="POST" action="{{ route('public.account.register') }}">
+                    <form method="POST" action="{{ route('public.account.register') }}" id="register_form">
                         @csrf
                         <div class="form-group">
                             <input id="first_name" type="text"
@@ -70,12 +71,7 @@
                                    class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                                    name="password" required
                                    placeholder="{{ trans('plugins/real-estate::dashboard.password') }}">
-                                    <span style="  float: right;
-                                    margin-left: -25px;
-                                    margin-top: -26px;
-                                    position: relative;
-                                    font-size: large;
-                                    z-index: 2;"  class="fa fa-fw fa-eye-slash viewpass mr-4 text-muted" onclick="handle('password')" id="eyeicon"></span>
+                                    <span  class="fa fa-fw fa-eye-slash viewpass mr-4 text-muted" onclick="handle('password')" id="eyeicon"></span>
                             @if ($errors->has('password'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('password') }}</strong>
@@ -87,18 +83,15 @@
                             <input id="password-confirm" type="password" class="form-control"
                                    name="password_confirmation" required
                                    placeholder="{{ trans('plugins/real-estate::dashboard.password-confirmation') }}">
-                                   <span style="  float: right;
-                                    margin-left: -25px;
-                                    margin-top: -26px;
-                                    position: relative;
-                                    font-size: large;
-                                    z-index: 2;" class="fa fa-fw fa-eye-slash viewpass mr-4 text-muted" onclick="handle('confirm_password')" id="eyeicon_confirm"></span>
+                                   <span class="fa fa-fw fa-eye-slash viewpass mr-4 text-muted" onclick="handle('confirm_password')" id="eyeicon_confirm"></span>
                         </div>
 
                         @if (is_plugin_active('captcha') && setting('enable_captcha') && setting('real_estate_enable_recaptcha_in_register_page', 0))
-                            <div class="form-group mb-3">
+                            <div class="form-group mb-3 captcha">
                                 {!! Captcha::display() !!}
+                                <span id="captcha_jq" value=""></span>
                             </div>
+
                         @endif
 
                         <div class="form-group">
@@ -126,33 +119,7 @@
         </div>
     </div>
 </div>
-<script>
 
-function handle(type) {
-    if(type == 'password'){
-        var password = document.getElementById('password')
-        var eyeicon = $('#eyeicon')
-    }
-    else{
-        var password = document.getElementById('password-confirm')
-        var eyeicon = $('#eyeicon_confirm')
-    }
 
-    if (password.type == "password") {
-        password.type = "text"
-        eyeicon.removeClass('fa-eye-slash').addClass('fa-eye');
-    } else {
-        password.type = "password"
-        eyeicon.removeClass('fa-eye').addClass('fa-eye-slash');
-    }
-}
-$(document).ready(function(){
-            $('form input').keyup(function(){
-                $('#reset').show();
-                $('#reset').click(function(){
-                    $(this).hide();
-            })
-        })
-});
-</script>
+
 
