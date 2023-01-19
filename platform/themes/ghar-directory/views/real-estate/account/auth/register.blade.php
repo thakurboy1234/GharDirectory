@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -7,7 +8,7 @@
                     <br>
                     @include(Theme::getThemeNamespace() . '::views.real-estate.account.auth.includes.messages')
                     <br>
-                    <form method="POST" action="{{ route('public.account.register') }}">
+                    <form method="POST" action="{{ route('public.account.register') }}" id="register_form">
                         @csrf
                         <div class="form-group">
                             <input id="first_name" type="text"
@@ -70,6 +71,7 @@
                                    class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                                    name="password" required
                                    placeholder="{{ trans('plugins/real-estate::dashboard.password') }}">
+                                    <span  class="fa fa-fw fa-eye-slash viewpass mr-4 text-muted" onclick="handle('password')" id="eyeicon"></span>
                             @if ($errors->has('password'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('password') }}</strong>
@@ -81,17 +83,26 @@
                             <input id="password-confirm" type="password" class="form-control"
                                    name="password_confirmation" required
                                    placeholder="{{ trans('plugins/real-estate::dashboard.password-confirmation') }}">
+                                   <span class="fa fa-fw fa-eye-slash viewpass mr-4 text-muted" onclick="handle('confirm_password')" id="eyeicon_confirm"></span>
                         </div>
 
                         @if (is_plugin_active('captcha') && setting('enable_captcha') && setting('real_estate_enable_recaptcha_in_register_page', 0))
-                            <div class="form-group mb-3">
+                            <div class="form-group mb-3 captcha">
                                 {!! Captcha::display() !!}
+                                <span id="captcha_jq" value=""></span>
                             </div>
+
                         @endif
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-blue btn-full fw6">
                                 {{ trans('plugins/real-estate::dashboard.register-cta') }}
+                            </button>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button type="reset" id="reset" value="Reset" class="btn btn-blue btn-full fw6" style="width:50px;display: none">
+                                <i class="fas fa-retweet-alt"></i>
                             </button>
                         </div>
 
@@ -108,3 +119,7 @@
         </div>
     </div>
 </div>
+
+
+
+
