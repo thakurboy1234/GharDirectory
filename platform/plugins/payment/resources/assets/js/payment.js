@@ -101,7 +101,7 @@ BPayment.init = function () {
                         $('#apand_payu_form').append(data.html);
                         $('#payuForm').submit();
                     }else{
-                        alert('Payment faild for same resun ..... ');
+                        alert(data.msg);
                     }
                 }
              });
