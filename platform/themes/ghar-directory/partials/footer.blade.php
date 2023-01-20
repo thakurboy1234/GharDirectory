@@ -5,45 +5,45 @@
             <div class="col-sm-3">
                 <div class="menu__top__footer">
                     <ul>
+                        <li><a href="{{ route('public.properties-by-city', 'chandigarh') }}">Properties for sale in Chandigarh</a></li>
+                        {{-- <li><a href="#!">Properties For Sale</a></li> --}}
+                        {{-- <li><a href="#!">Link</a></li>
                         <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li> --}}
                     </ul>
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="menu__top__footer">
                     <ul>
+                        <li><a href="{{ route('public.properties-by-city', 'gurugram') }}">Properties for sale in Gurugram</a></li>
+                        {{-- <li><a href="#!">Properties For Sale</a></li> --}}
+                        {{-- <li><a href="#!">Link</a></li>
                         <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li> --}}
                     </ul>
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="menu__top__footer">
                     <ul>
+                        <li><a href="{{ route('public.properties-by-city', 'mohali') }}">Properties for sale in Mohali</a></li>
+                        {{-- <li><a href="#!">Properties For Sale</a></li> --}}
+                        {{-- <li><a href="#!">Link</a></li>
                         <li><a href="#!">Link</a></li>
                         <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                    </ul>
+                    </ul> --}}
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="menu__top__footer">
                     <ul>
+                        <li><a href="{{ route('public.properties-by-city', 'zirakpur') }}">Properties for sale in Zirakpur</a></li>
+                        {{-- <li><a href="#!">Properties For Sale</a></li> --}}
+                        {{-- <li><a href="#!">Link</a></li>
                         <li><a href="#!">Link</a></li>
                         <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                    </ul>
+                    </ul> --}}
                 </div>
             </div>
         </div>
