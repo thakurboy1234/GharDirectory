@@ -9,6 +9,7 @@
 
     <link rel="preconnect" href="{{ $fontURL = BaseHelper::getGoogleFontsURL() }}">
     <link href="{{ $fontURL }}/css2?family={{ urlencode(theme_option('primary_font', 'Nunito Sans')) }}:wght@300;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('themes\ghar-directory\css\new-style.css')}}">
 
     <style>
         :root {
@@ -20,6 +21,8 @@
     </style>
 
     {!! Theme::header() !!}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js"></script>
+
 </head>
 <body @if (BaseHelper::siteLanguageDirection() == 'rtl') dir="rtl" @endif>
 {!! apply_filters(THEME_FRONT_BODY, null) !!}

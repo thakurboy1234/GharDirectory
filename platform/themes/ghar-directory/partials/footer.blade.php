@@ -1,4 +1,54 @@
 <!--FOOTER-->
+<section class="top__footer">
+    <div class="container-fluid w90">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="menu__top__footer">
+                    <ul>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="menu__top__footer">
+                    <ul>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="menu__top__footer">
+                    <ul>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="menu__top__footer">
+                    <ul>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                        <li><a href="#!">Link</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <footer>
     <br>
     <div class="container-fluid w90">
