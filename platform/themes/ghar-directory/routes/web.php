@@ -30,7 +30,7 @@ Route::group(['namespace' => 'Theme\FlexHome\Http\Controllers', 'middleware' => 
 
 Theme::routes();
 
-Route::group(['namespace' => 'Theme\FlexHome\Http\Controllers'], function () {
+Route::group(['namespace' => 'Theme\FlexHome\Http\Controllers', 'middleware' => ['web', 'core']], function () {
 
     Route::group(apply_filters(BASE_FILTER_GROUP_PUBLIC_ROUTE, []), function () {
         Route::get('/', 'FlexHomeController@getIndex')->name('public.index');
