@@ -1,0 +1,33 @@
+.top__footer {
+    background-color: #f4f5f9;
+    padding: 30px 0;
+}
+.menu__top__footer ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+.menu__top__footer ul li {
+    padding: 3px 0;
+}
+.menu__top__footer ul li a {
+    color: #4f4f4f;
+}
+.menu__top__footer ul li a:hover {
+    text-decoration: none;
+    color: #f79534;
+}
+.form-group .error {
+    font-size: 12px;
+    color: red;
+}
+
+span#eyeicon,
+span#eyeicon_confirm {
+    float: right;
+    font-size: large;
+    margin-left: -25px;
+    margin-top: -26px;
+    position: relative;
+    z-index: 2;
+}

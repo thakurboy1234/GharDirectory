@@ -71,7 +71,7 @@
                                    class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                                    name="password" required
                                    placeholder="{{ trans('plugins/real-estate::dashboard.password') }}">
-                                    <span  class="fa fa-fw fa-eye-slash viewpass mr-4 text-muted" onclick="handle('password')" id="eyeicon"></span>
+                                    <span class="fa fa-fw fa-eye-slash viewpass mr-4 text-muted" onclick="handle('password')" id="eyeicon"></span>
                             @if ($errors->has('password'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('password') }}</strong>
@@ -83,7 +83,7 @@
                             <input id="password-confirm" type="password" class="form-control"
                                    name="password_confirmation" required
                                    placeholder="{{ trans('plugins/real-estate::dashboard.password-confirmation') }}">
-                                   <span  class="fa fa-fw fa-eye-slash viewpass mr-4 text-muted" onclick="handle('confirm_password')" id="eyeicon_confirm"></span>
+                                   <span class="fa fa-fw fa-eye-slash viewpass mr-4 text-muted" onclick="handle('confirm_password')" id="eyeicon_confirm"></span>
                         </div>
 
                         @if (is_plugin_active('captcha') && setting('enable_captcha') && setting('real_estate_enable_recaptcha_in_register_page', 0))
@@ -120,7 +120,6 @@
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js"></script>
 
 <script>
     function handle(type) {
