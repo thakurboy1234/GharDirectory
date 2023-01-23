@@ -76,11 +76,11 @@ if (! function_exists('human_price_text')) {
         if (setting('real_estate_convert_money_to_text_enabled', config('plugins.real-estate.real-estate.display_big_money_in_million_billion'))) {
             if ($price >= 100000 && $price < 10000000) {
                 $price = round($price / 100000, 2) + 0;
-                $priceUnit = __('L') . ' ' . $priceUnit;
+                $priceUnit = __(' L') . ' ' . $priceUnit;
                 $numberAfterDot = strlen(substr(strrchr($price, '.'), 1));
             } elseif ($price >= 10000000) {
                 $price = round($price / 10000000, 2) + 0;
-                $priceUnit = __('Cr') . ' ' . $priceUnit;
+                $priceUnit = __(' Cr') . ' ' . $priceUnit;
                 $numberAfterDot = strlen(substr(strrchr($price, '.'), 1));
             }
         }
