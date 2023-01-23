@@ -46,8 +46,8 @@
                 </div>
 
                 <div class="advanced-search d-none d-sm-block">
-                    <a href="#" class="advanced-search-toggler">{{ __('Advanced') }} <i class="fas fa-caret-down"></i></a>
-                    <div class="advanced-search-content property-advanced-search">
+                    {{-- <a href="#" class="advanced-search-toggler">{{ __('Advanced') }} <i class="fas fa-caret-down"></i></a> --}}
+                    <div class="advanced-search-content property-advanced-search active">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3 col-sm-6 pr-md-1">
