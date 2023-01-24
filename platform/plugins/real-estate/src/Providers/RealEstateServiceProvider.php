@@ -283,18 +283,18 @@ class RealEstateServiceProvider extends ServiceProvider
                     'permissions' => ['account.index'],
                 ]);
 
-            // if (RealEstateHelper::isEnabledCreditsSystem()) {
-            //     dashboard_menu()
-            //         ->registerItem([
-            //             'id' => 'cms-plugins-package',
-            //             'priority' => 23,
-            //             'parent_id' => null,
-            //             'name' => 'plugins/real-estate::package.name',
-            //             'icon' => 'fas fa-money-check-alt',
-            //             'url' => route('package.index'),
-            //             'permissions' => ['package.index'],
-            //         ]);
-            // }
+            if (RealEstateHelper::isEnabledCreditsSystem()) {
+                dashboard_menu()
+                    ->registerItem([
+                        'id' => 'cms-plugins-package',
+                        'priority' => 23,
+                        'parent_id' => null,
+                        'name' => 'plugins/real-estate::package.name',
+                        'icon' => 'fas fa-money-check-alt',
+                        'url' => route('package.index'),
+                        'permissions' => ['package.index'],
+                    ]);
+            }
         });
 
         if (class_exists('ApiHelper')) {
