@@ -165,7 +165,7 @@
                 @if ($author = $property->author)
                     <div class="boxright p-3">
                         <div class="head">
-                            {{ __('Contact agency') }}
+                            {{ __('Contact') }}
                         </div>
 
                         <div class="row rowm10 itemagent">
