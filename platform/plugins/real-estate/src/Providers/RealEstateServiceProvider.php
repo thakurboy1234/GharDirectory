@@ -272,16 +272,16 @@ class RealEstateServiceProvider extends ServiceProvider
                     'icon' => null,
                     'url' => route('property_category.index'),
                     'permissions' => ['property_category.index'],
+                ])
+                ->registerItem([
+                    'id' => 'cms-plugins-real-estate-account',
+                    'priority' => 22,
+                    'parent_id' => null,
+                    'name' => 'plugins/real-estate::account.name',
+                    'icon' => 'fa fa-users',
+                    'url' => route('account.index'),
+                    'permissions' => ['account.index'],
                 ]);
-                // ->registerItem([
-                //     'id' => 'cms-plugins-real-estate-account',
-                //     'priority' => 22,
-                //     'parent_id' => null,
-                //     'name' => 'plugins/real-estate::account.name',
-                //     'icon' => 'fa fa-users',
-                //     'url' => route('account.index'),
-                //     'permissions' => ['account.index'],
-                // ]);
 
             // if (RealEstateHelper::isEnabledCreditsSystem()) {
             //     dashboard_menu()
