@@ -7,8 +7,8 @@
         <li>
             <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(url()->current()) }}&summary={{ rawurldecode($description) }}&source=Linkedin" title="{{ __('Share on Linkedin') }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         </li>
-        <li>
+        {{-- <li>
             <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ $description }}" target="_blank" title="{{ __('Share on Twitter') }}"><i class="fab fa-twitter"></i></a>
-        </li>
+        </li> --}}
     </ul>
 </div>
