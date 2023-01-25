@@ -93,6 +93,166 @@
 </footer>
 <!--FOOTER-->
 
+{{-- mobile footer navigation --}}
+<div class="mobileNavigation d-xl-none d-lg-none d-md-none d-sm-none d-block">
+    <ul>
+        <li class="active">
+            <em class="mobNav home"><i class="far fa-home"></i></em>
+            <small>Home</small>
+        </li>
+        <li data-toggle="modal" data-target="#Modalcity">
+            <em class="mobNav search"><i class="far fa-search"></i></em>
+            <small>Search</small>
+        </li>
+        <li data-toggle="modal" data-target="#Modalcontact">
+            <span>
+                <em class="mobNav ourServicesEm"><i class="far fa-plus"></i></em>
+            </span>
+        </li>
+        <li>
+            <em class="mobNav ahortlist"><i class="far fa-heart"></i></em>
+            <small>Wishlist</small>
+        </li>
+        <li>
+            <em class="mobNav account"><i class="far fa-user"></i></em>
+            <small>Account</small>
+        </li>
+    </ul>
+</div>
+
+{{-- city modal --}}
+<div class="modal fade" id="Modalcity" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-slideout Modalcity-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title align-right" id="exampleModalLabel">City
+            <button type="button" class="fal fa-long-arrow-right Modalcity-close" data-dismiss="modal"></button>
+        </h5>
+        </div>
+        <div class="modal-body">
+            <div class="gblCityBox">
+                <div class="gblCityBody">
+
+                    <div id="section-India">
+                        <div class="gblSearchBox">
+                            <div class="gblSearch">
+                                <label for="searchCity">Search Cities</label>
+                                <div class="formGroup"><em class="far fa-search"></em>
+                                    <input type="text" class="form-control" id="" placeholder="Select or type your city">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="topCitiesBoxx">
+                            <h4>Top Cities</h4>
+                            <ul>
+                                <li class=" Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
+                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Mumbai" slugcityname="mumbai" redirect_to="">
+                                    <em class="sci"></em>
+                                    <h5>Mumbai</h5></a>
+                                </li>
+                                <li class=" Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
+                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Delhi" slugcityname="delhi" redirect_to="">
+                                    <em class="sci"></em>
+                                    <h5>Delhi</h5></a>
+                                </li>
+                                <li class=" Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
+                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Mumbai" slugcityname="mumbai" redirect_to="">
+                                    <em class="sci"></em>
+                                    <h5>Mumbai</h5></a>
+                                </li>
+                                <li class=" Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
+                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Delhi" slugcityname="delhi" redirect_to="">
+                                    <em class="sci"></em>
+                                    <h5>Delhi</h5></a>
+                                </li>
+                                <li class=" Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
+                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Mumbai" slugcityname="mumbai" redirect_to="">
+                                    <em class="sci"></em>
+                                    <h5>Mumbai</h5></a>
+                                </li>
+                                <li class=" Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
+                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Delhi" slugcityname="delhi" redirect_to="">
+                                    <em class="sci"></em>
+                                    <h5>Delhi</h5></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="allCitiesBoxx">
+                            <h4>Other Cities</h4>
+                            <ul>
+                                <li class="Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
+                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Nagpur" slugcityname="nagpur" redirect_to="">Nagpur</a>
+                                </li>
+                                <li class="Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
+                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Nagpur" slugcityname="nagpur" redirect_to="">Nagpur</a>
+                                </li>
+                                <li class="Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
+                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Nagpur" slugcityname="nagpur" redirect_to="">Nagpur</a>
+                                </li>
+                                <li class="Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
+                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Nagpur" slugcityname="nagpur" redirect_to="">Nagpur</a>
+                                </li>
+                                <li class="Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
+                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Nagpur" slugcityname="nagpur" redirect_to="">Nagpur</a>
+                                </li>
+                                <li class="Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
+                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Nagpur" slugcityname="nagpur" redirect_to="">Nagpur</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div> --}}
+      </div>
+    </div>
+</div>
+
+{{-- contact modal --}}
+<div class="modal fade" id="Modalcontact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-slideout Modalcity-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title align-right" id="exampleModalLabel">Contact Our Real Estate Experts
+            <button type="button" class="fal fa-long-arrow-right Modalcity-close" data-dismiss="modal"></button>
+        </h5>
+        </div>
+        <div class="modal-body">
+            <div class="mobileOurServices">
+                <ul>
+                    <li>
+                        <em class="fIcon1"></em>
+                        <strong>Buy a New Home <span>5Lac+ property options</span></strong>
+                    </li>
+                    <li>
+                        <em class="fIcon1"></em>
+                        <strong>Buy a New Home <span>5Lac+ property options</span></strong>
+                    </li>
+                    <li>
+                        <em class="fIcon1"></em>
+                        <strong>Buy a New Home <span>5Lac+ property options</span></strong>
+                    </li>
+                    <li>
+                        <em class="fIcon1"></em>
+                        <strong>Buy a New Home <span>5Lac+ property options</span></strong>
+                    </li>
+                    <li>
+                        <em class="fIcon1"></em>
+                        <strong>Buy a New Home <span>5Lac+ property options</span></strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        {{-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div> --}}
+      </div>
+    </div>
+</div>
+
 <script>
     window.trans = {
         "Price": "{{ __('Price') }}",
@@ -115,7 +275,7 @@
 <!--END FOOTER-->
 
 <div class="action_footer">
-    <a href="#" class="cd-top" @if (!Theme::get('hotlineNumber') && !theme_option('hotline')) style="top: -40px;" @endif><i class="fas fa-arrow-up"></i></a>
+    <a href="#" class="cd-top" @if (!Theme::get('hotlineNumber') && !theme_option('hotline')) style="top: -82px;" @endif><i class="fas fa-arrow-up"></i></a>
     @if (Theme::get('hotlineNumber') || theme_option('hotline'))
         <a href="tel:{{ Theme::get('hotlineNumber') ?: theme_option('hotline') }}" style="color: white;font-size: 17px;"><i class="fas fa-phone"></i> <span>  &nbsp;{{ Theme::get('hotlineNumber') ?: theme_option('hotline') }}</span></a>
     @endif

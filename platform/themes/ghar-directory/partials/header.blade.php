@@ -112,6 +112,10 @@
                                      class="logo" height="40" alt="{{ theme_option('site_name') }}">
                             </a>
                         @endif
+
+                        <span class="header__city d-xl-none d-lg-none d-md-none d-sm-none d-flex" data-toggle="modal" data-target="#Modalcity">
+                            City <i class="far fa-chevron-down"></i>
+                        </span>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 id="header-waypoint"                   data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
