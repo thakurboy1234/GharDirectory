@@ -4,7 +4,7 @@ use Botble\Blog\Models\Category;
 use Botble\Blog\Models\Post;
 use Botble\Blog\Models\Tag;
 
-Route::group(['namespace' => 'Botble\Blog\Http\Controllers', 'middleware' => ['web', 'core']], function () {
+Route::group(['namespace' => 'Botble\Blog\Http\Controllers', 'middleware' => ['web', 'core','comingSoonMiddleware']], function () {
     Route::group(['prefix' => BaseHelper::getAdminPrefix() . '/blog', 'middleware' => 'auth'], function () {
         Route::group(['prefix' => 'posts', 'as' => 'posts.'], function () {
             Route::resource('', 'PostController')

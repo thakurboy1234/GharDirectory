@@ -2,7 +2,7 @@
 
 use Botble\Base\Http\Controllers\SystemController;
 
-Route::group(['namespace' => 'Botble\Base\Http\Controllers', 'middleware' => ['web', 'core']], function () {
+Route::group(['namespace' => 'Botble\Base\Http\Controllers', 'middleware' => ['web', 'core','comingSoonMiddleware']], function () {
     Route::group(['prefix' => BaseHelper::getAdminPrefix(), 'middleware' => 'auth'], function () {
         Route::group(['prefix' => 'system/info'], function () {
             Route::match(['GET', 'POST'], '', [

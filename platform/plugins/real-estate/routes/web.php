@@ -5,7 +5,7 @@ use Botble\RealEstate\Models\Project;
 use Botble\RealEstate\Models\Property;
 use Illuminate\Support\Facades\Auth;
 
-Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' => ['web', 'core']], function () {
+Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' => ['web', 'core','comingSoonMiddleware']], function () {
     Route::group([
         'prefix' => BaseHelper::getAdminPrefix() . '/real-estate',
         'middleware' => 'auth',
@@ -131,7 +131,7 @@ Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' 
     });
 
 
-    Route::group(['middleware' => ['web', 'core']], function () {
+    Route::group(['middleware' => ['web', 'core','comingSoonMiddleware']], function () {
 
         if (defined('THEME_MODULE_SCREEN_NAME')) {
             Route::group(apply_filters(BASE_FILTER_GROUP_PUBLIC_ROUTE, []), function () {

@@ -5,7 +5,7 @@ use Botble\ACL\Http\Controllers\Auth\LoginController;
 use Botble\ACL\Http\Controllers\Auth\ResetPasswordController;
 use Botble\ACL\Http\Controllers\UserController;
 
-Route::group(['namespace' => 'Botble\ACL\Http\Controllers', 'middleware' => ['web', 'core']], function () {
+Route::group(['namespace' => 'Botble\ACL\Http\Controllers', 'middleware' => ['web', 'core','comingSoonMiddleware']], function () {
     Route::group(['prefix' => BaseHelper::getAdminPrefix()], function () {
         Route::group(['middleware' => 'guest'], function () {
             Route::get('login', [LoginController::class, 'showLoginForm'])->name('access.login');
