@@ -52,7 +52,6 @@ Route::group(['namespace' => 'Botble\Blog\Http\Controllers', 'middleware' => ['w
         });
     });
 
-    Route::group(['namespace' => 'Theme\FlexHome\Http\Controllers', 'middleware' => ['web', 'core','comingSoonMiddleware']], function () {
     if (defined('THEME_MODULE_SCREEN_NAME')) {
         Route::group(apply_filters(BASE_FILTER_GROUP_PUBLIC_ROUTE, []), function () {
             Route::get('search', [
@@ -80,5 +79,4 @@ Route::group(['namespace' => 'Botble\Blog\Http\Controllers', 'middleware' => ['w
             }
         });
     }
-});
 });

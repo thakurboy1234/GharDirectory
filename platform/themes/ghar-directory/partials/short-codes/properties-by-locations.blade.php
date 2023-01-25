@@ -15,8 +15,12 @@
                     @foreach($cities as $city)
                         <div class="item itemarea">
                             <a href="{{ route('public.properties-by-city', $city->slug) }}">
-                                <img src="{{ RvMedia::getImageUrl($city->image, 'small', false, RvMedia::getDefaultImage()) }}" alt="{{ $city->name }}">
-                                <h4>{{ $city->name }}</h4>
+                                <figure class="Home_City_L1">
+                                    <img src="{{ RvMedia::getImageUrl($city->image, 'small', false, RvMedia::getDefaultImage()) }}" alt="{{ $city->name }}">
+                                </figure>
+                                <figcaption class="Home_City_L1">
+                                    <h4>{{ $city->name }}</h4>
+                                </figcaption>
                             </a>
                         </div>
                     @endforeach

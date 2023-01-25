@@ -2,7 +2,7 @@
     <div class="bgheadproject hidden-xs" style="background: url('{{ theme_option('breadcrumb_background') ? RvMedia::url(theme_option('breadcrumb_background')) : Theme::asset()->url('images/banner-du-an.jpg') }}')">
         <div class="description">
             <div class="container-fluid w90">
-                <h1 class="text-center">{{ __('Agents') }}</h1>
+                <h1 class="text-center">{{ __('Directory Experts') }}</h1>
                 {!! Theme::partial('breadcrumb') !!}
             </div>
         </div>
