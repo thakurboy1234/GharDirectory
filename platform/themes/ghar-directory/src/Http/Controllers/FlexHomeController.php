@@ -365,9 +365,9 @@ class FlexHomeController extends PublicController
             ],
         ]);
 
-        SeoHelper::setTitle(__('Agents'));
+        SeoHelper::setTitle(__('Directory Experts'));
 
-        Theme::breadcrumb()->add(__('Home'), route('public.index'))->add(__('Agents'), route('public.agents'));
+        Theme::breadcrumb()->add(__('Home'), route('public.index'))->add(__('Directory Experts'), route('public.agents'));
 
         return Theme::scope('real-estate.agents', compact('accounts'))->render();
     }
