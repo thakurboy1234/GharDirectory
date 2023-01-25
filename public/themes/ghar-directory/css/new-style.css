@@ -31,3 +31,347 @@ span#eyeicon_confirm {
     position: relative;
     z-index: 2;
 }
+.itemarea {
+    margin: 10px 8px 30px;
+    display: inline-block;
+    height: 162px;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 26px 0 #00000017;
+    background: #fff !important;
+    width: 14.9%;
+}
+.itemarea a {
+    padding: 0;
+    display: block;
+    height: 100%;
+    margin: 15px 0 0;
+}
+.itemarea a:hover {
+    text-decoration: none;
+}
+.itemarea a .Home_City_L1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 100px;
+}
+.itemarea a .Home_City_L1 img {
+    overflow: hidden;
+    display: block;
+    height: 95px;
+}
+.itemarea .Home_City_L1 h4 {
+    position: unset;
+    color: #212529;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 15px 0 0;
+}
+.propertie__sale {
+    background-color: #f9aa5d !important;
+}
+
+
+.mobileNavigation {
+    display: block;
+    height: 45px;
+    background: #fff;
+    box-shadow: 0 -3px 6px 0 #0000000f;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 11;
+}
+.mobileNavigation ul {
+    display: flex;
+    height: 100%;
+    z-index: 1;
+    position: relative;
+    padding: 0px;
+}
+.mobileNavigation ul li {
+    display: flex;
+    height: 100%;
+    width: calc(100% - 200px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+}
+.mobileNavigation ul li.active::after {
+    content: '';
+    margin: 0 0 0 -18px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 36px;
+    height: 4px;
+    border-radius: 3px 3px 0 0;
+    background: #f79534;
+}
+.mobileNavigation ul li:nth-child(3) {
+    width: 200px;
+    bottom: 1px;
+}
+.mobileNavigation ul li:nth-child(3) span {
+    padding: 0;
+    margin: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 100px;
+    position: absolute;
+    bottom: 0;
+    background-image: linear-gradient(138deg,#f79534a6 -9%,#f79534 100%);
+}
+.mobileNavigation ul li:nth-child(3) span em {
+    padding: 0;
+    margin: 0;
+    width: 56px;
+    height: 56px;
+    background-size: 181px;
+    background-position: -4px -95px;
+    transition: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    color: #fff;
+}
+.mobileNavigation ul li em {
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+.mobileNavigation small {
+    margin-top: 2px;
+    color: #333;
+    font-size: 11px;
+    line-height: 10px;
+}
+
+
+.header__city {
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+}
+.header__city i {
+    margin-left: 10px;
+}
+
+/* city modal css */
+.Modalcity-dialog {
+    max-width: 100%;
+  }
+  .modal-dialog-slideout {
+    min-height: 100%;
+    margin: 0 0 0 auto;
+    background: #fff;
+  }
+  .modal.fade .Modalcity-dialog.modal-dialog-slideout {
+    -webkit-transform: translate(100%, 0)scale(1);
+    transform: translate(100%, 0)scale(1);
+  }
+  .modal.fade.show .Modalcity-dialog.modal-dialog-slideout {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    display: flex;
+    align-items: stretch;
+    -webkit-box-align: stretch;
+    height: 100%;
+    margin: 0px;
+  }
+  .modal.fade.show .Modalcity-dialog.modal-dialog-slideout .modal-body {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .modal-dialog-slideout .modal-content {
+    border: 0;
+  }
+  .modal-dialog-slideout .modal-header,
+  .modal-dialog-slideout .modal-footer {
+    height: auto;
+    display: block;
+    padding: 10px 20px;
+    box-shadow: 0 3px 6px 0 #00000012;
+    border: none;
+  }
+  .modal-dialog-slideout .modal-header h5 {
+    text-align: right;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.modal-dialog-slideout .modal-header h5 button {
+    border: none;
+    background-color: transparent;
+    padding: 0px;
+    margin-left: 20px;
+}
+
+
+.gblCityBox .gblCityBody {
+    display: block;
+    max-height: calc(100% - 48px);
+    overflow: hidden;
+    overflow-y: auto;
+}
+.gblCityBox .gblCityBody .gblSearchBox {
+    padding: 15px 15px 5px;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+.gblCityBox .gblCityBody .gblSearchBox .gblSearch {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+}
+.gblCityBox .gblCityBody .gblSearchBox .gblSearch label {
+    font-size: 13px;
+    font-weight: 600;
+    position: relative;
+    color: #333;
+    font-weight: 500;
+    display: none;
+}
+.gblCityBox .gblCityBody .gblSearchBox .gblSearch .formGroup {
+    display: block;
+    width: 100%;
+    position: relative;
+}
+.gblCityBox .gblCityBody .gblSearchBox .gblSearch .formGroup .fa-search {
+    font-size: 17px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.gblCityBox .gblCityBody .gblSearchBox .gblSearch .formGroup .form-control {
+    padding-left: 35px;
+    height: 36px;
+    background: #efefef;
+    border: #707070 solid 0;
+    border-radius: 5px;
+}
+.gblCityBox .gblCityBody .topCitiesBoxx {
+    padding: 5px 15px 0;
+    display: block;
+    overflow: hidden;
+}
+.gblCityBox .gblCityBody .topCitiesBoxx h4 {
+    padding: 5px 0 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+}
+.gblCityBox .gblCityBody .topCitiesBoxx ul {
+    margin: 0px;padding: 0px;
+    display: block;
+}
+.gblCityBox .gblCityBody .topCitiesBoxx ul li {
+    margin: 2px;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    float: left;
+    width: calc(33% - 4px);
+    border: solid 1px #e3e3e3;
+    border-radius: 8px;
+    height: 60px;
+}
+.gblCityBox .gblCityBody .topCitiesBoxx ul li a {
+    padding: 5px 2px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.gblCityBox .gblCityBody .topCitiesBoxx ul li em {
+    width: 35px;
+    height: 27px;
+    display: block;
+    flex: none;
+}
+.gblCityBox .gblCityBody .allCitiesBoxx {
+    padding: 5px 15px 10px;
+    display: block;
+    overflow: hidden;
+}
+.gblCityBox .gblCityBody .topCitiesBoxx ul li a h5 {
+    margin-top: 3px;
+    color: #333;
+    transition: .5s;
+    font-weight: 400;
+    line-height: normal;
+    font-size: 12px;
+}
+.gblCityBox .gblCityBody .allCitiesBoxx h4 {
+    padding: 8px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+}
+.gblCityBox .gblCityBody .allCitiesBoxx ul {
+    margin: 0;
+    display: block;
+    padding: 0px;
+}
+.gblCityBox .gblCityBody .allCitiesBoxx ul li {
+    cursor: pointer;
+    display: block;
+    border-top: #f1f1f1 solid 1px;
+}
+.gblCityBox .gblCityBody .allCitiesBoxx ul li a {
+    display: block;
+    color: #333;
+    line-height: 42px;
+    transition: .5s;
+    position: relative;
+}
+
+/* modal contact css */
+.mobileOurServices {
+    padding: 20px;
+    width: 100%;
+}
+.mobileOurServices ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+.mobileOurServices ul li {
+    border-bottom: 1px solid #ededed;
+    display: flex;
+    height: 62px;
+    align-items: center;
+    cursor: pointer;
+}
+.mobileOurServices ul li .fIcon1 {
+    margin-right: 15px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50px;
+}
+.mobileOurServices ul li strong {
+    width: calc(100% - 55px);
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+}
+.mobileOurServices ul li strong span {
+    font-weight: 400;
+    font-size: 12px;
+    color: #666;
+    display: block;
+}

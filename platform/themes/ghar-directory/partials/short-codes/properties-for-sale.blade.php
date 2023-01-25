@@ -1,12 +1,12 @@
-<div class="padtop70">
-    <div class="box_shadow">
+<div class="padtop30">
+    <div class="box_shadow propertie__sale">
         <div class="container-fluid w90">
             <div class="homehouse projecthome">
                 <div class="row">
                     <div class="col-12">
-                        <h2>{!! BaseHelper::clean($title) !!}</h2>
+                        <h2 class="text-white">{!! BaseHelper::clean($title) !!}</h2>
                         @if ($subtitle)
-                            <p>{!! BaseHelper::clean($subtitle) !!}</p>
+                            <p class="text-white">{!! BaseHelper::clean($subtitle) !!}</p>
                         @endif
                     </div>
                 </div>
