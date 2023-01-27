@@ -301,6 +301,14 @@ Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' 
                         'as' => 'renew',
                         'uses' => 'AccountPropertyController@renew',
                     ]);
+                    Route::get('leads', [
+                        'as' => 'leads',
+                        'uses' => 'AccountPropertyController@leads_index',
+                    ]);
+                    Route::post('leads', [
+                        'as' => 'leads',
+                        'uses' => 'AccountPropertyController@leads_index',
+                    ]);
                 });
 
                 Route::group(['prefix' => 'account'], function () {

@@ -26,6 +26,11 @@ use Illuminate\Routing\Controller;
 use RealEstateHelper;
 use SeoHelper;
 
+use Botble\RealEstate\Tables\ConsultTable;
+use Botble\RealEstate\Tables\PropertyLeadsTable;
+use Botble\Support\Http\Requests\Request as RequestsRequest;
+
+
 class AccountPropertyController extends Controller
 {
     /**
@@ -73,6 +78,13 @@ class AccountPropertyController extends Controller
         SeoHelper::setTitle(trans('plugins/real-estate::account-property.properties'));
 
         return $propertyTable->render('plugins/real-estate::account.table.base');
+    }
+
+    public function leads_index(PropertyLeadsTable $propertyLedsTable)
+    {
+        SeoHelper::setTitle('Leads');
+
+        return $propertyLedsTable->render('plugins/real-estate::account.table.leads.base');
     }
 
     /**
