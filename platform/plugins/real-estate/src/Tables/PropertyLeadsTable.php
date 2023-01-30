@@ -25,7 +25,7 @@ use Yajra\DataTables\DataTables;
 
 class PropertyLeadsTable extends TableAbstract
 {
-    protected $hasActions = false;
+    protected $hasActions = true;
 
     protected $hasFilter = true;
 
@@ -51,6 +51,10 @@ class PropertyLeadsTable extends TableAbstract
                 return "<a target='_blank' title=".$item->property->name." href=".url('properties/'.$item->property->slug).">".$item->property->name."</a>";
 
             })
+            ->editColumn('checkbox', function ($item) {
+                return '';
+
+            })
             ->editColumn('email', function ($item) {
                 return $item->email;
             })
@@ -58,8 +62,11 @@ class PropertyLeadsTable extends TableAbstract
                 return BaseHelper::formatDate($item->created_at);
             })
             ->addColumn('operations', function ($item) {
-                return 11;
-            });
+                return "<a href=".url('consult/'.$item->slug)." class='btn btn-icon btn-sm btn-primary'>View</a>   <a href='#' class='btn btn-icon btn-sm btn-danger deleteDialog' data-bs-toggle='tooltip' data-section='".url('consult_delete/'.$item->slug)."' role='button' data-bs-original-title='".trans('core/base::tables.delete_entry')."' >
+                <i class='fa fa-trash'></i>
+            </a>";
+            })
+            ->addIndexColumn();
 
         return $this->toJson($data);
     }
@@ -73,12 +80,13 @@ class PropertyLeadsTable extends TableAbstract
             'email',
             'phone',
             'property_id',
+            'slug',
             // 'moderation_status',
             'created_at',
         ])
         ->WhereHas('property',function($query){
             $query->where('author_id',auth('account')->id());
-        })->with(['property']);
+        })->with(['property'])->orderBy('id','desc');
         //    Log::info($query);
         return $this->applyScopes($query);
     }
@@ -86,17 +94,11 @@ class PropertyLeadsTable extends TableAbstract
     public function columns(): array
     {
         return [
-            'id' => [
-                'title' => trans('core/base::tables.id'),
+            'DT_RowIndex' => [
+                'title' => 'S.No',
                 'width' => '20px',
+                'orderable' => false,
             ],
-            // 'image' => [
-            //     'title' => trans('core/base::tables.image'),
-            //     'width' => '50px',
-            //     'class' => 'no-sort',
-            //     'orderable' => false,
-            //     'searchable' => false,
-            // ],
             'name' => [
                 'title' => trans('core/base::tables.name'),
                 'class' => 'text-start',
@@ -112,6 +114,7 @@ class PropertyLeadsTable extends TableAbstract
             'property.name' => [
                 'title' => trans('property'),
                 'class' => 'text-start',
+                'orderable' => false,
             ],
             'created_at' => [
                 'title' => trans('core/base::tables.created_at'),
