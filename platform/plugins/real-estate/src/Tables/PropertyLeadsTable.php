@@ -25,7 +25,7 @@ use Yajra\DataTables\DataTables;
 
 class PropertyLeadsTable extends TableAbstract
 {
-    protected $hasActions = true;
+    protected $hasActions = false;
 
     protected $hasFilter = true;
 
@@ -48,31 +48,18 @@ class PropertyLeadsTable extends TableAbstract
         $data = $this->table
             ->eloquent($this->query())
             ->editColumn('property.name', function ($item) {
-
-                // return $item->property->slug;
-            return "<a target='_blank' title=".$item->property->name." href=".url('properties/'.$item->property->slug).">".$item->property->name."</a>";
+                return "<a target='_blank' title=".$item->property->name." href=".url('properties/'.$item->property->slug).">".$item->property->name."</a>";
 
             })
-            // ->editColumn('image', function ($item) {
-            //     return $this->displayThumbnail($item->image);
-            // })
             ->editColumn('email', function ($item) {
                 return $item->email;
             })
             ->editColumn('created_at', function ($item) {
                 return BaseHelper::formatDate($item->created_at);
             })
-            // ->editColumn('status', function ($item) {
-            //     return BaseHelper::clean($item->status->toHtml());
-            // })
-            // ->editColumn('moderation_status', function ($item) {
-            //     return BaseHelper::clean($item->moderation_status->toHtml());
-            // })
             ->addColumn('operations', function ($item) {
                 return 11;
-                // return $this->getOperations('property.edit', 'property.destroy', $item);
-            })
-            ;
+            });
 
         return $this->toJson($data);
     }

@@ -25,9 +25,9 @@
                                 </ul>
                             </div>
                         @endif
-                        @if ($table->isHasFilter())
+                        {{-- @if ($table->isHasFilter())
                             <button class="btn btn-primary btn-show-table-options">{{ trans('core/table::general.filters') }}</button>
-                        @endif
+                        @endif --}}
                     </div>
                 </div>
             </div>
