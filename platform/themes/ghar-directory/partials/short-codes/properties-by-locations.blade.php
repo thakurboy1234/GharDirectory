@@ -25,8 +25,8 @@
                         </div>
                     @endforeach
                 </div>
-                <i class="am-next"><img src="{{ Theme::asset()->url('images/aleft.png') }}" alt="pre"></i>
-                <i class="am-prev"><img src="{{ Theme::asset()->url('images/aright.png') }}" alt="next"></i>
+                <i class="am-prev"><img src="{{ Theme::asset()->url('images/aleft.png') }}" alt="pre"></i>
+                <i class="am-next"><img src="{{ Theme::asset()->url('images/aright.png') }}" alt="next"></i>
             </div>
         </div>
 

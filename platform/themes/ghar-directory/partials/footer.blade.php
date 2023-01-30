@@ -97,8 +97,11 @@
 <div class="mobileNavigation d-xl-none d-lg-none d-md-none d-sm-none d-block">
     <ul>
         <li class="active">
-            <em class="mobNav home"><i class="far fa-home"></i></em>
-            <small>Home</small>
+            <a href="{{ route('public.index') }}">
+                <em class="mobNav home"><i class="far fa-home"></i></em>
+                <small>Home</small>
+            </a>
+
         </li>
         <li data-toggle="modal" data-target="#Modalcity">
             <em class="mobNav search"><i class="far fa-search"></i></em>
@@ -110,12 +113,20 @@
             </span>
         </li>
         <li>
-            <em class="mobNav ahortlist"><i class="far fa-heart"></i></em>
-            <small>Wishlist</small>
+            @if (RealEstateHelper::isEnabledWishlist())
+                <a href="{{ route('public.wishlist') }}">
+                    <em class="mobNav ahortlist"><i class="far fa-heart"></i></em>
+                    <small>Wishlist</small>
+                </a>
+            @endif
         </li>
         <li>
-            <em class="mobNav account"><i class="far fa-user"></i></em>
-            <small>Account</small>
+            @if (is_plugin_active('real-estate') && RealEstateHelper::isRegisterEnabled())
+                <a href="{{ (auth('account')->check()) ?  route('public.account.dashboard')  :  route('public.account.login') }} ">
+                    <em class="mobNav account"><i class="far fa-user"></i></em>
+                    <small>Account</small>
+                </a>
+            @endif
         </li>
     </ul>
 </div>
@@ -142,64 +153,49 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="topCitiesBoxx">
-                            <h4>Top Cities</h4>
-                            <ul>
-                                <li class=" Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
-                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Mumbai" slugcityname="mumbai" redirect_to="">
-                                    <em class="sci"></em>
-                                    <h5>Mumbai</h5></a>
-                                </li>
-                                <li class=" Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
-                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Delhi" slugcityname="delhi" redirect_to="">
-                                    <em class="sci"></em>
-                                    <h5>Delhi</h5></a>
-                                </li>
-                                <li class=" Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
-                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Mumbai" slugcityname="mumbai" redirect_to="">
-                                    <em class="sci"></em>
-                                    <h5>Mumbai</h5></a>
-                                </li>
-                                <li class=" Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
-                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Delhi" slugcityname="delhi" redirect_to="">
-                                    <em class="sci"></em>
-                                    <h5>Delhi</h5></a>
-                                </li>
-                                <li class=" Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
-                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Mumbai" slugcityname="mumbai" redirect_to="">
-                                    <em class="sci"></em>
-                                    <h5>Mumbai</h5></a>
-                                </li>
-                                <li class=" Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
-                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Delhi" slugcityname="delhi" redirect_to="">
-                                    <em class="sci"></em>
-                                    <h5>Delhi</h5></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="allCitiesBoxx">
-                            <h4>Other Cities</h4>
-                            <ul>
-                                <li class="Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
-                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Nagpur" slugcityname="nagpur" redirect_to="">Nagpur</a>
-                                </li>
-                                <li class="Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
-                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Nagpur" slugcityname="nagpur" redirect_to="">Nagpur</a>
-                                </li>
-                                <li class="Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
-                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Nagpur" slugcityname="nagpur" redirect_to="">Nagpur</a>
-                                </li>
-                                <li class="Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
-                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Nagpur" slugcityname="nagpur" redirect_to="">Nagpur</a>
-                                </li>
-                                <li class="Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
-                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Nagpur" slugcityname="nagpur" redirect_to="">Nagpur</a>
-                                </li>
-                                <li class="Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
-                                    <a class="Top_Misc_L3 redirect_to" cityid="" cityname="Nagpur" slugcityname="nagpur" redirect_to="">Nagpur</a>
-                                </li>
-                            </ul>
-                        </div>
+
+                        @php
+                        $top_cities_count = 4;
+
+                        $cities = app(\Botble\Location\Repositories\Interfaces\CityInterface::class)->advancedGet([
+                            'condition' => [
+                                'cities.is_featured' => true,
+                                'cities.status' => \Botble\Base\Enums\BaseStatusEnum::PUBLISHED,
+                            ],
+                            'take' => (int)10,
+                            'select' => ['cities.id', 'cities.name', 'cities.image', 'cities.slug'],
+                            'order_by' => ['order' => 'ASC', 'name' => 'ASC'],
+                        ]);
+
+                         @endphp
+
+                            <div class="topCitiesBoxx">
+                                <h4>Top Cities</h4>
+                                <ul>
+                                    @foreach($cities as $key => $city)
+                                        @if($key < $top_cities_count)
+                                            <li class=" Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
+                                                <a class="Top_Misc_L3 redirect_to" cityid="{{ $city->id}}" cityname="{{ $city->name}}" slugcityname="{{ $city->slug}}" redirect_to="" href="{{ route('public.properties-by-city', $city->slug) }}">
+                                                <em class="sci"> <img src="{{ RvMedia::getImageUrl($city->image, 'small', false, RvMedia::getDefaultImage()) }}" alt="{{ $city->name }}">
+                                                </em>
+                                                <h5>{{ $city->name}}</h5></a>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="allCitiesBoxx">
+                                <h4>Other Cities</h4>
+                                <ul>
+                                    @foreach($cities as $key => $city)
+                                        @if($key >= $top_cities_count)
+                                            <li class="Top_Misc_L3 headercityli" connectid="" dotcomcityid="">
+                                                <a href="{{ route('public.properties-by-city', $city->slug) }}" class="Top_Misc_L3 redirect_to" cityid="{{ $city->id}}" cityname="{{ $city->name}}" slugcityname="{{ $city->slug}}" redirect_to="">{{ $city->name}}</a>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -224,6 +220,12 @@
             <div class="mobileOurServices">
                 <ul>
                     <li>
+                        <a href="{{ route('public.account.properties.index') }}" >
+                            <em class="fIcon1"><img src="{{ RvMedia::getImageUrl($city->image, 'small', false, RvMedia::getDefaultImage()) }}" alt="{{ $city->name }}"></em>
+                            <strong>Add Property <span>on ghar directory</span></strong>
+                        </a>
+                    </li>
+                    {{-- <li>
                         <em class="fIcon1"></em>
                         <strong>Buy a New Home <span>5Lac+ property options</span></strong>
                     </li>
@@ -238,11 +240,7 @@
                     <li>
                         <em class="fIcon1"></em>
                         <strong>Buy a New Home <span>5Lac+ property options</span></strong>
-                    </li>
-                    <li>
-                        <em class="fIcon1"></em>
-                        <strong>Buy a New Home <span>5Lac+ property options</span></strong>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>

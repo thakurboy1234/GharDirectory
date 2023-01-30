@@ -101,6 +101,20 @@ span#eyeicon_confirm {
     position: relative;
     text-align: center;
 }
+.mobileNavigation ul li a {
+    display: flex;
+    height: 100%;
+    width: calc(100% - 200px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+    color: #212529;
+}
+.mobileNavigation ul li a:hover {
+    text-decoration: none;
+}
 .mobileNavigation ul li.active::after {
     content: '';
     margin: 0 0 0 -18px;
@@ -293,6 +307,9 @@ span#eyeicon_confirm {
     justify-content: center;
     flex-direction: column;
 }
+.gblCityBox .gblCityBody .topCitiesBoxx ul li a:hover {
+    text-decoration: none;
+}
 
 .gblCityBox .gblCityBody .topCitiesBoxx ul li em {
     width: 35px;
@@ -336,6 +353,9 @@ span#eyeicon_confirm {
     transition: .5s;
     position: relative;
 }
+.gblCityBox .gblCityBody .allCitiesBoxx ul li a:hover {
+    text-decoration: none;
+}
 
 /* modal contact css */
 .mobileOurServices {
@@ -353,6 +373,16 @@ span#eyeicon_confirm {
     height: 62px;
     align-items: center;
     cursor: pointer;
+}
+.mobileOurServices ul li a {
+    border-bottom: 1px solid #ededed;
+    display: flex;
+    height: 62px;
+    align-items: center;
+    cursor: pointer;
+}
+.mobileOurServices ul li a:hover {
+    text-decoration: none;
 }
 .mobileOurServices ul li .fIcon1 {
     margin-right: 15px;
