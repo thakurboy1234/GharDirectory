@@ -96,14 +96,14 @@
 {{-- mobile footer navigation --}}
 <div class="mobileNavigation d-xl-none d-lg-none d-md-none d-sm-none d-block">
     <ul>
-        <li class="active">
+        <li class="{{ request()->routeIs('public.index') ? 'active' : '' }}">
             <a href="{{ route('public.index') }}">
                 <em class="mobNav home"><i class="far fa-home"></i></em>
                 <small>Home</small>
             </a>
 
         </li>
-        <li data-toggle="modal" data-target="#Modalcity">
+        <li data-toggle="modal" data-target="#Modalcity" class="{{ request()->routeIs('public.properties-by-city') ? 'active' : '' }}">
             <em class="mobNav search"><i class="far fa-search"></i></em>
             <small>Search</small>
         </li>
@@ -112,7 +112,7 @@
                 <em class="mobNav ourServicesEm"><i class="far fa-plus"></i></em>
             </span>
         </li>
-        <li>
+        <li class="{{ request()->routeIs('public.wishlist') ? 'active' : '' }}">
             @if (RealEstateHelper::isEnabledWishlist())
                 <a href="{{ route('public.wishlist') }}">
                     <em class="mobNav ahortlist"><i class="far fa-heart"></i></em>
@@ -120,7 +120,7 @@
                 </a>
             @endif
         </li>
-        <li>
+        <li class="{{ request()->routeIs('public.account.login') ? 'active' : '' }}">
             @if (is_plugin_active('real-estate') && RealEstateHelper::isRegisterEnabled())
                 <a href="{{ (auth('account')->check()) ?  route('public.account.dashboard')  :  route('public.account.login') }} ">
                     <em class="mobNav account"><i class="far fa-user"></i></em>
@@ -149,7 +149,7 @@
                             <div class="gblSearch">
                                 <label for="searchCity">Search Cities</label>
                                 <div class="formGroup"><em class="far fa-search"></em>
-                                    <input type="text" class="form-control" id="" placeholder="Select or type your city">
+                                    <input type="text" name="location" class="select-city-state-mobile  form-control" id="" placeholder="Select or type your city">
                                 </div>
                             </div>
                         </div>
@@ -169,6 +169,8 @@
 
                          @endphp
 
+                         <div class="mobile-view-search-responce"> </div>
+                         <div class="mobile-view-search-hidden">
                             <div class="topCitiesBoxx">
                                 <h4>Top Cities</h4>
                                 <ul>
@@ -196,6 +198,7 @@
                                     @endforeach
                                 </ul>
                             </div>
+                         </div>
                     </div>
                 </div>
             </div>
@@ -268,6 +271,37 @@
     window.themeUrl = '{{ Theme::asset()->url('') }}';
     window.siteUrl = '{{ url('') }}';
     window.currentLanguage = '{{ App::getLocale() }}';
+
+
+    $('.mobile-view-search-hidden').show();
+    var locationTimeout = null;
+        $('.select-city-state-mobile')
+            .on('keydown', function () {
+                $(this).parents('.location-input').find('.suggestion').html('').hide();
+            })
+            .on('keyup', function () {
+                var k = $(this).val();
+                if (k) {
+                    var parent = $(this).parents('.location-input');
+                    parent.find('.input-has-icon i').hide();
+                    parent.find('.spinner-icon').show();
+                    clearTimeout(locationTimeout);
+                    locationTimeout = setTimeout(function () {
+                        $.get((parent.data('url') ? parent.data('url') : window.siteUrl + '/ajax/cities/mob') + '?k=' + k, function (data) {
+                            // $('.mobile-view-search-hidden').hide();
+                        if(data.status){
+                            $('.mobile-view-search-hidden').hide();
+                            $('.mobile-view-search-responce').html(data.html);
+                            $('.mobile-view-search-responce').show();
+                        }else{
+                            $('.mobile-view-search-responce').hide();
+                            $('.mobile-view-search-hidden').show();
+                        }
+
+                        });
+                    }, 500);
+                }
+            });
 </script>
 
 <!--END FOOTER-->

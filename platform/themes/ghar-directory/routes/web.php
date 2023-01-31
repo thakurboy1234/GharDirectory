@@ -20,6 +20,7 @@ Route::group(['namespace' => 'Theme\FlexHome\Http\Controllers', 'middleware' => 
         Route::get('wishlist', 'FlexHomeController@getWishlist')->name('public.wishlist');
 
         Route::get('ajax/cities', 'FlexHomeController@ajaxGetCities')->name('public.ajax.cities');
+        Route::get('ajax/cities/mob', 'FlexHomeController@ajaxGetCities_mobileview');
         Route::get('ajax/properties', 'FlexHomeController@ajaxGetProperties')->name('public.ajax.properties');
         Route::get('ajax/posts', 'FlexHomeController@ajaxGetPosts')->name('public.ajax.posts');
         Route::get('ajax/properties/map', 'FlexHomeController@ajaxGetPropertiesForMap')->name('public.ajax.properties.map');

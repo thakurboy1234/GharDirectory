@@ -428,6 +428,21 @@ class FlexHomeController extends PublicController
         return $response->setData(Theme::partial('city-suggestion', ['items' => $cities]));
     }
 
+
+    public function ajaxGetCities_mobileview(Request $request, CityInterface $cityRepository, BaseHttpResponse $response)
+    {
+        if (! $request->ajax()) {
+            abort(404);
+        }
+        $keyword = $request->input('k');
+        $cities = $cityRepository->filters($keyword);
+        return response()->json([
+            'status'=>count($cities)?true:false,
+            'msg'=>count($cities)?false:'cities no found',
+            'html'=>count($cities)?Theme::partial('mobile-view-city-suggestion', ['items' => $cities]):'',
+        ]);
+    }
+
     /**
      * @param Request $request
      * @param PropertyInterface $propertyRepository
