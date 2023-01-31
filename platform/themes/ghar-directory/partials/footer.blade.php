@@ -1,97 +1,254 @@
-<!--FOOTER-->
-<section class="top__footer">
-    <div class="container-fluid w90">
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="menu__top__footer">
-                    <ul>
-                        <li><a href="{{ route('public.properties-by-city', 'chandigarh') }}">Properties for sale in Chandigarh</a></li>
-                        {{-- <li><a href="#!">Properties For Sale</a></li> --}}
-                        {{-- <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li> --}}
-                    </ul>
+        <div class="old-footer-as-without chage" style="display: none;">
+            <!--FOOTER-->
+            <section class="top__footer" >
+                <div class="container-fluid w90">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="menu__top__footer">
+                                <ul>
+                                    <li><a href="{{ route('public.properties-by-city', 'chandigarh') }}">Properties for sale in Chandigarh</a></li>
+                                    {{-- <li><a href="#!">Properties For Sale</a></li> --}}
+                                    {{-- <li><a href="#!">Link</a></li>
+                                    <li><a href="#!">Link</a></li>
+                                    <li><a href="#!">Link</a></li> --}}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="menu__top__footer">
+                                <ul>
+                                    <li><a href="{{ route('public.properties-by-city', 'gurugram') }}">Properties for sale in Gurugram</a></li>
+                                    {{-- <li><a href="#!">Properties For Sale</a></li> --}}
+                                    {{-- <li><a href="#!">Link</a></li>
+                                    <li><a href="#!">Link</a></li>
+                                    <li><a href="#!">Link</a></li> --}}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="menu__top__footer">
+                                <ul>
+                                    <li><a href="{{ route('public.properties-by-city', 'mohali') }}">Properties for sale in Mohali</a></li>
+                                    {{-- <li><a href="#!">Properties For Sale</a></li> --}}
+                                    {{-- <li><a href="#!">Link</a></li>
+                                    <li><a href="#!">Link</a></li>
+                                    <li><a href="#!">Link</a></li>
+                                </ul> --}}
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="menu__top__footer">
+                                <ul>
+                                    <li><a href="{{ route('public.properties-by-city', 'zirakpur') }}">Properties for sale in Zirakpur</a></li>
+                                    {{-- <li><a href="#!">Properties For Sale</a></li> --}}
+                                    {{-- <li><a href="#!">Link</a></li>
+                                    <li><a href="#!">Link</a></li>
+                                    <li><a href="#!">Link</a></li>
+                                </ul> --}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="menu__top__footer">
-                    <ul>
-                        <li><a href="{{ route('public.properties-by-city', 'gurugram') }}">Properties for sale in Gurugram</a></li>
-                        {{-- <li><a href="#!">Properties For Sale</a></li> --}}
-                        {{-- <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li> --}}
-                    </ul>
+            </section>
+            <footer >
+                <br>
+                <div class="container-fluid w90">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            @if (theme_option('logo'))
+                                <p>
+                                    <a href="{{ route('public.index') }}">
+                                        <img src="{{ RvMedia::getImageUrl(theme_option('logo'))  }}" style="max-height: 38px" alt="{{ theme_option('site_name') }}">
+                                    </a>
+                                </p>
+                            @endif
+                            @if (theme_option('address'))
+                                <p><i class="fas fa-map-marker-alt"></i> &nbsp;{{ theme_option('address') }}</p>
+                            @endif
+                            @if (theme_option('hotline'))
+                                <p><i class="fas fa-phone-square"></i> {{ __('Hotline') }}: &nbsp;<a href="tel:{{ theme_option('hotline') }}">{{ theme_option('hotline') }}</a></p>
+                            @endif
+                            @if (theme_option('email'))
+                                <p><i class="fas fa-envelope"></i> {{ __('Email') }}: &nbsp;<a href="mailto:{{ theme_option('email') }}">{{ theme_option('email') }}</a></p>
+                            @endif
+                        </div>
+                        <div class="col-sm-9 padtop10">
+                            <div class="row">
+                                {!! dynamic_sidebar('footer_sidebar') !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            {!! Theme::partial('language-switcher') !!}
+                        </div>
+                    </div>
+                    <div class="copyright">
+                        <div class="col-sm-12">
+                            <p class="text-center">
+                                {!! BaseHelper::clean(theme_option('copyright')) !!}
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="menu__top__footer">
-                    <ul>
-                        <li><a href="{{ route('public.properties-by-city', 'mohali') }}">Properties for sale in Mohali</a></li>
-                        {{-- <li><a href="#!">Properties For Sale</a></li> --}}
-                        {{-- <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                    </ul> --}}
+            </footer>
+            <!--FOOTER-->
+        </div>
+
+
+
+     <!--FOOTER-->
+     {{-- <section class="top__footer" >
+        <div class="container-fluid w90">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="menu__top__footer">
+                        <ul>
+                            <li><a href="{{ route('public.properties-by-city', 'chandigarh') }}">Properties for sale in Chandigarh</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="menu__top__footer">
-                    <ul>
-                        <li><a href="{{ route('public.properties-by-city', 'zirakpur') }}">Properties for sale in Zirakpur</a></li>
-                        {{-- <li><a href="#!">Properties For Sale</a></li> --}}
-                        {{-- <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                        <li><a href="#!">Link</a></li>
-                    </ul> --}}
+                <div class="col-sm-3">
+                    <div class="menu__top__footer">
+                        <ul>
+                            <li><a href="{{ route('public.properties-by-city', 'gurugram') }}">Properties for sale in Gurugram</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="menu__top__footer">
+                        <ul>
+                            <li><a href="{{ route('public.properties-by-city', 'mohali') }}">Properties for sale in Mohali</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="menu__top__footer">
+                        <ul>
+                            <li><a href="{{ route('public.properties-by-city', 'zirakpur') }}">Properties for sale in Zirakpur</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<footer>
-    <br>
-    <div class="container-fluid w90">
-        <div class="row">
-            <div class="col-sm-3">
-                @if (theme_option('logo'))
-                    <p>
-                        <a href="{{ route('public.index') }}">
-                            <img src="{{ RvMedia::getImageUrl(theme_option('logo'))  }}" style="max-height: 38px" alt="{{ theme_option('site_name') }}">
-                        </a>
+    </section> --}}
+
+    <footer class="footer__new">
+        <br>
+        <div class="container-fluid w90">
+            <div class="row">
+                <div class="col-sm-3 padtop10">
+                    <div class="menufooter menufooter__new">
+                        <h4>Address</h4>
+                            @if (theme_option('address'))
+                                <p><i class="fas fa-map-marker-alt"></i> &nbsp;{{ theme_option('address') }}</p>
+                            @endif
+                            @if (theme_option('hotline'))
+                                <p><i class="fas fa-phone-square"></i> {{ __('Hotline') }}: &nbsp;<a href="tel:{{ theme_option('hotline') }}">{{ theme_option('hotline') }}</a></p>
+                            @endif
+                            @if (theme_option('email'))
+                                <p><i class="fas fa-envelope"></i> {{ __('Email') }}: &nbsp;<a href="mailto:{{ theme_option('email') }}">{{ theme_option('email') }}</a></p>
+                            @endif
+                    </div>
+                </div>
+                <div class="col-sm-9 padtop10">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="menufooter menufooter__new">
+                                <h4>More information</h4>
+                                <ul>
+                                    <li>
+                                        <a href="{{url('/about-us')}}">
+                                            <span>About us</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('/contact')}}">
+                                            <span>Contact us</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('/careers')}}">
+                                            <span>Careers</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('/terms-conditions')}}">
+                                            <span>Terms &amp; Conditions</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="menufooter menufooter__new">
+                                <h4>Properties by locations
+                                </h4>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('public.properties-by-city', 'chandigarh') }}">
+                                            <span>Properties for sale in Chandigarh</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('public.properties-by-city', 'gurugram') }}">
+                                            <span>Properties for sale in Gurugram</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('public.properties-by-city', 'mohali') }}">
+                                            <span>Properties for sale in Mohali</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('public.properties-by-city', 'zirakpur') }}">
+                                            <span>Properties for sale in Zirakpur</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="menufooter menufooter__new">
+                                <h4>Social Links</h4>
+                                <div class="bottom-socials">
+                                    @if (theme_option('social_links'))
+                                        @foreach(json_decode(theme_option('social_links'), true) as $socialLink)
+                                            @if (count($socialLink) == 3)
+                                                <a href="{{ $socialLink[2]['value'] }}"
+                                                   title="{{ $socialLink[0]['value'] }}" target="_blank">
+                                                    <i class="{{ $socialLink[1]['value'] }}"></i>
+                                                </a>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    @endif
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="col-sm-12">
+                    <p class="text-center text-white m-0">
+                        {!! BaseHelper::clean(theme_option('copyright')) !!}
                     </p>
-                @endif
-                @if (theme_option('address'))
-                    <p><i class="fas fa-map-marker-alt"></i> &nbsp;{{ theme_option('address') }}</p>
-                @endif
-                @if (theme_option('hotline'))
-                    <p><i class="fas fa-phone-square"></i> {{ __('Hotline') }}: &nbsp;<a href="tel:{{ theme_option('hotline') }}">{{ theme_option('hotline') }}</a></p>
-                @endif
-                @if (theme_option('email'))
-                    <p><i class="fas fa-envelope"></i> {{ __('Email') }}: &nbsp;<a href="mailto:{{ theme_option('email') }}">{{ theme_option('email') }}</a></p>
-                @endif
-            </div>
-            <div class="col-sm-9 padtop10">
-                <div class="row">
-                    {!! dynamic_sidebar('footer_sidebar') !!}
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                {!! Theme::partial('language-switcher') !!}
-            </div>
-        </div>
-        <div class="copyright">
-            <div class="col-sm-12">
-                <p class="text-center">
-                    {!! BaseHelper::clean(theme_option('copyright')) !!}
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
-<!--FOOTER-->
+    </footer>
+    <!--FOOTER-->
 
 {{-- mobile footer navigation --}}
 <div class="mobileNavigation d-xl-none d-lg-none d-md-none d-sm-none d-block">
