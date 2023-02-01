@@ -168,11 +168,6 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{url('/careers')}}">
-                                            <span>Careers</span>
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="{{url('/terms-conditions')}}">
                                             <span>Terms &amp; Conditions</span>
                                         </a>
