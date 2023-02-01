@@ -255,15 +255,15 @@ class RealEstateServiceProvider extends ServiceProvider
                 //     'url' => route('real-estate.settings'),
                 //     'permissions' => ['real-estate.settings'],
                 // ])
-                // ->registerItem([
-                //     'id' => 'cms-plugins-consult',
-                //     'priority' => 6,
-                //     'parent_id' => null,
-                //     'name' => 'plugins/real-estate::consult.name',
-                //     'icon' => 'fas fa-headset',
-                //     'url' => route('consult.index'),
-                //     'permissions' => ['consult.index'],
-                // ])
+                ->registerItem([
+                    'id' => 'cms-plugins-consult',
+                    'priority' => 6,
+                    'parent_id' => null,
+                    'name' => 'plugins/real-estate::consult.name',
+                    'icon' => 'fas fa-headset',
+                    'url' => route('consult.index'),
+                    'permissions' => ['consult.index'],
+                ])
                 ->registerItem([
                     'id' => 'cms-plugins-real-estate-category',
                     'priority' => 4,
