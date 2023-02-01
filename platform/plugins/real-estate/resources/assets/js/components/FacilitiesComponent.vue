@@ -17,8 +17,18 @@
                 </div>
                 <div class="col-md-3 col-sm-5">
                     <div class="form-group mb-3">
-                        <input type="text" :name="'facilities[' + (item.id ? item.id : 0) + '][distance]'" v-model="item.distance" class="form-control"
+                        <input type="number" :name="'facilities[' + (item.id ? item.id : 0) + '][distance]'" v-model="item.distance" class="form-control"
                                :placeholder="__('distance')">
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-2">
+                    <div class="form-group mb-1">
+                        <div class="ui-select-wrapper">
+                        <select :name="'facilities[' + (item.id ? item.id : 0) + '][distance_unit]'"   v-model="item.distance_unit" class="ui-select">
+                            <option   value=" km" >Km</option>
+                            <option  value=" mtr">Mtr</option>
+                        </select>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-2">
@@ -36,15 +46,29 @@
 <script>
 export default {
     data: function () {
+
         return {
-            items: [{id: '', distance: ''}]
+            items: [{id: '', distance: '',distance_unit:''}]
         };
     },
     mounted() {
         if (this.selected_facilities.length) {
             this.items = [];
             for (const item of this.selected_facilities) {
-                this.items.push({id: item.id, distance: item.distance});
+            var unit='';
+            var dist='';
+            if(item.distance.search(' km') != -1){
+                dist =  item.distance.replace(' km','')
+                unit=' km';
+            }else if(item.distance.search(' mtr') != -1){
+                dist =  item.distance.replace(' mtr','')
+                unit=' mtr';
+            }else{
+                dist =  item.distance;
+                unit='';
+            }
+       
+            this.items.push({id: item.id, distance: dist,distance_unit:unit});
             }
         }
     },
@@ -61,7 +85,7 @@ export default {
 
     methods: {
         addRow: function () {
-            this.items.push({id: '', distance: ''});
+            this.items.push({id: '', distance: '',distance_unit:' km'});
         },
         deleteRow: function (index) {
             this.items.splice(index, 1);
@@ -70,6 +94,7 @@ export default {
             for (let i = 0; i < this.facilities.length; i++) {
                 for(const item of this.items) {
                     if (item.id === this.facilities[i].id) {
+
                         this.facilities.slice(i, 1);
                     }
                 }

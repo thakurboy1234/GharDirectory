@@ -16,11 +16,18 @@ class SaveFacilitiesService
         $item->facilities()->detach();
 
         foreach ($facilities as $facility) {
+            // dd( $facility['distance'].$facility['distance_unit']);
+
             if (empty($facility['id'])) {
                 continue;
             }
+            $unit='';
+            if(isset($facility['distance_unit'])){
+                $unit=$facility['distance_unit'];
+            }
+                      
 
-            $item->facilities()->attach($facility['id'], ['distance' => $facility['distance']]);
+            $item->facilities()->attach($facility['id'], ['distance' => $facility['distance'].' '.$unit]);
         }
 
         return;
