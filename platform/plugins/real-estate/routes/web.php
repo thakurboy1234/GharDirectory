@@ -157,6 +157,9 @@ Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' 
                 Route::post('send-consult', 'PublicController@postSendConsult')
                     ->name('public.send.consult');
 
+                Route::get('consult/{slug?}', 'PublicController@property_consult');
+                Route::delete('consult_delete/{id}', 'PublicController@property_consult_delete');
+
                 Route::get('currency/switch/{code?}', [
                     'as' => 'public.change-currency',
                     'uses' => 'PublicController@changeCurrency',

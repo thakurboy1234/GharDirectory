@@ -22,6 +22,7 @@ use Exception;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Mimey\MimeTypes;
@@ -82,7 +83,8 @@ class PublicController extends Controller
                     }
                 }
             }
-
+            // dump($request->input());
+            $request['slug']=Str::upper(Str::random(15));
             $consult->fill($request->input());
             $consultRepository->createOrUpdate($consult);
 
@@ -114,6 +116,54 @@ class PublicController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Response
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
+
+
+     public function property_consult($slug='') {
+
+       $consult= Consult::select('*')->where('slug',$slug)
+       ->WhereHas('property',function($query){
+        $query->where('author_id',auth('account')->id());
+        })
+        ->with(['property'])->first();
+
+        // dd(!auth('account')->check() &&  $consult->property->author_id != auth('account')->user()->id);
+        if(!isset( $consult)){
+            return redirect()->route('public.index');
+        }else{
+            if(!auth('account')->check() && $consult->property->author_id != auth('account')->user()->id  ){
+                return redirect()->route('public.index');
+            }
+        }
+        return  view('plugins/real-estate::account.table.leads.property_lead_detail',compact('consult'));
+
+    }
+    public function property_consult_delete($slug) {
+
+        $consult= Consult::select('*')->where('slug',$slug)
+        ->WhereHas('property',function($query){
+         $query->where('author_id',auth('account')->id());
+         })
+         ->with(['property'])->first();
+
+         // dd(!auth('account')->check() &&  $consult->property->author_id != auth('account')->user()->id);
+         if(!isset( $consult)){
+            return false;
+             return redirect()->route('public.index');
+         }else{
+             if(!auth('account')->check() && $consult->property->author_id != auth('account')->user()->id  ){
+                return false;
+                 return redirect()->route('public.index');
+             }
+         }
+        $d_consult = Consult::where('slug',$slug)->delete();
+        if(isset($d_consult)){
+            return true;
+        }else{
+            return false;
+        }
+
+     }
+
     public function getProject(string $key, SlugInterface $slugRepository, ProjectInterface $projectRepository)
     {
         $slug = $slugRepository->getFirstBy([
