@@ -48,7 +48,7 @@ export default {
     data: function () {
 
         return {
-            items: [{id: '', distance: '',distance_unit:''}]
+            items: [{id: '', distance: '',distance_unit:' km'}]
         };
     },
     mounted() {
@@ -67,7 +67,7 @@ export default {
                 dist =  item.distance;
                 unit='';
             }
-       
+
             this.items.push({id: item.id, distance: dist,distance_unit:unit});
             }
         }
