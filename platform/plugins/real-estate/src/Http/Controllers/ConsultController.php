@@ -82,7 +82,7 @@ class ConsultController extends BaseController
         event(new UpdatedContentEvent(CONSULT_MODULE_SCREEN_NAME, $request, $consult));
 
         return $response
-            ->setPreviousUrl(route('consult.index'))
+            ->setPreviousUrl(route('leads.index'))
             ->setMessage(trans('core/base::notices.update_success_message'));
     }
 

@@ -76,6 +76,19 @@ Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' 
             ]);
         });
 
+        Route::group(['prefix' => 'leads', 'as' => 'leads.'], function () {
+            Route::resource('', 'ConsultController')
+                ->parameters(['' => 'consult'])
+                ->except(['create', 'store']);
+
+                Route::delete('items/destroy', [
+                    'as' => 'deletes',
+                    'uses' => 'ConsultController@deletes',
+                    'permission' => 'consult.destroy',
+                ]);
+
+        });
+
         Route::group(['prefix' => 'categories', 'as' => 'property_category.'], function () {
             Route::resource('', 'CategoryController')
                 ->parameters(['' => 'category']);

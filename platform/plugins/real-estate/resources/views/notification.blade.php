@@ -6,13 +6,13 @@
     <ul class="dropdown-menu dropdown-menu-right">
         <li class="external">
             <h3>{!! trans('plugins/real-estate::consult.new_consult_notice', ['count' => $consults->total()]) !!}</h3>
-            <a href="{{ route('consult.index') }}">{{ trans('plugins/real-estate::consult.view_all') }}</a>
+            <a href="{{ route('leads.index') }}">{{ trans('plugins/real-estate::consult.view_all') }}</a>
         </li>
         <li>
             <ul class="dropdown-menu-list scroller" style="height: {{ $consults->total() * 70 }}px;" data-handle-color="#637283">
                 @foreach($consults as $consult)
                     <li>
-                        <a href="{{ route('consult.edit', $consult->id) }}">
+                        <a href="{{ route('leads.edit', $consult->id) }}">
                             <span class="photo">
                                 <img src="{{ $consult->avatar_url }}" class="rounded-circle" alt="{{ $consult->name }}">
                             </span>
@@ -23,7 +23,7 @@
                 @endforeach
 
                 @if ($consults->total() > 10)
-                    <li class="text-center"><a href="{{ route('contacts.index') }}">{{ trans('plugins/contact::contact.view_all') }}</a></li>
+                    <li class="text-center"><a href="{{ route('leads.index') }}">{{ trans('plugins/contact::contact.view_all') }}</a></li>
                 @endif
             </ul>
         </li>
