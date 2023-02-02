@@ -9190,7 +9190,73 @@ var render = function () {
                         : "col-xs-12 col-lg-4",
                     staticStyle: { "margin-top": "30px" },
                   },
-                  [_vm._m(0, true)]
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "card text-xs-center card__pack " },
+                      [
+                        _c("div", { staticClass: "card-block" }, [
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(item.name) +
+                                "\n                        "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "ul",
+                            { staticClass: "list-group packages-list" },
+                            [
+                              item.price
+                                ? _c("li", { staticClass: "list-group-item" }, [
+                                    _vm._v(_vm._s(item.price_per_post_text)),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              !item.price
+                                ? _c("li", { staticClass: "list-group-item" }, [
+                                    _vm._v(_vm._s(item.number_posts_free)),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              item.price
+                                ? _c("li", { staticClass: "list-group-item" }, [
+                                    _vm._v(
+                                      _vm._s(item.price_text_with_sale_off)
+                                    ),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              !item.price
+                                ? _c("li", { staticClass: "list-group-item" }, [
+                                    _vm._v("—"),
+                                  ])
+                                : _vm._e(),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              class:
+                                _vm.isSubscribing &&
+                                _vm.currentPackageId === item.id
+                                  ? "btn btn-primary mt-2 button-loading"
+                                  : "btn btn-primary mt-2",
+                              attrs: { disabled: _vm.isSubscribing },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.postSubscribe(item.id)
+                                },
+                              },
+                            },
+                            [_vm._v(_vm._s(_vm.__("purchase")))]
+                          ),
+                        ]),
+                      ]
+                    ),
+                  ]
                 )
               : _vm._e()
           }),
@@ -9200,36 +9266,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "packages__cardWrap" }, [
-      _c("h2", [
-        _vm._v("FREE LISTING"),
-        _c("br"),
-        _c("small", [_vm._v("(for property budget upto 30 lakhs)")]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "ul__listing" }, [
-        _c("ul", [
-          _c("li", [_vm._v("free 10 leads")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("1 property listing")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("15 days duration")]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("h3", [_vm._v("price: 25500 "), _c("small", [_vm._v("(+18% gst)")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "buy__btn" }, [
-        _c("button", { staticClass: "btn" }, [_vm._v("buy now")]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
