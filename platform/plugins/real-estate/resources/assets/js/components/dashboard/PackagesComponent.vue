@@ -13,7 +13,7 @@
                     />
                 </div>
                 <div :class="data.length === 2 ? 'col-xs-12 col-lg-6' : 'col-xs-12 col-lg-4'" v-for="item in data" :key="item.id" v-if="!isLoading && data.length && account" style="margin-top: 30px">
-                    <div class="card text-xs-center card__pack">
+                    <div class="card text-xs-center card__pack ">
                         <div class="card-block">
                             <h4 class="card-title">
                                 {{ item.name }}
