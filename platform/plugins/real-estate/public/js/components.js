@@ -50,13 +50,24 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       items: [{
         id: '',
-        distance: ''
+        distance: '',
+        distance_unit: ' km'
       }]
     };
   },
@@ -68,9 +79,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var item = _step.value;
+          var unit = '';
+          var dist = '';
+          if (item.distance.search(' km') != -1) {
+            dist = item.distance.replace(' km', '');
+            unit = ' km';
+          } else if (item.distance.search(' mtr') != -1) {
+            dist = item.distance.replace(' mtr', '');
+            unit = ' mtr';
+          } else {
+            dist = item.distance;
+            unit = '';
+          }
           this.items.push({
             id: item.id,
-            distance: item.distance
+            distance: dist,
+            distance_unit: unit
           });
         }
       } catch (err) {
@@ -98,7 +122,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     addRow: function addRow() {
       this.items.push({
         id: '',
-        distance: ''
+        distance: '',
+        distance_unit: ' km'
       });
     },
     deleteRow: function deleteRow(index) {
@@ -8779,7 +8804,7 @@ var render = function () {
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    type: "text",
+                    type: "number",
                     name:
                       "facilities[" + (item.id ? item.id : 0) + "][distance]",
                     placeholder: _vm.__("distance"),
@@ -8794,6 +8819,59 @@ var render = function () {
                     },
                   },
                 }),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-3 col-sm-2" }, [
+              _c("div", { staticClass: "form-group mb-1" }, [
+                _c("div", { staticClass: "ui-select-wrapper" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: item.distance_unit,
+                          expression: "item.distance_unit",
+                        },
+                      ],
+                      staticClass: "ui-select",
+                      attrs: {
+                        name:
+                          "facilities[" +
+                          (item.id ? item.id : 0) +
+                          "][distance_unit]",
+                      },
+                      on: {
+                        change: function ($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function (o) {
+                              return o.selected
+                            })
+                            .map(function (o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            item,
+                            "distance_unit",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                      },
+                    },
+                    [
+                      _c("option", { attrs: { value: " km" } }, [_vm._v("Km")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: " mtr" } }, [
+                        _vm._v("Mtr"),
+                      ]),
+                    ]
+                  ),
+                ]),
               ]),
             ]),
             _vm._v(" "),
