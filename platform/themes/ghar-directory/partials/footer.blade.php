@@ -246,6 +246,8 @@
     <!--FOOTER-->
 
 {{-- mobile footer navigation --}}
+
+@if(!request()->routeIs('public.account.login'))
 <div class="mobileNavigation d-xl-none d-lg-none d-md-none d-sm-none d-block">
     <ul>
         <li class="{{ request()->routeIs('public.index') ? 'active' : '' }}">
@@ -259,10 +261,12 @@
             <em class="mobNav search"><i class="far fa-search"></i></em>
             <small>Search</small>
         </li>
-        <li data-toggle="modal" data-target="#Modalcontact">
+        <li data-toggle="modal" >
+        <a href="{{ route('public.account.properties.index') }}" >
             <span>
                 <em class="mobNav ourServicesEm"><i class="far fa-plus"></i></em>
             </span>
+        </a>
         </li>
         <li class="{{ request()->routeIs('public.wishlist') ? 'active' : '' }}">
             @if (RealEstateHelper::isEnabledWishlist())
@@ -282,6 +286,7 @@
         </li>
     </ul>
 </div>
+@endif
 
 {{-- city modal --}}
 <div class="modal fade" id="Modalcity" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">

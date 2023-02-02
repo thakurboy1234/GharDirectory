@@ -453,6 +453,10 @@ span#eyeicon_confirm {
     display: block;
 }
 
+.hide-fix-footer{
+    display: none !important;
+}
+
 
 .action_footer {
     bottom: 40px !important;
