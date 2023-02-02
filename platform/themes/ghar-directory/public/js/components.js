@@ -2460,6 +2460,30 @@ exports.Doctype = ElementType.Doctype;
 
 /***/ }),
 
+/***/ "./node_modules/escape-string-regexp/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/escape-string-regexp/index.js ***!
+  \****************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = string => {
+	if (typeof string !== 'string') {
+		throw new TypeError('Expected a string');
+	}
+
+	// Escape characters with special meaning either inside or outside character sets.
+	// Use a simple backslash escape when it’s always valid, and a \unnnn escape when the simpler form would be disallowed by Unicode patterns’ stricter grammar.
+	return string
+		.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
+		.replace(/-/g, '\\x2d');
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/ieee754/index.js":
 /*!***************************************!*\
   !*** ./node_modules/ieee754/index.js ***!
@@ -7635,7 +7659,7 @@ process.umask = function() { return 0; };
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 const htmlparser = __webpack_require__(/*! htmlparser2 */ "./node_modules/sanitize-html/node_modules/htmlparser2/lib/index.js");
-const escapeStringRegexp = __webpack_require__(/*! escape-string-regexp */ "./node_modules/sanitize-html/node_modules/escape-string-regexp/index.js");
+const escapeStringRegexp = __webpack_require__(/*! escape-string-regexp */ "./node_modules/escape-string-regexp/index.js");
 const { isPlainObject } = __webpack_require__(/*! is-plain-object */ "./node_modules/is-plain-object/dist/is-plain-object.js");
 const deepmerge = __webpack_require__(/*! deepmerge */ "./node_modules/deepmerge/dist/cjs.js");
 const parseSrcset = __webpack_require__(/*! parse-srcset */ "./node_modules/parse-srcset/src/parse-srcset.js");
@@ -11231,30 +11255,6 @@ Object.defineProperty(exports, "decodeHTML4Strict", ({ enumerable: true, get: fu
 Object.defineProperty(exports, "decodeHTML5Strict", ({ enumerable: true, get: function () { return decode_js_2.decodeHTMLStrict; } }));
 Object.defineProperty(exports, "decodeXMLStrict", ({ enumerable: true, get: function () { return decode_js_2.decodeXML; } }));
 //# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ "./node_modules/sanitize-html/node_modules/escape-string-regexp/index.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/sanitize-html/node_modules/escape-string-regexp/index.js ***!
-  \*******************************************************************************/
-/***/ ((module) => {
-
-"use strict";
-
-
-module.exports = string => {
-	if (typeof string !== 'string') {
-		throw new TypeError('Expected a string');
-	}
-
-	// Escape characters with special meaning either inside or outside character sets.
-	// Use a simple backslash escape when it’s always valid, and a \unnnn escape when the simpler form would be disallowed by Unicode patterns’ stricter grammar.
-	return string
-		.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
-		.replace(/-/g, '\\x2d');
-};
-
 
 /***/ }),
 
@@ -25472,7 +25472,7 @@ Vue.compile = compileToFunctions;
 
 "use strict";
 /* provided dependency */ var Buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js")["Buffer"];
-// Axios v1.2.2 Copyright (c) 2022 Matt Zabriskie and contributors
+// Axios v1.2.3 Copyright (c) 2023 Matt Zabriskie and contributors
 
 
 function bind(fn, thisArg) {
@@ -28056,7 +28056,7 @@ function mergeConfig(config1, config2) {
   return config;
 }
 
-const VERSION = "1.2.2";
+const VERSION = "1.2.3";
 
 const validators$1 = {};
 
