@@ -35,7 +35,7 @@
                     <label for="password_confirmation">{{ trans('plugins/real-estate::dashboard.password_new_confirmation') }}</label>
                     <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
                   </div>
-                  <button type="submit" class="btn btn-primary fw6">{{ trans('plugins/real-estate::dashboard.password_update_btn') }}</button>
+                  <button type="submit" class="btn btn-primary fw6 btn__orange">{{ trans('plugins/real-estate::dashboard.password_update_btn') }}</button>
                 </form>
               </div>
             </div>

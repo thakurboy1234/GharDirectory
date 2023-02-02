@@ -105,7 +105,7 @@
                                     <option value="other" {{ $user->gender == 'other' ? 'selected' : '' }}>{{ trans('plugins/real-estate::dashboard.gender_other') }}</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary fw6">{{ trans('plugins/real-estate::dashboard.save') }}</button>
+                            <button type="submit" class="btn btn-primary fw6 btn__orange">{{ trans('plugins/real-estate::dashboard.save') }}</button>
                         </form>
                     </div>
             </div>
