@@ -42,7 +42,7 @@ class ConsultTable extends TableAbstract
                     return BaseHelper::clean($item->name);
                 }
 
-                return Html::link(route('consult.edit', $item->id), BaseHelper::clean($item->name));
+                return Html::link(route('leads.edit', $item->id), BaseHelper::clean($item->name));
             })
             ->editColumn('checkbox', function ($item) {
                 return $this->getCheckbox($item->id);
@@ -54,7 +54,7 @@ class ConsultTable extends TableAbstract
                 return BaseHelper::clean($item->status->toHtml());
             })
             ->addColumn('operations', function ($item) {
-                return $this->getOperations('consult.edit', 'consult.destroy', $item);
+                return $this->getOperations('leads.edit', 'consult.destroy', $item);
             });
 
         return $this->toJson($data);
@@ -105,7 +105,7 @@ class ConsultTable extends TableAbstract
 
     public function bulkActions(): array
     {
-        return $this->addDeleteAction(route('consult.deletes'), 'consult.destroy', parent::bulkActions());
+        return $this->addDeleteAction(route('leads.deletes'), 'consult.destroy', parent::bulkActions());
     }
 
     public function getBulkChanges(): array

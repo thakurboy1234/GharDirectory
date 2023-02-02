@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name' => 'Consults',
+    'name' => 'Leads',
     'edit' => 'View consult',
     'statuses' => [
         'read' => 'Read',
@@ -40,7 +40,7 @@ return [
     'form_phone' => 'Phone',
     'mark_as_read' => 'Mark as read',
     'mark_as_unread' => 'Mark as unread',
-    'new_consult_notice' => 'You have <span class="bold">:count</span> New Consults',
+    'new_consult_notice' => 'You have <span class="bold">:count</span> New Leads',
     'view_all' => 'View all',
     'project' => 'Project',
     'property' => 'Property',

@@ -261,7 +261,7 @@ class RealEstateServiceProvider extends ServiceProvider
                     'parent_id' => null,
                     'name' => 'plugins/real-estate::consult.name',
                     'icon' => 'fas fa-headset',
-                    'url' => route('consult.index'),
+                    'url' => route('leads.index'),
                     'permissions' => ['consult.index'],
                 ])
                 ->registerItem([

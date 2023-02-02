@@ -20,7 +20,7 @@
                             <select class="ui-select" name="real_estate_square_unit" id="real_estate_square_unit">
                                 <option value="" @if (setting('real_estate_square_unit', 'm²') == null) selected @endif>{{ trans('plugins/real-estate::settings.square_unit_none') }}</option>
                                 <option value="m²" @if (setting('real_estate_square_unit', 'm²') === 'm²') selected @endif>{{ trans('plugins/real-estate::settings.square_unit_meter') }}</option>
-                                <option value="ft2" @if (setting('real_estate_square_unit', 'm²') === 'ft2') selected @endif>{{ trans('plugins/real-estate::settings.square_unit_feet') }}</option>
+                                <option value="Sq Feet" @if (setting('real_estate_square_unit', 'm²') === 'Sq Feet') selected @endif>{{ trans('plugins/real-estate::settings.square_unit_feet') }}</option>
                                 <option value="yd2" @if (setting('real_estate_square_unit', 'm²') === 'yd2') selected @endif>{{ trans('plugins/real-estate::settings.square_unit_yard') }}</option>
                             </select>
                             <svg class="svg-next-icon svg-next-icon-size-16">
