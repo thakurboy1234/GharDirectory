@@ -76,44 +76,44 @@ class LocationServiceProvider extends ServiceProvider
             ]);
         }
 
-        Event::listen(RouteMatched::class, function () {
-            dashboard_menu()
-                ->registerItem([
-                    'id' => 'cms-plugins-location',
-                    'priority' => 900,
-                    'parent_id' => null,
-                    'name' => 'plugins/location::location.name',
-                    'icon' => 'fas fa-globe',
-                    'url' => null,
-                    'permissions' => ['country.index'],
-                ])
-                ->registerItem([
-                    'id' => 'cms-plugins-country',
-                    'priority' => 0,
-                    'parent_id' => 'cms-plugins-location',
-                    'name' => 'plugins/location::country.name',
-                    'icon' => null,
-                    'url' => route('country.index'),
-                    'permissions' => ['country.index'],
-                ])
-                ->registerItem([
-                    'id' => 'cms-plugins-state',
-                    'priority' => 1,
-                    'parent_id' => 'cms-plugins-location',
-                    'name' => 'plugins/location::state.name',
-                    'icon' => null,
-                    'url' => route('state.index'),
-                    'permissions' => ['state.index'],
-                ])
-                ->registerItem([
-                    'id' => 'cms-plugins-city',
-                    'priority' => 2,
-                    'parent_id' => 'cms-plugins-location',
-                    'name' => 'plugins/location::city.name',
-                    'icon' => null,
-                    'url' => route('city.index'),
-                    'permissions' => ['city.index'],
-                ]);
+        // Event::listen(RouteMatched::class, function () {
+        //     dashboard_menu()
+        //         ->registerItem([
+        //             'id' => 'cms-plugins-location',
+        //             'priority' => 900,
+        //             'parent_id' => null,
+        //             'name' => 'plugins/location::location.name',
+        //             'icon' => 'fas fa-globe',
+        //             'url' => null,
+        //             'permissions' => ['country.index'],
+        //         ])
+        //         ->registerItem([
+        //             'id' => 'cms-plugins-country',
+        //             'priority' => 0,
+        //             'parent_id' => 'cms-plugins-location',
+        //             'name' => 'plugins/location::country.name',
+        //             'icon' => null,
+        //             'url' => route('country.index'),
+        //             'permissions' => ['country.index'],
+        //         ])
+        //         ->registerItem([
+        //             'id' => 'cms-plugins-state',
+        //             'priority' => 1,
+        //             'parent_id' => 'cms-plugins-location',
+        //             'name' => 'plugins/location::state.name',
+        //             'icon' => null,
+        //             'url' => route('state.index'),
+        //             'permissions' => ['state.index'],
+        //         ])
+        //         ->registerItem([
+        //             'id' => 'cms-plugins-city',
+        //             'priority' => 2,
+        //             'parent_id' => 'cms-plugins-location',
+        //             'name' => 'plugins/location::city.name',
+        //             'icon' => null,
+        //             'url' => route('city.index'),
+        //             'permissions' => ['city.index'],
+        //         ]);
 
         //     if (! dashboard_menu()->hasItem('cms-core-tools')) {
         //         dashboard_menu()->registerItem([
@@ -146,7 +146,7 @@ class LocationServiceProvider extends ServiceProvider
         //             'url' => route('location.export.index'),
         //             'permissions' => ['location.export.index'],
         //         ]);
-        });
+        // });
 
         $this->app->booted(function () {
             Blueprint::macro('location', function ($item = null, $keys = []) {
