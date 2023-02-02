@@ -7,7 +7,7 @@ return [
     'square_unit' => 'Unit of square',
     'square_unit_none' => 'None',
     'square_unit_meter' => 'Square Meter(m²)',
-    'square_unit_feet' => 'Square Feet(ft2)',
+    'square_unit_feet' => 'Square Feet(Sq Feet)',
     'square_unit_yard' => 'Square Yard (yd2)',
     'general' => 'General settings',
     'general_description' => 'Basic settings for Real Estate',
