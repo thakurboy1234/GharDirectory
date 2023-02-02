@@ -21,6 +21,7 @@
 
   <!-- Styles -->
   <link href="{{ asset('vendor/core/plugins/real-estate/css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('platform/plugins/real-estate/public/css/vendor-custom.css') }}" rel="stylesheet">
 
     @if ($isRTL = BaseHelper::siteLanguageDirection() == 'rtl')
         <link rel="stylesheet" href="{{ asset('vendor/core/core/base/css/rtl.css') }}">

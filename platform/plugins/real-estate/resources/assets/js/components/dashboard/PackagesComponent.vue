@@ -13,12 +13,12 @@
                     />
                 </div>
                 <div :class="data.length === 2 ? 'col-xs-12 col-lg-6' : 'col-xs-12 col-lg-4'" v-for="item in data" :key="item.id" v-if="!isLoading && data.length && account" style="margin-top: 30px">
-                    <div class="card text-xs-center">
+                    <div class="card text-xs-center card__pack ">
                         <div class="card-block">
                             <h4 class="card-title">
                                 {{ item.name }}
                             </h4>
-                            <ul class="list-group">
+                            <ul class="list-group packages-list">
                                 <li class="list-group-item" v-if="item.price">{{ item.price_per_post_text }}</li>
                                 <li class="list-group-item" v-if="!item.price">{{ item.number_posts_free }}</li>
 

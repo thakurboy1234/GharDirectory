@@ -9176,61 +9176,71 @@ var render = function () {
                     staticStyle: { "margin-top": "30px" },
                   },
                   [
-                    _c("div", { staticClass: "card text-xs-center" }, [
-                      _c("div", { staticClass: "card-block" }, [
-                        _c("h4", { staticClass: "card-title" }, [
-                          _vm._v(
-                            "\n                            " +
-                              _vm._s(item.name) +
-                              "\n                        "
+                    _c(
+                      "div",
+                      { staticClass: "card text-xs-center card__pack" },
+                      [
+                        _c("div", { staticClass: "card-block" }, [
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(item.name) +
+                                "\n                        "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "ul",
+                            { staticClass: "list-group packages-list" },
+                            [
+                              item.price
+                                ? _c("li", { staticClass: "list-group-item" }, [
+                                    _vm._v(_vm._s(item.price_per_post_text)),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              !item.price
+                                ? _c("li", { staticClass: "list-group-item" }, [
+                                    _vm._v(_vm._s(item.number_posts_free)),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              item.price
+                                ? _c("li", { staticClass: "list-group-item" }, [
+                                    _vm._v(
+                                      _vm._s(item.price_text_with_sale_off)
+                                    ),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              !item.price
+                                ? _c("li", { staticClass: "list-group-item" }, [
+                                    _vm._v("—"),
+                                  ])
+                                : _vm._e(),
+                            ]
                           ),
-                        ]),
-                        _vm._v(" "),
-                        _c("ul", { staticClass: "list-group" }, [
-                          item.price
-                            ? _c("li", { staticClass: "list-group-item" }, [
-                                _vm._v(_vm._s(item.price_per_post_text)),
-                              ])
-                            : _vm._e(),
                           _vm._v(" "),
-                          !item.price
-                            ? _c("li", { staticClass: "list-group-item" }, [
-                                _vm._v(_vm._s(item.number_posts_free)),
-                              ])
-                            : _vm._e(),
-                          _vm._v(" "),
-                          item.price
-                            ? _c("li", { staticClass: "list-group-item" }, [
-                                _vm._v(_vm._s(item.price_text_with_sale_off)),
-                              ])
-                            : _vm._e(),
-                          _vm._v(" "),
-                          !item.price
-                            ? _c("li", { staticClass: "list-group-item" }, [
-                                _vm._v("—"),
-                              ])
-                            : _vm._e(),
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            class:
-                              _vm.isSubscribing &&
-                              _vm.currentPackageId === item.id
-                                ? "btn btn-primary mt-2 button-loading"
-                                : "btn btn-primary mt-2",
-                            attrs: { disabled: _vm.isSubscribing },
-                            on: {
-                              click: function ($event) {
-                                return _vm.postSubscribe(item.id)
+                          _c(
+                            "button",
+                            {
+                              class:
+                                _vm.isSubscribing &&
+                                _vm.currentPackageId === item.id
+                                  ? "btn btn-primary mt-2 button-loading"
+                                  : "btn btn-primary mt-2",
+                              attrs: { disabled: _vm.isSubscribing },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.postSubscribe(item.id)
+                                },
                               },
                             },
-                          },
-                          [_vm._v(_vm._s(_vm.__("purchase")))]
-                        ),
-                      ]),
-                    ]),
+                            [_vm._v(_vm._s(_vm.__("purchase")))]
+                          ),
+                        ]),
+                      ]
+                    ),
                   ]
                 )
               : _vm._e()
@@ -9482,7 +9492,7 @@ function normalizeComponent (
 
 "use strict";
 /* provided dependency */ var Buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js")["Buffer"];
-// Axios v1.2.2 Copyright (c) 2022 Matt Zabriskie and contributors
+// Axios v1.2.3 Copyright (c) 2023 Matt Zabriskie and contributors
 
 
 function bind(fn, thisArg) {
@@ -12066,7 +12076,7 @@ function mergeConfig(config1, config2) {
   return config;
 }
 
-const VERSION = "1.2.2";
+const VERSION = "1.2.3";
 
 const validators$1 = {};
 

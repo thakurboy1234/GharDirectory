@@ -1,0 +1,40 @@
+.card__pack .card-block .btn {
+    background-color: #f79534;
+    border-color: #f79534;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.card__pack .card-block .btn:hover {
+    color: #fff;
+    background-color: #063a5d;
+    border-color: #063a5d;
+}
+.packages-listing .card:after {
+    background-color: #f79534;
+}
+.card__pack h4 {
+    color: #f79534;
+    font-size: 25px;
+}
+.packages-listing .card__pack .packages-list li {
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+}
+.badge {
+    background-color: #f79534;
+}
+a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus {
+    background-color: #f79534;
+    border-color: #f79534;
+}
+
+.btn__orange {
+    background-color: #f79534;
+    border-color: #f79534;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn__orange:hover {
+    color: #fff;
+    background-color: #063a5d;
+    border-color: #063a5d;
+}
