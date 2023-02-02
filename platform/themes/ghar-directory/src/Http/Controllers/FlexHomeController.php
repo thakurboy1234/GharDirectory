@@ -526,47 +526,14 @@ class FlexHomeController extends PublicController
             ->toApiResponse();
     }
 
-    public function packages(Request $request, PackageInterface $packageInterfaceei)
+    public function packages(Request $request, PackageInterface $packageInterface)
     {
-return dd($packageInterfaceei->all());
-            try{
-            $packages = $packageInterfaceei->advancedGet([
-                'paginate' => [
-                    'per_page' => 12,
-                    'current_paged' => (int)$request->input('page'),
-                ],
-                'withCount' => [
-                    'properties' => function ($query) {
-                        return RepositoryHelper::applyBeforeExecuteQuery($query, $query->getModel());
-                    },
-                ],
-            ]);
+        $packages = $packageInterface->getByWhereIn('status', ['published',]);
 
-            return $packages;
-        }catch(\Exception $e){
-            Log::info($e);
-        }
+        SeoHelper::setTitle(__('Packages'));
 
+        Theme::breadcrumb()->add(__('Home'), route('public.index'))->add(__('Packages'), route('public.packages'));
 
-
-        // $accounts = $accountRepository->advancedGet([
-        //     'paginate' => [
-        //         'per_page' => 12,
-        //         'current_paged' => (int)$request->input('page'),
-        //     ],
-        //     'withCount' => [
-        //         'properties' => function ($query) {
-        //             return RepositoryHelper::applyBeforeExecuteQuery($query, $query->getModel());
-        //         },
-        //     ],
-        // ]);
-
-        // SeoHelper::setTitle(__('Packages'));
-
-        // Theme::breadcrumb()->add(__('Home'), route('public.index'))->add(__('Packages'), route('public.packages'));
-
-        // return Theme::scope('real-estate.packages', compact('accounts'))->render();
-
-
+        return Theme::scope('real-estate.packages', compact('packages'))->render();
     }
 }

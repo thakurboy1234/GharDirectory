@@ -9,19 +9,16 @@
     </div>
     <div class="container-fluid w90 padtop30">
         <div class="rowm10">
-            @if ($accounts->count())
+            @if ($packages->count())
                 <div class="container-fluid">
-                    <div class="row rowm10 list-agency">
-                        @foreach($accounts as $account)
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                {!! Theme::partial('real-estate.agents.item', compact('account')) !!}
-                            </div>
-                        @endforeach
-                        <div class="colm10 col-sm-12">
-                            <nav class="d-flex justify-content-center pt-3">
-                                {!! $accounts->withQueryString()->links() !!}
-                            </nav>
-                        </div>
+                    <div class="row rowm10 ">
+                        {{-- @foreach($packages as $package)
+
+                        @endforeach --}}
+
+
+
+
                     </div>
                 </div>
             @else
