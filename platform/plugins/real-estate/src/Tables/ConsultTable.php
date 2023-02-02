@@ -42,7 +42,7 @@ class ConsultTable extends TableAbstract
                     return BaseHelper::clean($item->name);
                 }
 
-                return Html::link(route('consult.edit', $item->id), BaseHelper::clean($item->name));
+                return Html::link(route('leads.edit', $item->id), BaseHelper::clean($item->name));
             })
             ->editColumn('checkbox', function ($item) {
                 return $this->getCheckbox($item->id);
