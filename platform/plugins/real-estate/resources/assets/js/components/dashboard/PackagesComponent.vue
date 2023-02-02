@@ -13,7 +13,7 @@
                     />
                 </div>
                 <div :class="data.length === 2 ? 'col-xs-12 col-lg-6' : 'col-xs-12 col-lg-4'" v-for="item in data" :key="item.id" v-if="!isLoading && data.length && account" style="margin-top: 30px">
-                    <div class="card text-xs-center card__pack ">
+                    <!-- <div class="card text-xs-center card__pack ">
                         <div class="card-block">
                             <h4 class="card-title">
                                 {{ item.name }}
@@ -26,6 +26,21 @@
                                 <li class="list-group-item" v-if="!item.price">&mdash;</li>
                             </ul>
                             <button :class="isSubscribing && currentPackageId === item.id ? 'btn btn-primary mt-2 button-loading' : 'btn btn-primary mt-2'" @click="postSubscribe(item.id)" :disabled="isSubscribing">{{ __('purchase') }}</button>
+                        </div>
+                    </div> -->
+                    <div class="packages__cardWrap">
+                        <h2>FREE LISTING<br><small>(for property budget upto 30 lakhs)</small></h2>
+
+                        <div class="ul__listing">
+                            <ul>
+                                <li>free 10 leads</li>
+                                <li>1 property listing</li>
+                                <li>15 days duration</li>
+                            </ul>
+                        </div>
+                        <h3>price: 25500 <small>(+18% gst)</small></h3>
+                        <div class="buy__btn">
+                            <button class="btn">buy now</button>
                         </div>
                     </div>
                 </div>

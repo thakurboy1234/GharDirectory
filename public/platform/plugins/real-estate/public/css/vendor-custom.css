@@ -38,3 +38,71 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
     background-color: #063a5d;
     border-color: #063a5d;
 }
+
+.packages__cardWrap {
+    background-color: #f9f9f9;
+    box-shadow: rgb(204 204 204) 0 1px 1px;
+    padding: 25px 20px 30px;
+    text-align: center;
+    position: relative;
+}
+.packages__cardWrap h2 {
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #f79534;
+    margin: 0 0 18px;
+    line-height: 20px;
+}
+.packages__cardWrap h2 small {
+    font-size: 12px;
+}
+.packages__cardWrap .ul__listing {
+    display: flex;
+    justify-content: center;
+}
+.packages__cardWrap .ul__listing ul {
+    margin: 0 0 20px;
+    padding: 0px;
+    text-align: left;
+}
+.packages__cardWrap .ul__listing ul li {
+    list-style: disc;
+    font-size: 17px;
+    padding: 2px 0;
+    text-transform: uppercase;
+}
+.packages__cardWrap h3 {
+    margin: 0 0 0;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.packages__cardWrap h3 small {
+    font-size: 12px;
+}
+.packages__cardWrap .buy__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    right: 0;
+    width: 100%;
+}
+.packages__cardWrap .buy__btn .btn {
+    background-color: #f79534;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px 12px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border-radius: 5px;
+}
+.packages__cardWrap .buy__btn .btn:hover {
+    background-color: #063a5d;
+}
+.packages__cardWrap .buy__btn .btn:active {
+    color: #fff;
+    background-color: #063a5d;
+}

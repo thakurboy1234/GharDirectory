@@ -11,12 +11,14 @@ use Botble\Location\Repositories\Interfaces\CityInterface;
 use Botble\RealEstate\Enums\PropertyTypeEnum;
 use Botble\RealEstate\Models\Account;
 use Botble\RealEstate\Repositories\Interfaces\AccountInterface;
+use Botble\RealEstate\Repositories\Interfaces\PackageInterface;
 use Botble\RealEstate\Repositories\Interfaces\ProjectInterface;
 use Botble\RealEstate\Repositories\Interfaces\PropertyInterface;
 use Botble\Theme\Http\Controllers\PublicController;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Log;
 use RealEstateHelper;
 use SeoHelper;
 use Theme;
@@ -522,5 +524,49 @@ class FlexHomeController extends PublicController
         return $response
             ->setData(AgentHTMLResource::collection($accounts))
             ->toApiResponse();
+    }
+
+    public function packages(Request $request, PackageInterface $packageInterfaceei)
+    {
+return dd($packageInterfaceei->all());
+            try{
+            $packages = $packageInterfaceei->advancedGet([
+                'paginate' => [
+                    'per_page' => 12,
+                    'current_paged' => (int)$request->input('page'),
+                ],
+                'withCount' => [
+                    'properties' => function ($query) {
+                        return RepositoryHelper::applyBeforeExecuteQuery($query, $query->getModel());
+                    },
+                ],
+            ]);
+
+            return $packages;
+        }catch(\Exception $e){
+            Log::info($e);
+        }
+
+
+
+        // $accounts = $accountRepository->advancedGet([
+        //     'paginate' => [
+        //         'per_page' => 12,
+        //         'current_paged' => (int)$request->input('page'),
+        //     ],
+        //     'withCount' => [
+        //         'properties' => function ($query) {
+        //             return RepositoryHelper::applyBeforeExecuteQuery($query, $query->getModel());
+        //         },
+        //     ],
+        // ]);
+
+        // SeoHelper::setTitle(__('Packages'));
+
+        // Theme::breadcrumb()->add(__('Home'), route('public.index'))->add(__('Packages'), route('public.packages'));
+
+        // return Theme::scope('real-estate.packages', compact('accounts'))->render();
+
+
     }
 }

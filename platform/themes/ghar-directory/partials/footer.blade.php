@@ -137,7 +137,7 @@
         <br>
         <div class="container-fluid w90">
             <div class="row">
-                <div class="col-sm-3 padtop10">
+                {{-- <div class="col-sm-3 padtop10">
                     <div class="menufooter menufooter__new">
                         <h4>Address</h4>
                             @if (theme_option('address'))
@@ -150,8 +150,8 @@
                                 <p><i class="fas fa-envelope"></i> {{ __('Email') }}: &nbsp;<a href="mailto:{{ theme_option('email') }}">{{ theme_option('email') }}</a></p>
                             @endif
                     </div>
-                </div>
-                <div class="col-sm-9 padtop10">
+                </div> --}}
+                <div class="col-sm-12 padtop10">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="menufooter menufooter__new">
@@ -461,7 +461,7 @@
 <div class="action_footer">
     <a href="#" class="cd-top" @if (!Theme::get('hotlineNumber') && !theme_option('hotline')) style="top: -82px;" @endif><i class="fas fa-arrow-up"></i></a>
     @if (Theme::get('hotlineNumber') || theme_option('hotline'))
-        <a href="tel:{{ Theme::get('hotlineNumber') ?: theme_option('hotline') }}" style="color: white;font-size: 17px;"><i class="fas fa-phone"></i> <span>  &nbsp;{{ Theme::get('hotlineNumber') ?: theme_option('hotline') }}</span></a>
+        <a class="cd__button" href="tel:{{ Theme::get('hotlineNumber') ?: theme_option('hotline') }}"><i class="fas fa-phone"></i> <span>  &nbsp;{{ Theme::get('hotlineNumber') ?: theme_option('hotline') }}</span></a>
     @endif
 </div>
 

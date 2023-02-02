@@ -26,7 +26,7 @@
 }
 .bottom-socials a {
     color: #000;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 400;
     padding: 0px 0px;
     text-decoration: none;
@@ -50,7 +50,7 @@
 }
 .footer__new .menufooter__new h4 {
     color: #fff;
-    font-size: 20px;
+    font-size: 15px;
     margin-bottom: 1rem;
 }
 .footer__new .menufooter__new p {
@@ -59,13 +59,14 @@
 }
 .footer__new .menufooter__new ul li a {
     color: #fff;
-    font-size: 17px;
+    font-size: 14px;
 }
 .footer__new .menufooter__new ul li a span {
     color: #fff;
 }
 footer .copyright {
     padding-bottom: 20px;
+    font-size: 13px !important;
 }
 
 span#eyeicon,
@@ -450,6 +451,23 @@ span#eyeicon_confirm {
     font-size: 12px;
     color: #666;
     display: block;
+}
+
+
+.action_footer {
+    bottom: 40px !important;
+    right: 15px !important;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: end;
+}
+.action_footer .cd-top {
+    position: unset !important;
+    width: 34px;
+}
+.action_footer .cd__button {
+    color: #fff;
+    font-size: 13px;
 }
 
 

@@ -26,6 +26,9 @@ Route::group(['namespace' => 'Theme\FlexHome\Http\Controllers', 'middleware' => 
         Route::get('ajax/properties/map', 'FlexHomeController@ajaxGetPropertiesForMap')->name('public.ajax.properties.map');
 
         Route::get('ajax/agents/featured', 'FlexHomeController@ajaxGetFeaturedAgents')->name('public.ajax.featured-agents');
+
+        Route::get('packages', 'FlexHomeController@packages')->name('public.packages');
+
     });
 });
 
