@@ -174,7 +174,7 @@
                                     </li>
                                     <li>
                                         <a href="{{url('/packages')}}">
-                                            <span>Our &amp; Packages</span>
+                                            <span>Our Packages</span>
                                         </a>
                                     </li>
                                 </ul>
