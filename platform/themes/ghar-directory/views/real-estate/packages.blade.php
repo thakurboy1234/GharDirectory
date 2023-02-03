@@ -15,7 +15,7 @@
                         <div class="col-12">
                             <div class="pricing__heading">
                                 <h2>Pricing</h2>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <p>Everything you need to capture leads and turn them into customers.</p>
                             </div>
                         </div>
                     </div>
