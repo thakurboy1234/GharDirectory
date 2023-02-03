@@ -109,7 +109,7 @@ Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' 
             ]);
         });
 
-        Route::group(['prefix' => 'accounts', 'as' => 'account.'], function () {
+        Route::group(['prefix' => 'vendors', 'as' => 'account.'], function () {
             Route::resource('', 'AccountController')
                 ->parameters(['' => 'account']);
 

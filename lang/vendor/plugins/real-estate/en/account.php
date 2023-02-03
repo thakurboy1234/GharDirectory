@@ -3,7 +3,7 @@
 return [
     'create' => 'New account',
     'edit' => 'Edit account ":name"',
-    'name' => 'Accounts',
+    'name' => 'Vendors',
     'form' => [
         'email' => 'Email',
         'password' => 'Password',
