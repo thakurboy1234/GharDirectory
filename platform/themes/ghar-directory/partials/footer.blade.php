@@ -172,6 +172,11 @@
                                             <span>Terms &amp; Conditions</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="{{url('/packages')}}">
+                                            <span>Our &amp; Packages</span>
+                                        </a>
+                                    </li>
                                 </ul>
 
                             </div>
