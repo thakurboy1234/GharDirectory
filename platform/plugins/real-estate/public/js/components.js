@@ -9235,7 +9235,25 @@ var render = function () {
                           : _vm._e(),
                       ]),
                       _vm._v(" "),
-                      _vm._m(0, true),
+                      _c("div", { staticClass: "buy__btn" }, [
+                        _c(
+                          "button",
+                          {
+                            class:
+                              _vm.isSubscribing &&
+                              _vm.currentPackageId === item.id
+                                ? "btn btn-primary mt-2 button-loading"
+                                : "btn btn-primary mt-2",
+                            attrs: { disabled: _vm.isSubscribing },
+                            on: {
+                              click: function ($event) {
+                                return _vm.postSubscribe(item.id)
+                              },
+                            },
+                          },
+                          [_vm._v(_vm._s(_vm.__("buy now")))]
+                        ),
+                      ]),
                     ]),
                   ]
                 )
@@ -9247,16 +9265,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "buy__btn" }, [
-      _c("button", { staticClass: "btn" }, [_vm._v("buy now")]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
