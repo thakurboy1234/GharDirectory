@@ -46,6 +46,7 @@
             @endif
         </div>
     </div>
+    {{-- {!! Theme::scope('real-estate.package', compact('packages'))->render() !!} --}}
 </section>
 <br>
 <br>
