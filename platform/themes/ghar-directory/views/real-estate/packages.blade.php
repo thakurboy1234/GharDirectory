@@ -34,7 +34,7 @@
                                 </div>
 
                                 <div class="buy__btn">
-                                    <a class="btn" href="{{route('public.account.package.subscribe', $package->id)}}"> buy now</a>
+                                    <a class="btn" href="{{route('public.account.packages')}}"> buy now</a>
                                 </div>
                             </div>
                         </div>
