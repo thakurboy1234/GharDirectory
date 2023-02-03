@@ -40,8 +40,8 @@
                         </div>
                         <h3>price: {{ item.price }} <small v-if="item.price != 0">(+{{item.gst}}% gst)</small></h3>
                         <div class="buy__btn">
-                            <!-- <button class="btn">buy now</button> -->
-                            <button :class="isSubscribing && currentPackageId === item.id ? 'btn btn-primary mt-2 button-loading' : 'btn btn-primary mt-2'" @click="postSubscribe(item.id)" :disabled="isSubscribing">{{ __('buy now') }}</button>
+                            <button class="btn">buy now</button>
+                            <!-- <button :class="isSubscribing && currentPackageId === item.id ? 'btn btn-primary mt-2 button-loading' : 'btn btn-primary mt-2'" @click="postSubscribe(item.id)" :disabled="isSubscribing">{{ __('buy now') }}</button> -->
                         </div>
                     </div>
                 </div>
