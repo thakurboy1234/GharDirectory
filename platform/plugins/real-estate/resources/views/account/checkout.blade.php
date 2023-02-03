@@ -7,7 +7,7 @@
                     @include('plugins/payment::partials.form', [
                         'action'       => route('payments.checkout'),
                         'currency'     => $package->currency->title ? strtoupper($package->currency->title) : cms_currency()->getDefaultCurrency()->title,
-                        'amount'       => $package->price,
+                        'amount'       =>   ($package->gst != 0) ? ($package->price  * ((100 + $package->gst) / 100))  : ($package->price) ,
                         'name'         => $package->name,
                         'returnUrl'   => route('public.account.package.subscribe', $package->id),
                         'callbackUrl' => route('public.account.package.subscribe.callback', $package->id),
