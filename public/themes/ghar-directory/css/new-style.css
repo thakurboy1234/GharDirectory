@@ -474,6 +474,119 @@ span#eyeicon_confirm {
     font-size: 13px;
 }
 
+/* PACKAGES CSS */
+
+.pricing__heading h2 {
+    color: #212529;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.pricing__heading p {
+    margin: 0 0 0;
+}
+.packages__cardWrap {
+    background-color: #f9f9f9;
+    box-shadow: rgb(204 204 204) 0 1px 1px;
+    padding: 0px 0px 30px;
+    text-align: center;
+    position: relative;
+    transition: all .3s ease-in-out;
+    will-change: transform;
+}
+.packages__cardWrap:hover {
+    box-shadow: 0 20px 35px 0 rgb(0 0 0 / 8%);
+    transform: scale(1.05);
+}
+.packages__cardWrap:after {
+    background-color: #f79534;
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: .5s;
+    width: 0;
+}
+.packages__cardWrap:hover:after {
+    width: 100%;
+}
+.packages__cardWrap h2 {
+    font-size: 25px;
+    text-transform: uppercase;
+    color: #f79534;
+    margin: 0 0 0px;
+    line-height: 20px;
+    font-weight: 600;
+}
+.packages__cardWrap h2 span {
+    display: block;
+    background-color: #f79534;
+    color: #fff;
+    padding: 10px 0px;
+}
+.packages__cardWrap h2 small {
+    font-size: 10px;
+    color: #444444;
+    font-weight: 600;
+    display: block;
+    padding: 15px 0;
+}
+.packages__cardWrap .ul__listing {
+    display: flex;
+    justify-content: center;
+}
+.packages__cardWrap .ul__listing ul {
+    margin: 0 0 20px;
+    padding: 0px;
+    text-align: left;
+}
+.packages__cardWrap .ul__listing ul li {
+    list-style: none;
+    font-size: 15px;
+    padding: 10px 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+}
+.packages__cardWrap h3 {
+    margin: 0px 20px 18px;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-top: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
+    padding: 15px 0;
+}
+.packages__cardWrap h3 small {
+    font-size: 12px;
+    font-weight: 600;
+}
+.packages__cardWrap .buy__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+.packages__cardWrap .buy__btn .btn {
+    background-color: #f79534;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 35px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border-radius: 35px;
+}
+.packages__cardWrap .buy__btn .btn:hover {
+    background-color: #063a5d;
+    text-decoration: none;
+}
+.packages__cardWrap .buy__btn .btn:active {
+    color: #fff;
+    background-color: #063a5d;
+}
+/* PACKAGES CSS END */
+
 
 @media screen and (max-width:580px) {
     .list-agency .agents-grid .fr-grid-thumb {

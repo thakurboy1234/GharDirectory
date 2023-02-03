@@ -45,7 +45,7 @@ class PackageForm extends FormAbstract
                 'label' => trans('plugins/real-estate::package.price'),
                 'label_attr' => ['class' => 'control-label'],
                 'wrapper' => [
-                    'class' => 'form-group mb-3 col-md-6',
+                    'class' => 'form-group mb-3 col-md-3',
                 ],
                 'attr' => [
                     'id' => 'price-number',
@@ -59,28 +59,54 @@ class PackageForm extends FormAbstract
                 'label' => trans('plugins/real-estate::package.currency'),
                 'label_attr' => ['class' => 'control-label'],
                 'wrapper' => [
-                    'class' => 'form-group mb-3 col-md-6',
+                    'class' => 'form-group mb-3 col-md-3',
                 ],
                 'attr' => [
                     'class' => 'form-control select-full',
                 ],
                 'choices' => $currencies,
             ])
+            ->add('gst', 'text', [
+                'label' => trans('plugins/real-estate::package.gst'),
+                'label_attr' => ['class' => 'control-label'],
+                'wrapper' => [
+                    'class' => 'form-group mb-3 col-md-3',
+                ],
+                'attr' => [
+                    'id' => 'gst',
+                    'placeholder' => trans('plugins/real-estate::package.gst'),
+                    'class' => 'form-control input-mask-number',
+                ],
+            ])
+            ->add('maximal_property_budget', 'text', [
+                'label' => trans('plugins/real-estate::package.maximal_property_budget'),
+                'label_attr' => ['class' => 'control-label'],
+                'wrapper' => [
+                    'class' => 'form-group mb-3 col-md-3',
+                ],
+                'attr' => [
+                    'id' => 'gst',
+                    'placeholder' => trans('plugins/real-estate::package.maximal_property_budget'),
+                    'class' => 'form-control input-mask-number',
+                ],
+            ])
             ->add('rowClose1', 'html', [
                 'html' => '</div>',
             ])
+
+
             ->add('rowOpen2', 'html', [
                 'html' => '<div class="row">',
             ])
-            ->add('percent_save', 'text', [
-                'label' => trans('plugins/real-estate::package.percent_save'),
+            ->add('total_leads', 'text', [
+                'label' => trans('plugins/real-estate::package.total_leads'),
                 'label_attr' => ['class' => 'control-label'],
                 'wrapper' => [
-                    'class' => 'form-group mb-3 col-md-4',
+                    'class' => 'form-group mb-3 col-md-3',
                 ],
                 'attr' => [
                     'id' => 'percent-save-number',
-                    'placeholder' => trans('plugins/real-estate::package.percent_save'),
+                    'placeholder' => trans('plugins/real-estate::package.total_leads'),
                     'class' => 'form-control input-mask-number',
                 ],
             ])
@@ -88,7 +114,7 @@ class PackageForm extends FormAbstract
                 'label' => trans('plugins/real-estate::package.number_of_listings'),
                 'label_attr' => ['class' => 'control-label'],
                 'wrapper' => [
-                    'class' => 'form-group mb-3 col-md-4',
+                    'class' => 'form-group mb-3 col-md-3',
                 ],
                 'attr' => [
                     'id' => 'price-number',
@@ -96,11 +122,23 @@ class PackageForm extends FormAbstract
                     'class' => 'form-control input-mask-number',
                 ],
             ])
+            ->add('duration', 'text', [
+                'label' => trans('plugins/real-estate::package.duration'),
+                'label_attr' => ['class' => 'control-label'],
+                'wrapper' => [
+                    'class' => 'form-group mb-3 col-md-3',
+                ],
+                'attr' => [
+                    'id' => 'price-number',
+                    'placeholder' => trans('plugins/real-estate::package.duration_in_days'),
+                    'class' => 'form-control input-mask-number',
+                ],
+            ])
             ->add('account_limit', 'text', [
                 'label' => trans('plugins/real-estate::package.account_limit'),
                 'label_attr' => ['class' => 'control-label'],
                 'wrapper' => [
-                    'class' => 'form-group mb-3 col-md-4',
+                    'class' => 'form-group mb-3 col-md-3',
                 ],
                 'attr' => [
                     'id' => 'percent-save-number',
@@ -111,6 +149,7 @@ class PackageForm extends FormAbstract
             ->add('rowClose2', 'html', [
                 'html' => '</div>',
             ])
+
             ->add('is_default', 'onOff', [
                 'label' => trans('core/base::forms.is_default'),
                 'label_attr' => ['class' => 'control-label'],

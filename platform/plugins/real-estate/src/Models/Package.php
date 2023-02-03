@@ -24,6 +24,10 @@ class Package extends BaseModel
         'order',
         'is_default',
         'status',
+        'maximal_property_budget',
+        'total_leads',
+        'duration',
+        'gst',
     ];
 
     protected $casts = [

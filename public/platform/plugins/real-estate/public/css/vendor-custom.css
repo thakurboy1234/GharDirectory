@@ -45,6 +45,25 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
     padding: 25px 20px 30px;
     text-align: center;
     position: relative;
+    transition: all .3s ease-in-out;
+    will-change: transform;
+}
+.packages__cardWrap:hover {
+    box-shadow: 0 20px 35px 0 rgb(0 0 0 / 8%);
+    transform: scale(1.05);
+}
+.packages__cardWrap:after {
+    background-color: #f79534;
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: .5s;
+    width: 0;
+}
+.packages__cardWrap:hover:after {
+    width: 100%;
 }
 .packages__cardWrap h2 {
     font-size: 30px;

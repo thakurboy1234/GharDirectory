@@ -22,10 +22,14 @@ class PackageResource extends JsonResource
             'price' => $this->price,
             'price_text' => format_price($this->price, $this->currency),
             'price_per_post_text' => format_price($this->price / $this->number_of_listings, $this->currency) . ' / ' . trans('plugins/real-estate::dashboard.per_post'),
-            'percent_save' => $this->percent_save,
+            // 'percent_save' => $this->percent_save,
             'number_of_listings' => $this->number_of_listings,
             'number_posts_free' => trans('plugins/real-estate::dashboard.free') . ' ' . $this->number_of_listings . ' ' . trans('plugins/real-estate::dashboard.posts'),
             'price_text_with_sale_off' => format_price($this->price, $this->currency) . ' ' . trans('plugins/real-estate::dashboard.total') . ' (' . trans('plugins/real-estate::dashboard.save') . ' ' . $this->percent_save . '%)',
+            'gst' => $this->gst,
+            'maximal_property_budget' =>format_price($this->maximal_property_budget),
+            'total_leads' => $this->total_leads,
+            'duration' => $this->duration,
         ];
     }
 }

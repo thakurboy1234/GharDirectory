@@ -16,4 +16,9 @@ return [
     'account_limit_placeholder' => 'An account can purchase x times',
     'subscribe_package' => 'Subscribe package',
     'add_credit_alert' => 'Please add your credit to create your own posts.',
+    'gst' => 'GST Rate in %',
+    'maximal_property_budget' => 'For Property Budget upto',
+    'total_leads' => 'Total Leads',
+    'duration' => 'Duration',
+    'duration_in_days' => 'Duration in Days',
 ];

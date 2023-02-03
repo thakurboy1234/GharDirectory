@@ -13,11 +13,16 @@ class PackageRequest extends Request
         return [
             'name' => 'required',
             'price' => 'numeric|required|min:0',
-            'percent_save' => 'numeric|required|min:0',
+            // 'percent_save' => 'numeric|required|min:0',
             'currency_id' => 'required',
             'number_of_listings' => 'numeric|required|min:1',
             'order' => 'required|integer|min:0|max:127',
             'status' => Rule::in(BaseStatusEnum::values()),
+            'maximal_property_budget' => 'required',
+            'total_leads' => 'required',
+            'duration' => 'required',
+
+
         ];
     }
 }

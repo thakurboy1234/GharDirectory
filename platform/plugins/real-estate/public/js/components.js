@@ -9191,71 +9191,51 @@ var render = function () {
                     staticStyle: { "margin-top": "30px" },
                   },
                   [
-                    _c(
-                      "div",
-                      { staticClass: "card text-xs-center card__pack " },
-                      [
-                        _c("div", { staticClass: "card-block" }, [
-                          _c("h4", { staticClass: "card-title" }, [
+                    _c("div", { staticClass: "packages__cardWrap" }, [
+                      _c("h2", [
+                        _vm._v(" " + _vm._s(item.name)),
+                        _c("br"),
+                        _c("small", [
+                          _vm._v(
+                            "(for property budget upto " +
+                              _vm._s(item.maximal_property_budget) +
+                              ")"
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ul__listing" }, [
+                        _c("ul", [
+                          _c("li", [
                             _vm._v(
-                              "\n                            " +
-                                _vm._s(item.name) +
-                                "\n                        "
+                              "free " + _vm._s(item.total_leads) + " leads"
                             ),
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "ul",
-                            { staticClass: "list-group packages-list" },
-                            [
-                              item.price
-                                ? _c("li", { staticClass: "list-group-item" }, [
-                                    _vm._v(_vm._s(item.price_per_post_text)),
-                                  ])
-                                : _vm._e(),
-                              _vm._v(" "),
-                              !item.price
-                                ? _c("li", { staticClass: "list-group-item" }, [
-                                    _vm._v(_vm._s(item.number_posts_free)),
-                                  ])
-                                : _vm._e(),
-                              _vm._v(" "),
-                              item.price
-                                ? _c("li", { staticClass: "list-group-item" }, [
-                                    _vm._v(
-                                      _vm._s(item.price_text_with_sale_off)
-                                    ),
-                                  ])
-                                : _vm._e(),
-                              _vm._v(" "),
-                              !item.price
-                                ? _c("li", { staticClass: "list-group-item" }, [
-                                    _vm._v("—"),
-                                  ])
-                                : _vm._e(),
-                            ]
-                          ),
+                          _c("li", [
+                            _vm._v(
+                              _vm._s(item.number_of_listings) +
+                                " property listing"
+                            ),
+                          ]),
                           _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              class:
-                                _vm.isSubscribing &&
-                                _vm.currentPackageId === item.id
-                                  ? "btn btn-primary mt-2 button-loading"
-                                  : "btn btn-primary mt-2",
-                              attrs: { disabled: _vm.isSubscribing },
-                              on: {
-                                click: function ($event) {
-                                  return _vm.postSubscribe(item.id)
-                                },
-                              },
-                            },
-                            [_vm._v(_vm._s(_vm.__("purchase")))]
-                          ),
+                          _c("li", [
+                            _vm._v(_vm._s(item.duration) + " days duration"),
+                          ]),
                         ]),
-                      ]
-                    ),
+                      ]),
+                      _vm._v(" "),
+                      _c("h3", [
+                        _vm._v("price: " + _vm._s(item.price) + " "),
+                        item.price != 0
+                          ? _c("small", [
+                              _vm._v("(+" + _vm._s(item.gst) + "% gst)"),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(0, true),
+                    ]),
                   ]
                 )
               : _vm._e()
@@ -9266,7 +9246,16 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "buy__btn" }, [
+      _c("button", { staticClass: "btn" }, [_vm._v("buy now")]),
+    ])
+  },
+]
 render._withStripped = true
 
 

@@ -282,6 +282,26 @@ header {
   font-size: 15px;
 }
 
+.hourseitem h3 {
+  height: 42px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+  line-height: 16px;
+  font-weight: bold;
+  padding-right: 15px;
+}
+
+.hourseitem h3 a {
+  color: #000;
+  font-size: 16px;
+}
+
+.hourseitem h3 a:hover {
+  color: var(--primary-color);
+}
+
 .hourseitem .city {
   color: #4f4f4f;
   max-height: 21px;
