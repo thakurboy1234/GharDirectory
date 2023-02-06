@@ -113,6 +113,17 @@ Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' 
             Route::resource('', 'AccountController')
                 ->parameters(['' => 'account']);
 
+
+
+            Route::get('vendor/property/leads/{id?}', [
+                'as' => 'vendor.property.leads',
+                'uses' => 'AccountController@vendor_property_leads',
+            ]);
+            Route::post('vendor/property/leads/{id?}', [
+                'as' => 'property.leads',
+                'uses' => 'AccountController@vendor_property_leads',
+            ]);
+
             Route::delete('items/destroy', [
                 'as' => 'deletes',
                 'uses' => 'AccountController@deletes',

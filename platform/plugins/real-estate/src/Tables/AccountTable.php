@@ -61,7 +61,7 @@ class AccountTable extends TableAbstract
                 return BaseHelper::clean($item->phone ?: '&mdash;');
             })
             ->editColumn('updated_at', function ($item) {
-                return $item->properties_count;
+                return "<a  href=".route('account.vendor.property.leads',$item->id) ." title=". trans('Property Leads') .">$item->properties_count</a>";
             })
             ->addColumn('operations', function ($item) {
                 return $this->getOperations('account.edit', 'account.destroy', $item);

@@ -16,9 +16,12 @@ use Botble\RealEstate\Http\Requests\AccountEditRequest;
 use Botble\RealEstate\Http\Resources\AccountResource;
 use Botble\RealEstate\Repositories\Interfaces\AccountInterface;
 use Botble\RealEstate\Tables\AccountTable;
+use Botble\RealEstate\Tables\VendorPropertyLeadsTable;
 use Carbon\Carbon;
 use Exception;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AccountController extends BaseController
 {
@@ -41,6 +44,15 @@ class AccountController extends BaseController
         page_title()->setTitle(trans('plugins/real-estate::account.name'));
 
         return $dataTable->renderTable();
+    }
+
+
+    public function vendor_property_leads(VendorPropertyLeadsTable $propertyLedsTable,$id)
+    {
+        Session::put('vendorId',$id);
+        page_title()->setTitle('Leads');
+
+        return $propertyLedsTable->renderTable();
     }
 
     /**

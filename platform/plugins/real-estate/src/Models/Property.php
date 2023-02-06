@@ -218,4 +218,8 @@ class Property extends BaseModel
             $property->categories()->detach();
         });
     }
+    public function leads()
+    {
+        return $this->hasMany(Consult::class,'property_id','id');
+    }
 }
