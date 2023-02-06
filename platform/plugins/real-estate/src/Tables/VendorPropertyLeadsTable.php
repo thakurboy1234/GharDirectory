@@ -121,7 +121,7 @@ class VendorPropertyLeadsTable extends TableAbstract
                 'class' => 'text-start',
             ],
             'leads.name' => [
-                'title' => 'LeadsCount',
+                'title' => 'TotalLeads',
                 'class' => 'text-start',
             ],
             // 'phone' => [
