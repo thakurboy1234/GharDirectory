@@ -67,6 +67,7 @@ class ConsultTable extends TableAbstract
             'name',
             'phone',
             'email',
+            'content',
             'created_at',
             'status',
         ]);
@@ -91,6 +92,10 @@ class ConsultTable extends TableAbstract
             ],
             'phone' => [
                 'title' => trans('plugins/real-estate::consult.phone'),
+            ],
+            'content' => [
+                'title' => 'Message',
+                'orderable' => false,
             ],
             'created_at' => [
                 'title' => trans('core/base::tables.created_at'),
@@ -126,6 +131,13 @@ class ConsultTable extends TableAbstract
                 'title' => trans('core/base::tables.created_at'),
                 'type' => 'date',
             ],
+        ];
+    }
+    public function getDefaultButtons(): array
+    {
+        return [
+            'export',
+            'reload',
         ];
     }
 }

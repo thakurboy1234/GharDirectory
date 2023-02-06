@@ -165,4 +165,12 @@ class AccountTable extends TableAbstract
             ],
         ];
     }
+
+    public function getDefaultButtons(): array
+    {
+        return [
+            'export',
+            'reload',
+        ];
+    }
 }
