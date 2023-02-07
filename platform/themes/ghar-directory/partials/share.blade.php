@@ -7,8 +7,9 @@
         <li>
             <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(url()->current()) }}&summary={{ rawurldecode($description) }}&source=Linkedin" title="{{ __('Share on Linkedin') }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         </li>
-        {{-- <li>
-            <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ $description }}" target="_blank" title="{{ __('Share on Twitter') }}"><i class="fab fa-twitter"></i></a>
-        </li> --}}
+        <li>
+            <a target="_blank"  data-action="share/whatsapp/share" href="https://api.whatsapp.com/send/?phone={{setting('theme-ghar-directory-hotline', [])}}&text={{ urlencode(url()->current()) }}" title="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+            {{-- <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ $description }}" target="_blank" title="{{ __('Share on Twitter') }}"><i class="fab fa-whatsapp"></i></a> --}}
+        </li>
     </ul>
 </div>

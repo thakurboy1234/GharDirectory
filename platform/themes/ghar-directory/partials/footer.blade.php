@@ -187,13 +187,8 @@
                                 </h4>
                                 <ul>
                                     <li>
-                                        <a href="{{ route('public.properties-by-city', 'chandigarh') }}">
-                                            <span>Properties for sale in Chandigarh</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('public.properties-by-city', 'gurugram') }}">
-                                            <span>Properties for sale in Gurugram</span>
+                                        <a href="{{ route('public.properties-by-city', 'zirakpur') }}">
+                                            <span>Properties for sale in Zirakpur</span>
                                         </a>
                                     </li>
                                     <li>
@@ -202,8 +197,13 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('public.properties-by-city', 'zirakpur') }}">
-                                            <span>Properties for sale in Zirakpur</span>
+                                        <a href="{{ route('public.properties-by-city', 'chandigarh') }}">
+                                            <span>Properties for sale in Chandigarh</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('public.properties-by-city', 'gurugram') }}">
+                                            <span>Properties for sale in Gurugram</span>
                                         </a>
                                     </li>
                                 </ul>
