@@ -26,6 +26,7 @@ class Consult extends BaseModel
         'property_id',
         'status',
         'slug',
+        'user_status',
     ];
 
     protected $casts = [
