@@ -228,15 +228,15 @@ class RealEstateServiceProvider extends ServiceProvider
                     'url' => route('property_feature.index'),
                     'permissions' => ['property_feature.index'],
                 ])
-                // ->registerItem([
-                //     'id' => 'cms-plugins-facility',
-                //     'priority' => 3,
-                //     'parent_id' => 'cms-plugins-real-estate',
-                //     'name' => 'plugins/real-estate::facility.name',
-                //     'icon' => null,
-                //     'url' => route('facility.index'),
-                //     'permissions' => ['facility.index'],
-                // ])
+                ->registerItem([
+                    'id' => 'cms-plugins-facility',
+                    'priority' => 3,
+                    'parent_id' => 'cms-plugins-real-estate',
+                    'name' => 'plugins/real-estate::facility.name',
+                    'icon' => null,
+                    'url' => route('facility.index'),
+                    'permissions' => ['facility.index'],
+                ])
                 // ->registerItem([
                 //     'id' => 'cms-plugins-investor',
                 //     'priority' => 3,
