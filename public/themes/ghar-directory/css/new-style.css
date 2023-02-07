@@ -81,7 +81,7 @@ span#eyeicon_confirm {
 .itemarea {
     margin: 10px 8px 30px;
     display: inline-block;
-    height: 162px;
+    height: auto;
     border-radius: 8px !important;
     box-shadow: 0 2px 26px 0 #00000017;
     background: #fff !important;
@@ -97,23 +97,27 @@ span#eyeicon_confirm {
     text-decoration: none;
 }
 .itemarea a .Home_City_L1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
     margin: auto;
-    width: 100px;
+    /* height: 100px; */
+    /* width: auto; */
 }
 .itemarea a .Home_City_L1 img {
     overflow: hidden;
     display: block;
-    height: 95px;
+    width: auto;
+    border-radius: 0px;
+    height: 75px;
+    margin: auto;
 }
 .itemarea .Home_City_L1 h4 {
     position: unset;
     color: #212529;
     font-size: 14px;
     font-weight: 600;
-    margin: 15px 0 0;
+    margin: 15px 0 15px;
 }
 .propertie__sale {
     background-color: #f9aa5d !important;
@@ -588,8 +592,9 @@ span#eyeicon_confirm {
 /* PACKAGES CSS END */
 
 
+
 @media screen and (max-width:580px) {
-    .list-agency .agents-grid .fr-grid-thumb {
+    /* .list-agency .agents-grid .fr-grid-thumb {
         height: 150px !important;
     }
     .list-agency .agents-grid .fr-grid-thumb a {
@@ -623,5 +628,5 @@ span#eyeicon_confirm {
         font-size: 12px;
         padding: 0 12px !important;
         height: 22px !important;
-    }
+    } */
 }
