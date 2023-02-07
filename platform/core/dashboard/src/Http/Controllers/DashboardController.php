@@ -8,6 +8,9 @@ use Botble\Base\Http\Controllers\BaseController;
 use Botble\Base\Http\Responses\BaseHttpResponse;
 use Botble\Dashboard\Repositories\Interfaces\DashboardWidgetInterface;
 use Botble\Dashboard\Repositories\Interfaces\DashboardWidgetSettingInterface;
+use Botble\RealEstate\Repositories\Interfaces\AccountInterface;
+use Botble\RealEstate\Repositories\Interfaces\ConsultInterface;
+use Botble\RealEstate\Repositories\Interfaces\PropertyInterface;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -71,11 +74,36 @@ class DashboardController extends BaseController
         $widgets = $widgets->reject(function ($item) use ($availableWidgetIds) {
             return ! in_array($item->id, $availableWidgetIds);
         });
+       $totalVendor= app(AccountInterface::class)
+                        ->getModel()
+                        ->count();
+       $activeVendor= app(AccountInterface::class)
+                        ->getModel()
+                        ->where('credits','>',0)
+                        ->count();
+       $inActiveVendor= app(AccountInterface::class)
+                        ->getModel()
+                        ->where('credits','==',0)
+                        ->orwhere('credits',null)
+                        ->count();
+       $totalLeads= app(ConsultInterface::class)
+                        ->getModel()
+                        ->count();
+
 
         $statWidgets = collect($widgetData)->where('type', '!=', 'widget')->pluck('view')->all();
         $userWidgets = collect($widgetData)->where('type', 'widget')->pluck('view')->all();
 
-        return view('core/dashboard::list', compact('widgets', 'userWidgets', 'statWidgets'));
+        return view('core/dashboard::list', compact(
+            'widgets',
+            'userWidgets',
+            'statWidgets',
+            'totalVendor',
+            'totalLeads',
+            'activeVendor',
+            'inActiveVendor',
+
+        ));
     }
 
     /**
