@@ -109,7 +109,7 @@ span#eyeicon_confirm {
     display: block;
     width: auto;
     border-radius: 0px;
-    height: 75px;
+    height: 60px;
     margin: auto;
 }
 .itemarea .Home_City_L1 h4 {
@@ -591,6 +591,65 @@ span#eyeicon_confirm {
 }
 /* PACKAGES CSS END */
 
+.list-agency .agents-grid {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+.list-agency .agents-grid:hover {
+    box-shadow: 0 0 20px 0 rgb(62 28 131 / 10%) !important;
+    -webkit-box-shadow: 0 0 20px 0 rgb(62 28 131 / 10%) !important;
+}
+.list-agency .col-lg-4:nth-child(odd) .agents-grid {
+    background-color: #fff6e7;
+}
+.list-agency .col-lg-4:nth-child(even) .agents-grid {
+    background-color: #e1f1ff;
+}
+.list-agency .agents-grid .agents-grid-wrap {
+    display: flex;
+    align-items: center;
+}
+.list-agency .agents-grid .fr-grid-thumb {
+    width: 80px !important;
+    border-radius: 100% !important;
+    height: 80px !important;
+}
+.list-agency .agents-grid .fr-grid-thumb a {
+    height: 80px !important;
+    width: 80px !important;
+    background-color: #fff;
+    border-radius: 100%;
+}
+.list-agency .agents-grid .fr-grid-thumb a img {
+    height: 100%;
+}
+.list-agency .agents-grid .fr-grid-detail {
+    padding: 0.7em !important;
+}
+.list-agency .agents-grid .fr-grid-detail-flex .fr-can-name {
+    font-weight: 600;
+}
+.list-agency .col-lg-4:nth-child(odd) .agents-grid .agent-email a {
+    background-color: #e1f1ff;
+}
+.list-agency .col-lg-4:nth-child(even) .agents-grid .agent-email a {
+    background-color: #fff6e7;
+}
+.list-agency .agents-grid .fr-grid-info {
+    margin-bottom: 0.7rem !important;
+}
+.list-agency .agents-grid .fr-grid-footer {
+    padding: 0.7rem 1.5rem !important;
+}
+.list-agency .agents-grid .fr-grid-footer-flex-right .prt-view {
+    padding: 5px 30px !important;
+    height: 35px !important;
+    font-weight: 600;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.list-agency .agents-grid .fr-grid-footer-flex-right .prt-view:hover {
+    background-color: #063a5d;
+}
 
 
 @media screen and (max-width:580px) {
