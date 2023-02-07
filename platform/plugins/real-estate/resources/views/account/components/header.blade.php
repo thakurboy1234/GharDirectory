@@ -1,5 +1,12 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white bb b--black-10">
   <div class="container">
+    <?php
+       $totalLeads= app(Botble\RealEstate\Repositories\Interfaces\ConsultInterface::class)
+                        ->getModel()
+                        ->where('user_status','!=',1)
+                        ->count();
+
+    ?>
 
         @if (theme_option('logo'))
           <a href="{{ url('/') }}"><img src="{{ RvMedia::getImageUrl(theme_option('logo')) }}" alt="{{ theme_option('site_title') }}" height="35"></a>
@@ -60,7 +67,7 @@
           </li>
           <li>
               <a class="no-underline mr2 black-50 hover-black-70 pv1 ph2 db mr2" style="text-decoration: none; line-height: 32px;" href="{{ route('public.account.properties.get.leads') }}" title="{{ trans('Property Leads') }}">
-                  <i class="far fa-newspaper mr1"></i>{{ trans('Leads') }}
+                  <i class="far fa-newspaper mr1"></i>{{ trans('Leads') }} <span class="badge badge-info">{{$totalLeads}} Leads</span>
               </a>
           </li>
 

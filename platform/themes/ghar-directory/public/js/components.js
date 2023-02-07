@@ -25478,7 +25478,11 @@ Vue.compile = compileToFunctions;
 
 "use strict";
 /* provided dependency */ var Buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js")["Buffer"];
+<<<<<<< HEAD
 // Axios v1.3.1 Copyright (c) 2023 Matt Zabriskie and contributors
+=======
+// Axios v1.3.2 Copyright (c) 2023 Matt Zabriskie and contributors
+>>>>>>> 9ebea6fff042f0d72f5d62f7fbd373fecd0dbaa8
 
 
 function bind(fn, thisArg) {
@@ -28092,7 +28096,11 @@ function mergeConfig(config1, config2) {
   return config;
 }
 
+<<<<<<< HEAD
 const VERSION = "1.3.1";
+=======
+const VERSION = "1.3.2";
+>>>>>>> 9ebea6fff042f0d72f5d62f7fbd373fecd0dbaa8
 
 const validators$1 = {};
 

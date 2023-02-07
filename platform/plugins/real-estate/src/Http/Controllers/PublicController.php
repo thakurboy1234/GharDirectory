@@ -134,6 +134,14 @@ class PublicController extends Controller
                 return redirect()->route('public.index');
             }
         }
+        $leads_userStatus= app(ConsultInterface::class)
+                        ->getModel()
+                        ->where('slug',$slug)
+                        ->first();
+
+        if(!$leads_userStatus->user_status){
+            $leads_userStatus->update(['user_status'=>1]);
+        }
         return  view('plugins/real-estate::account.table.leads.property_lead_detail',compact('consult'));
 
     }
