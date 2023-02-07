@@ -4,6 +4,9 @@
        $totalLeads= app(Botble\RealEstate\Repositories\Interfaces\ConsultInterface::class)
                         ->getModel()
                         ->where('user_status','!=',1)
+                        ->WhereHas('property',function($query){
+                        $query->where('author_id',auth('account')->id());
+                        })
                         ->count();
 
     ?>
