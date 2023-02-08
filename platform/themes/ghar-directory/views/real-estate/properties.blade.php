@@ -21,10 +21,10 @@
             <form action="{{ url()->current() }}" method="get" id="ajax-filters-form">
                 @include(Theme::getThemeNamespace() . '::views.real-estate.includes.search-box', ['type' => 'property', 'categories' => $categories])
                 <div class="row rowm10">
-                    <div class="@if (theme_option('show_map_on_properties_page', 'yes') == 'yes' && Arr::get($_COOKIE, 'show_map_on_properties', 1)) col-lg-7 left-page-content @else col-lg-12 full-page-content @endif"
+                    <div class="@if (theme_option('show_map_on_properties_page', 'yes') == 'yes' && Arr::get($_COOKIE, 'show_map_on_properties', 1)) col-lg-12 left-page-content @else col-lg-12 full-page-content @endif"
                         @if (theme_option('show_map_on_properties_page', 'yes') == 'yes')
                             data-class-full="col-lg-12 full-page-content"
-                            data-class-left="col-lg-7 left-page-content"
+                            data-class-left="col-lg-12 left-page-content"
                         @endif
                          id="properties-list">
                         @include(Theme::getThemeNamespace() . '::views.real-estate.includes.filters', ['isChangeView' => theme_option('show_map_on_properties_page', 'yes') == 'yes'])
@@ -32,7 +32,7 @@
                             {!! Theme::partial('real-estate.properties.items', compact('properties')) !!}
                         </div>
                     </div>
-                    @if (theme_option('show_map_on_properties_page', 'yes') == 'yes')
+                    {{-- @if (theme_option('show_map_on_properties_page', 'yes') == 'yes')
                         <div class="col-md-5 @if (!Arr::get($_COOKIE, 'show_map_on_properties', 1)) d-none @endif" id="properties-map">
                             <div class="rightmap h-100">
                                 <div
@@ -42,7 +42,7 @@
                                     data-center="{{ json_encode([43.615134, -76.393186]) }}"></div>
                             </div>
                         </div>
-                    @endif
+                    @endif --}}
                 </div>
             </form>
         </div>

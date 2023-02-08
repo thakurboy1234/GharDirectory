@@ -13,7 +13,7 @@
                 <div class="container-fluid">
                     <div class="row rowm10 list-agency">
                         @foreach($accounts as $account)
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                                 {!! Theme::partial('real-estate.agents.item', compact('account')) !!}
                             </div>
                         @endforeach
