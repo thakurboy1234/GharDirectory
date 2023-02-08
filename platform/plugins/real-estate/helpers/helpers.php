@@ -18,7 +18,7 @@ if (! function_exists('get_property_categories')) {
         $repo = app(CategoryInterface::class);
 
         $categories = $repo->getCategories(Arr::get($args, 'select', ['*']), [
-            'created_at' => 'DESC',
+            // 'created_at' => 'DESC',
             'is_default' => 'DESC',
             'order' => 'ASC',
         ], Arr::get($args, 'conditions', []));
