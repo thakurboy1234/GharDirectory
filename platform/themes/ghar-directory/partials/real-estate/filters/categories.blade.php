@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="select-category" class="control-label">{{ __('Category') }}</label>
+    {{-- <label for="select-category" class="control-label">{{ __('Category') }}</label> --}}
     <div class="select--arrow">
         <select name="category_id" id="select-category" class="form-control">
             <option value="">{{ __('-- Select --') }}</option>
