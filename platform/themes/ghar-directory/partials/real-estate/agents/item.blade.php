@@ -31,8 +31,8 @@
 
     <div class="fr-grid-info">
         <ul>
-            <li><strong>{{ __('Phone') }}:</strong> {{ $account->phone }}</li>
-            <li><strong>{{ __('Email') }}:</strong> {{ $account->email }}</li>
+            <li title="{{ $account->phone }}"><strong>{{ __('Phone') }}:</strong> {{ $account->phone }}</li>
+            <li title="{{ $account->email }}"><strong>{{ __('Email') }}:</strong> {{ $account->email }}</li>
         </ul>
     </div>
 
