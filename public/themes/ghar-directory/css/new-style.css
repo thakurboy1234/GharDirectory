@@ -705,6 +705,18 @@ span#eyeicon_confirm {
 .topsearch .search-button-wrapper .btn {
     border-radius: 35px !important;
 }
+.suggestion {
+    top: 58px;
+    background-color: white;
+}
+.suggestion ul li a {
+    color: #212529;
+    font-size: 15px;
+}
+.suggestion ul li a:hover {
+    text-decoration: none;
+    color: #f79534;
+}
 /* top search css end */
 
 @media screen and (max-width:992px) {
@@ -739,6 +751,10 @@ span#eyeicon_confirm {
         border-radius: 0px !important;
         width: 100%;
     }
+    .suggestion {
+        top: 49px;
+    }
+
 }
 @media screen and (max-width:580px) {
     /* .list-agency .agents-grid .fr-grid-thumb {
