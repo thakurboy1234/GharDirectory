@@ -22,23 +22,6 @@
     <div class="col-md-4">
         {{-- <a class="dashboard-stat dashboard-stat-v2 text-white" style="background-color: {{ $widget->color }};"
             href="{{ $widget->route }}"> --}}
-            <a class="dashboard-stat dashboard-stat-v2 text-white" style="background-color: rgb(142, 68, 173);"
-                href="javascript:void(0)">
-
-                <div class="visual">
-                    <i class="fas fa-briefcase" style="opacity: .1;"></i>
-                </div>
-                <div class="details">
-                    <div class="number">
-                        <span data-counter="counterup" data-value="{{ $totalVendor }}">0</span>
-                    </div>
-                    <div class="desc">Total Vendor</div>
-                </div>
-            </a>
-    </div>
-    <div class="col-md-4">
-        {{-- <a class="dashboard-stat dashboard-stat-v2 text-white" style="background-color: {{ $widget->color }};"
-            href="{{ $widget->route }}"> --}}
             <a class="dashboard-stat dashboard-stat-v2 text-white" style="background-color: rgb(50, 197, 210);"
                 href="javascript:void(0)">
 
@@ -56,6 +39,23 @@
     <div class="col-md-4">
         {{-- <a class="dashboard-stat dashboard-stat-v2 text-white" style="background-color: {{ $widget->color }};"
             href="{{ $widget->route }}"> --}}
+            <a class="dashboard-stat dashboard-stat-v2 text-white" style="background-color: rgb(142, 68, 173);"
+                href="javascript:void(0)">
+
+                <div class="visual">
+                    <i class="fas fa-briefcase" style="opacity: .1;"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        <span data-counter="counterup" data-value="{{ $totalVendor }}">0</span>
+                    </div>
+                    <div class="desc">Total Vendors</div>
+                </div>
+            </a>
+    </div>
+    <div class="col-md-4">
+        {{-- <a class="dashboard-stat dashboard-stat-v2 text-white" style="background-color: {{ $widget->color }};"
+            href="{{ $widget->route }}"> --}}
             <a class="dashboard-stat dashboard-stat-v2 text-white" style="background-color: rgb(231, 80, 90);"
                 href="javascript:void(0)">
 
@@ -66,7 +66,7 @@
                     <div class="number">
                         <span data-counter="counterup" data-value="{{ $activeVendor }}">0</span>
                     </div>
-                    <div class="desc">Active Vendor</div>
+                    <div class="desc">Active Vendors</div>
                 </div>
             </a>
     </div>
@@ -85,7 +85,7 @@
                     <div class="number">
                         <span data-counter="counterup" data-value="{{ $inActiveVendor }}">0</span>
                     </div>
-                    <div class="desc">In Active Vendor</div>
+                    <div class="desc">Inactive Vendors</div>
                 </div>
             </a>
     </div>
