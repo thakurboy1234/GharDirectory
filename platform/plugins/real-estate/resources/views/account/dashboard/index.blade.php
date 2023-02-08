@@ -76,6 +76,30 @@
                       </div>
                   </div>
               </div>
+              <?php
+              $totalLeads= app(Botble\RealEstate\Repositories\Interfaces\ConsultInterface::class)
+                               ->getModel()
+                               ->WhereHas('property',function($query){
+                               $query->where('author_id',auth('account')->id());
+                               })
+                               ->count();
+
+                ?>
+              <div class="row">
+                <div class="col-md-4">
+                    <div class="white">
+                        <div class="br2 pa3 bg-light-blue mb3" style="box-shadow: 0 1px 1px #ccc;">
+                            <div class="media-body">
+                                <div class="f3">
+                                    <span class="fw6">{{ $totalLeads }}</span>
+                                    <span class="fr"><i class="fas fa-handshake-alt"></i></span>
+                                </div>
+                                <p>Total Leads  </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
               <div id="app-real-estate">
                     {{-- <activity-log-component default-active-tab="activity-logs"></activity-log-component> --}}
               </div>

@@ -22,13 +22,13 @@
                     @include('core/base::elements.loading')
                 </div>
                 <div class="tree-categories-body card-body">
-                    <div class="mb-3 d-flex">
-                        <button class="btn btn-primary toggle-tree"
+                    <div class="mb-3 d-flex" style="margin-left: 23px">
+                        {{-- <button class="btn btn-primary toggle-tree"
                             type="button"
                             data-expand="{{ trans('core/base::forms.expand_all') }}"
                             data-collapse="{{ trans('core/base::forms.collapse_all') }}">
                             {{ trans('core/base::forms.collapse_all') }}
-                        </button>
+                        </button> --}}
                         @if ($createRoute)
                             <a class="tree-categories-create btn btn-info mx-2
                                 @if (!$canCreate) d-none  @endif"
