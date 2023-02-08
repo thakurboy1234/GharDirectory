@@ -545,11 +545,11 @@ span#eyeicon_confirm {
     text-align: left;
 }
 .packages__cardWrap .ul__listing ul li {
-    list-style: none;
+    /* list-style: none; */
     font-size: 15px;
     padding: 10px 0;
     text-transform: uppercase;
-    text-align: center;
+    text-align: left;
     font-weight: 600;
 }
 .packages__cardWrap h3 {
@@ -591,6 +591,9 @@ span#eyeicon_confirm {
 }
 /* PACKAGES CSS END */
 
+
+/* directory page css */
+
 .list-agency .agents-grid {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
@@ -599,10 +602,10 @@ span#eyeicon_confirm {
     box-shadow: 0 0 20px 0 rgb(62 28 131 / 10%) !important;
     -webkit-box-shadow: 0 0 20px 0 rgb(62 28 131 / 10%) !important;
 }
-.list-agency .col-lg-4:nth-child(odd) .agents-grid {
+.list-agency .col-12:nth-child(odd) .agents-grid {
     background-color: #fff6e7;
 }
-.list-agency .col-lg-4:nth-child(even) .agents-grid {
+.list-agency .col-12:nth-child(even) .agents-grid {
     background-color: #e1f1ff;
 }
 .list-agency .agents-grid .agents-grid-wrap {
@@ -629,10 +632,10 @@ span#eyeicon_confirm {
 .list-agency .agents-grid .fr-grid-detail-flex .fr-can-name {
     font-weight: 600;
 }
-.list-agency .col-lg-4:nth-child(odd) .agents-grid .agent-email a {
+.list-agency .col-12:nth-child(odd) .agents-grid .agent-email a {
     background-color: #e1f1ff;
 }
-.list-agency .col-lg-4:nth-child(even) .agents-grid .agent-email a {
+.list-agency .col-12:nth-child(even) .agents-grid .agent-email a {
     background-color: #fff6e7;
 }
 .list-agency .agents-grid .fr-grid-info {
@@ -650,6 +653,34 @@ span#eyeicon_confirm {
 .list-agency .agents-grid .fr-grid-footer-flex-right .prt-view:hover {
     background-color: #063a5d;
 }
+/* directory page css end */
+
+/* properties page css */
+@media (min-width: 768px){
+    #properties-list.left-page-content .property-item {
+        flex: 0 0 33.3333333333% !important;
+        max-width: 33.3333333333% !important;
+    }
+}
+@media (min-width: 992px){
+    #properties-list.left-page-content .property-item {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+}
+@media (min-width: 1200px){
+    #properties-list.left-page-content .property-item {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+}
+@media (min-width: 1400px){
+    #properties-list.left-page-content .property-item {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+}
+/* properties page css end */
 
 
 @media screen and (max-width:580px) {
