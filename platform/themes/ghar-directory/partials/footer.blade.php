@@ -65,9 +65,9 @@
                             @if (theme_option('address'))
                                 <p><i class="fas fa-map-marker-alt"></i> &nbsp;{{ theme_option('address') }}</p>
                             @endif
-                            @if (theme_option('hotline'))
+                            {{-- @if (theme_option('hotline'))
                                 <p><i class="fas fa-phone-square"></i> {{ __('Hotline') }}: &nbsp;<a href="tel:{{ theme_option('hotline') }}">{{ theme_option('hotline') }}</a></p>
-                            @endif
+                            @endif --}}
                             @if (theme_option('email'))
                                 <p><i class="fas fa-envelope"></i> {{ __('Email') }}: &nbsp;<a href="mailto:{{ theme_option('email') }}">{{ theme_option('email') }}</a></p>
                             @endif
@@ -470,9 +470,9 @@
 
 <div class="action_footer">
     <a href="#" class="cd-top" @if (!Theme::get('hotlineNumber') && !theme_option('hotline')) style="top: -82px;" @endif><i class="fas fa-arrow-up"></i></a>
-    @if (Theme::get('hotlineNumber') || theme_option('hotline'))
+    {{-- @if (Theme::get('hotlineNumber') || theme_option('hotline'))
         <a class="cd__button" href="tel:{{ Theme::get('hotlineNumber') ?: theme_option('hotline') }}"><i class="fas fa-phone"></i> <span>  &nbsp;{{ Theme::get('hotlineNumber') ?: theme_option('hotline') }}</span></a>
-    @endif
+    @endif --}}
 </div>
 
     {!! Theme::footer() !!}
