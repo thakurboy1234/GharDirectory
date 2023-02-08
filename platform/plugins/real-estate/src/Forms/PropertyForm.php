@@ -190,15 +190,15 @@ class PropertyForm extends FormAbstract
                     'placeholder' => 'Ex: 1.462260',
                     'data-counter' => 25,
                 ],
-                'help_block' => [
-                    'tag' => 'a',
-                    'text' => trans('plugins/real-estate::property.form.latitude_helper'),
-                    'attr' => [
-                        'href' => 'https://www.latlong.net/convert-address-to-lat-long.html',
-                        'target' => '_blank',
-                        'rel' => 'nofollow',
-                    ],
-                ],
+                // 'help_block' => [
+                //     'tag' => 'a',
+                //     'text' => trans('plugins/real-estate::property.form.latitude_helper'),
+                //     'attr' => [
+                //         'href' => 'https://www.latlong.net/convert-address-to-lat-long.html',
+                //         'target' => '_blank',
+                //         'rel' => 'nofollow',
+                //     ],
+                // ],
             ])
             ->add('longitude', 'text', [
                 'label' => trans('plugins/real-estate::property.form.longitude'),
@@ -210,15 +210,15 @@ class PropertyForm extends FormAbstract
                     'placeholder' => 'Ex: 103.812530',
                     'data-counter' => 25,
                 ],
-                'help_block' => [
-                    'tag' => 'a',
-                    'text' => trans('plugins/real-estate::property.form.longitude_helper'),
-                    'attr' => [
-                        'href' => 'https://www.latlong.net/convert-address-to-lat-long.html',
-                        'target' => '_blank',
-                        'rel' => 'nofollow',
-                    ],
-                ],
+                // 'help_block' => [
+                //     'tag' => 'a',
+                //     'text' => trans('plugins/real-estate::property.form.longitude_helper'),
+                //     'attr' => [
+                //         'href' => 'https://www.latlong.net/convert-address-to-lat-long.html',
+                //         'target' => '_blank',
+                //         'rel' => 'nofollow',
+                //     ],
+                // ],
             ])
             ->add('rowClose', 'html', [
                 'html' => '</div>',
