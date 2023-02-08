@@ -10,7 +10,7 @@
                 <div class="number">
                     <span data-counter="counterup" data-value="{{ $widget->statsTotal }}">0</span>
                 </div>
-                <div class="desc">{{ $widget->title }}</div>
+                <div class="desc" style="text-transform: capitalize;">{{ $widget->title }}</div>
             </div>
         </a>
     </div>
