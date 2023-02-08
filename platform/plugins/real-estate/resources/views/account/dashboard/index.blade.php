@@ -38,6 +38,8 @@
               <div class="row">
                   <div class="col-md-4">
                       <div class="white">
+                        <a class="dashboard-stat dashboard-stat-v2 text-white"
+                        href="{{route('public.account.properties.index')}}">
                           <div class="br2 pa3 bg-light-blue mb3" style="box-shadow: 0 1px 1px #ccc;">
                               <div class="media-body">
                                   <div class="f3">
@@ -47,23 +49,29 @@
                                   <p>{{ trans('plugins/real-estate::dashboard.approved_properties') }}</p>
                               </div>
                           </div>
+                        </a>
                       </div>
                   </div>
                   <div class="col-md-4">
                       <div class="white">
-                          <div class="br2 pa3 bg-light-red mb3" style="box-shadow: 0 1px 1px #ccc;">
-                              <div class="media-body">
-                                  <div class="f3">
-                                      <span class="fw6">{{ $user->properties()->where('moderation_status', \Botble\RealEstate\Enums\ModerationStatusEnum::PENDING)->count() }}</span>
-                                      <span class="fr"><i class="fas fa-user-clock"></i></span>
-                                  </div>
-                                  <p>{{ trans('plugins/real-estate::dashboard.pending_approve_properties') }}</p>
-                              </div>
-                          </div>
+                            <a class="dashboard-stat dashboard-stat-v2 text-white"
+                            href="{{route('public.account.properties.index')}}">
+                            <div class="br2 pa3 bg-light-red mb3" style="box-shadow: 0 1px 1px #ccc;">
+                                <div class="media-body">
+                                    <div class="f3">
+                                        <span class="fw6">{{ $user->properties()->where('moderation_status', \Botble\RealEstate\Enums\ModerationStatusEnum::PENDING)->count() }}</span>
+                                        <span class="fr"><i class="fas fa-user-clock"></i></span>
+                                    </div>
+                                    <p>{{ trans('plugins/real-estate::dashboard.pending_approve_properties') }}</p>
+                                </div>
+                            </div>
+                            </a>
                       </div>
                   </div>
                   <div class="col-md-4">
                       <div class="white">
+                        <a class="dashboard-stat dashboard-stat-v2 text-white"
+                            href="{{route('public.account.properties.index')}}">
                           <div class="br2 pa3 bg-light-silver mb3" style="box-shadow: 0 1px 1px #ccc;">
                               <div class="media-body">
                                   <div class="f3">
@@ -73,6 +81,7 @@
                                   <p>{{ trans('plugins/real-estate::dashboard.rejected_properties') }}</p>
                               </div>
                           </div>
+                        </a>
                       </div>
                   </div>
               </div>
@@ -88,6 +97,8 @@
               <div class="row">
                 <div class="col-md-4">
                     <div class="white">
+                        <a class="dashboard-stat dashboard-stat-v2 text-white"
+                            href="{{route('public.account.properties.get.leads')}}">
                         <div class="br2 pa3 bg-light-blue mb3" style="box-shadow: 0 1px 1px #ccc;">
                             <div class="media-body">
                                 <div class="f3">
@@ -97,6 +108,7 @@
                                 <p>Total Leads  </p>
                             </div>
                         </div>
+                        </a>
                     </div>
                 </div>
               </div>
