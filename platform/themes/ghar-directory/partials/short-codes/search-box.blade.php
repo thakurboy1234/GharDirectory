@@ -41,13 +41,16 @@
 
                     </div>
                 </div>
+                <div class="select__input">
+                    {!! Theme::partial('real-estate.filters.categories', compact('categories')) !!}
+                </div>
                 <div class="input-group-append search-button-wrapper">
                     <button class="btn btn-orange" type="submit">{{ __('Search') }}</button>
                 </div>
 
                 <div class="advanced-search d-none d-sm-block">
                     {{-- <a href="#" class="advanced-search-toggler">{{ __('Advanced') }} <i class="fas fa-caret-down"></i></a> --}}
-                    <div class="advanced-search-content property-advanced-search active">
+                    {{-- <div class="advanced-search-content property-advanced-search active">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3 col-sm-6 pr-md-1">
@@ -64,7 +67,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     @if ($enableProjectsSearch)
                         <div class="advanced-search-content project-advanced-search">
