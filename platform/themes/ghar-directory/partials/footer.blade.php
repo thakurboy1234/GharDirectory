@@ -163,8 +163,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{url('/contact')}}">
-                                            <span>Contact us</span>
+                                        <a href="{{url('/support')}}">
+                                            <span>Support</span>
                                         </a>
                                     </li>
                                     <li>

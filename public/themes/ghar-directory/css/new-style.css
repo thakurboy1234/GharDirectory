@@ -719,6 +719,11 @@ span#eyeicon_confirm {
 }
 /* top search css end */
 
+.mobileView__properties .itemarea {
+    width: 100%;
+    margin: 0 0 30px;
+}
+
 @media screen and (max-width:992px) {
 
 }
