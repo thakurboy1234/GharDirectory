@@ -18,7 +18,7 @@
                             data-class-left="col-lg-12 left-page-content"
                         @endif
                         > --}}
-                        @include(Theme::getThemeNamespace() . '::views.real-estate.includes.agentfilters', ['isChangeView' => theme_option('show_map_on_properties_page', 'yes') == 'yes'])
+                        @include(Theme::getThemeNamespace() . '::views.real-estate.includes.agentFilters', ['isChangeView' => theme_option('show_map_on_properties_page', 'yes') == 'yes'])
                         {{-- <div class="data-listing mt-2">
                             {!! Theme::partial('real-estate.properties.items', compact('properties')) !!}
                         </div> --}}
