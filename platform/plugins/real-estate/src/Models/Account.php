@@ -53,6 +53,7 @@ class Account extends BaseModel implements
         'description',
         'gender',
         'company',
+        'city_id',
     ];
 
     protected $hidden = [

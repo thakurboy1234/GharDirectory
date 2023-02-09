@@ -29,6 +29,7 @@
                 </div>
                 <div style="position:relative;">
                     <div class="owl-carousel" id="project-city-slides">
+                        @if(count($cities))
                         @foreach($cities as $city)
                             <div class="item itemarea">
                                 <a href="{{ route('public.project-by-city', $city->slug) }}">
@@ -37,6 +38,7 @@
                                 </a>
                             </div>
                         @endforeach
+                        @endif
                     </div>
                     <i class="am-next"><img src="{{ Theme::asset()->url('images/aleft.png') }}" alt="pre"></i>
                     <i class="am-prev"><img src="{{ Theme::asset()->url('images/aright.png') }}" alt="next"></i>
