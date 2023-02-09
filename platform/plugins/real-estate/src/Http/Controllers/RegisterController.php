@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use BaseHelper;
 use Botble\ACL\Traits\RegistersUsers;
 use Botble\Base\Http\Responses\BaseHttpResponse;
+use Botble\Location\Repositories\Interfaces\CityInterface;
 use Botble\RealEstate\Models\Account;
 use Botble\RealEstate\Repositories\Interfaces\AccountInterface;
 use EmailHandler;
@@ -69,14 +70,14 @@ class RegisterController extends Controller
         if (! RealEstateHelper::isRegisterEnabled()) {
             abort(404);
         }
-
+        $cities= app(CityInterface::class)->getModel()->get();
         SeoHelper::setTitle(__('Register'));
 
         if (view()->exists(Theme::getThemeNamespace() . '::views.real-estate.account.auth.register')) {
-            return Theme::scope('real-estate.account.auth.register')->render();
+            return Theme::scope('real-estate.account.auth.register',compact('cities'))->render();
         }
 
-        return view('plugins/real-estate::account.auth.register');
+        return view('plugins/real-estate::account.auth.register',compact('cities'));
     }
 
     /**
@@ -174,6 +175,7 @@ class RegisterController extends Controller
      */
     public function register(Request $request, BaseHttpResponse $response)
     {
+
         if (! RealEstateHelper::isRegisterEnabled()) {
             abort(404);
         }
@@ -221,6 +223,7 @@ class RegisterController extends Controller
     {
         $rules = [
             'first_name' => 'required|max:120',
+            'city_id' => 'required|exists:cities,id',
             'last_name' => 'required|max:120',
             'username' => 'required|max:60|min:2|unique:re_accounts,username',
             'email' => 'required|email|max:255|unique:re_accounts',
@@ -255,6 +258,7 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'phone' => $data['phone'],
+            'city_id' => $data['city_id'],
             'password' => bcrypt($data['password']),
         ]);
     }

@@ -65,6 +65,18 @@
                                     </span>
                             @endif
                         </div>
+                        {{-- {{dd($cities)}} --}}
+                        <div class="form-group mb-3">
+                            <select name="city_id" class="form-control">
+                                <option value="">Select City</option>
+                                @if(count($cities))
+                                    @foreach($cities as $key => $city)
+                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+
+                        </div>
 
                         <div class="form-group">
                             <input id="password" type="password"
@@ -175,6 +187,9 @@
             password_confirmation: {
                 required: true,
                 minlength: 6
+            },
+            city_id: {
+                required: true,
             },
 
         },
