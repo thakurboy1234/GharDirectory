@@ -55,7 +55,7 @@
     </div>
     <div class="col-md-4">
         <a class="dashboard-stat dashboard-stat-v2 text-white" style="background-color:  rgb(231, 80, 90);"
-        href="{{route('account.index')}}">
+        href="{{route('account.index',"$activeVendorFilter")}}">
             {{-- <a class="dashboard-stat dashboard-stat-v2 text-white" style="background-color: rgb(231, 80, 90);"
                 href="javascript:void(0)"> --}}
 
@@ -74,7 +74,7 @@
 <div class="row">
     <div class="col-md-4">
         <a class="dashboard-stat dashboard-stat-v2 text-white" style="background-color:rgb(142, 68, 173);"
-            href="{{route('account.index')}}">
+            href="{{route('account.index',"$inActiveVendorFilter")}}">
             {{-- <a class="dashboard-stat dashboard-stat-v2 text-white" style="background-color: rgb(142, 68, 173);"
                 href="javascript:void(0)"> --}}
 
