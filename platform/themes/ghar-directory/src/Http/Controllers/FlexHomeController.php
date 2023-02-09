@@ -7,6 +7,7 @@ use Botble\Base\Enums\BaseStatusEnum;
 use Botble\Base\Http\Responses\BaseHttpResponse;
 use Botble\Base\Supports\RepositoryHelper;
 use Botble\Blog\Repositories\Interfaces\PostInterface;
+use Botble\Location\Repositories\Eloquent\CityRepository;
 use Botble\Location\Repositories\Interfaces\CityInterface;
 use Botble\RealEstate\Enums\PropertyTypeEnum;
 use Botble\RealEstate\Models\Account;
@@ -366,12 +367,13 @@ class FlexHomeController extends PublicController
                 },
             ],
         ]);
-
+        $cites= app(CityInterface::class)->getModel()->get();
+        // dd($cites);
         SeoHelper::setTitle(__('Directory Experts'));
 
         Theme::breadcrumb()->add(__('Home'), route('public.index'))->add(__('Directory Experts'), route('public.agents'));
 
-        return Theme::scope('real-estate.agents', compact('accounts'))->render();
+        return Theme::scope('real-estate.agents', compact('accounts','cites'))->render();
     }
 
     /**
