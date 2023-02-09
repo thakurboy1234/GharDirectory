@@ -1,4 +1,5 @@
-<section class="main-homes">
+{{-- <section class="main-homes"> --}}
+    <section class="">
     <div class="bgheadproject hidden-xs" style="background: url('{{ theme_option('breadcrumb_background') ? RvMedia::url(theme_option('breadcrumb_background')) : Theme::asset()->url('images/banner-du-an.jpg') }}')">
         <div class="description">
             <div class="container-fluid w90">
