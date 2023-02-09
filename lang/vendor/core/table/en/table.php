@@ -23,6 +23,8 @@ return [
     'is_equal_to' => 'Is equal to',
     'greater_than' => 'Greater than',
     'less_than' => 'Less than',
+    'greater_than_or_equal_to' => 'Greater than or equal to',
+    'less_than_or_equal_to' => '	Less than or equal to',
     'value' => 'Value',
     'select_field' => 'Select field',
     'reset' => 'Reset',

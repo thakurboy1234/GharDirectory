@@ -159,6 +159,11 @@ class AccountTable extends TableAbstract
                 'type' => 'text',
                 'validate' => 'required|max:120|email',
             ],
+            'credits' => [
+                'title' => 'credit',
+                'type' => 'number',
+                'validate' => 'required|max:120',
+            ],
             'created_at' => [
                 'title' => trans('core/base::tables.created_at'),
                 'type' => 'date',

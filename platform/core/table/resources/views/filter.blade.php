@@ -22,6 +22,8 @@
                     <option value="=">{{ trans('core/table::table.is_equal_to') }}</option>
                     <option value=">">{{ trans('core/table::table.greater_than') }}</option>
                     <option value="<">{{ trans('core/table::table.less_than') }}</option>
+                    <option value="<=">{{ trans('core/table::table.less_than_or_equal_to') }}</option>
+                    <option value=">=">{{ trans('core/table::table.greater_than_or_equal_to') }}</option>
                 </select>
                 <svg class="svg-next-icon svg-next-icon-size-16">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use>
@@ -64,6 +66,11 @@
                                     @if ($filterItem['operator'] == '>') selected @endif>{{ trans('core/table::table.greater_than') }}</option>
                             <option value="<"
                                     @if ($filterItem['operator'] == '<') selected @endif>{{ trans('core/table::table.less_than') }}</option>
+                            <option value="<="
+                                    @if ($filterItem['operator'] == '<=') selected @endif>{{ trans('core/table::table.less_than_or_equal_to') }}</option>
+                            <option value=">="
+                                    @if ($filterItem['operator'] == '>=') selected @endif>{{ trans('core/table::table.greater_than_or_equal_to') }}</option>
+
                         </select>
                         <svg class="svg-next-icon svg-next-icon-size-16">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use>
