@@ -21,36 +21,36 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="form-group mb-3">
-                            <input id="company" type="text"
-                                   class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}"
-                                   name="company" value="{{ old('company') }}" required
-                                   placeholder="{{ trans('plugins/real-estate::dashboard.company') }}">
-                            @if ($errors->has('company'))
-                                <span class="invalid-feedback">
-                                <strong>{{ $errors->first('company') }}</strong>
-                                </span>
-                            @endif
-                        </div>
                         <div class="form-group">
                             <input id="username" type="text"
-                                   class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
-                                   name="username" value="{{ old('username') }}" required
-                                   placeholder="{{ trans('plugins/real-estate::dashboard.username') }}">
+                            class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
+                            name="username" value="{{ old('username') }}" required
+                            placeholder="{{ trans('plugins/real-estate::dashboard.username') }}">
                             @if ($errors->has('username'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('username') }}</strong>
-                                </span>
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('username') }}</strong>
+                            </span>
                             @endif
                         </div>
                         <div class="form-group">
                             <input id="email" type="email"
-                                   class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                   name="email" value="{{ old('email') }}" required
-                                   placeholder="{{ trans('plugins/real-estate::dashboard.email') }}">
+                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                            name="email" value="{{ old('email') }}" required
+                            placeholder="{{ trans('plugins/real-estate::dashboard.email') }}">
                             @if ($errors->has('email'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                        <div class="form-group mb-3">
+                            <input id="company" type="text"
+                                   class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}"
+                                   name="company" value="{{ old('company') }}"
+                                   placeholder="{{ trans('plugins/real-estate::dashboard.company') }}">
+                            @if ($errors->has('company'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                <strong>{{ $errors->first('company') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -167,14 +167,14 @@
     $("#register_form").validate({
 
         rules: {
-            first_name: {
+            fff_name: {
                 required: true,
                 maxlength: 50
             },
 
-            last_name: {
-                required: true,
-            },
+            // last_name: {
+            //     required: true,
+            // },
 
             username: {
                 required: true,
@@ -204,12 +204,12 @@
 
         },
         messages: {
-            first_name: {
-                required: "First Name is required.",
+            fff_name: {
+                required: "Full Name is required.",
             },
-            last_name: {
-                required: "Last Name is required.",
-            },
+            // company: {
+            //     required: "Last Name is required.",
+            // },
             username: {
                 required: "Username is required.",
             },
