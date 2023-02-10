@@ -165,10 +165,46 @@
                 @if ($author = $property->author)
                     <div class="boxright p-3">
                         <div class="head">
-                            {{ __('Contact') }}
+                            {{ __('Posted By') }}
                         </div>
 
                         <div class="row rowm10 itemagent">
+                            {{-- <div class="col-lg-4 colm10">
+                                @if ($author->username)
+                                    <a href="{{ route('public.agent', $author->username) }}">
+                                        @if ($author->avatar->url)
+                                            <img src="{{ RvMedia::getImageUrl($author->avatar->url, 'thumb') }}" alt="{{ $author->name }}" class="img-thumbnail">
+                                        @else
+                                            <img src="{{ $author->avatar_url }}" alt="{{ $author->name }}" class="img-thumbnail">
+                                        @endif
+                                    </a>
+                                @else
+                                    @if ($author->avatar->url)
+                                        <img src="{{ RvMedia::getImageUrl($author->avatar->url, 'thumb') }}" alt="{{ $author->name }}" class="img-thumbnail">
+                                    @else
+                                        <img src="{{ $author->avatar_url }}" alt="{{ $author->name }}" class="img-thumbnail">
+                                    @endif
+                                @endif
+                            </div> --}}
+                            <div class="col-lg-8 colm10">
+                                <div class="info">
+                                    <p>
+                                        <strong>
+                                            {{-- @if ($author->username)
+                                                <a href="{{ route('public.agent', $author->username) }}">{{ $author->fff_name }}</a>
+                                            @else --}}
+                                            <i class="fa fa-user"></i>
+                                            {{ $author->name != ' ' ? $author->name : $author->fff_name }}
+                                            {{-- @endif --}}
+                                        </strong>
+                                    </p>
+                                    {{-- <p>{{ $author->fff_name }}</p> --}}
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- <div class="row rowm10 itemagent">
                             <div class="col-lg-4 colm10">
                                 @if ($author->username)
                                     <a href="{{ route('public.agent', $author->username) }}">
@@ -209,7 +245,7 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 @endif
                 <div class="boxright p-3">
