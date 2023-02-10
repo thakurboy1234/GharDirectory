@@ -222,9 +222,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         $rules = [
-            'first_name' => 'required|max:120',
+            'full_name' => 'required|max:120',
             'city_id' => 'required|exists:cities,id',
-            'last_name' => 'required|max:120',
+            'company_name' => 'required|max:120',
             'username' => 'required|max:60|min:2|unique:re_accounts,username',
             'email' => 'required|email|max:255|unique:re_accounts',
             'password' => 'required|min:6|confirmed',
@@ -253,8 +253,9 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return $this->accountRepository->create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
+            'full_name' => $data['full_name'],
+            'company_name' => $data['company_name'],
+            'alternate_mobile_number' => $data['alternate_mobile_number'],
             'username' => $data['username'],
             'email' => $data['email'],
             'phone' => $data['phone'],

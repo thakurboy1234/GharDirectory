@@ -44,15 +44,15 @@
                         @endif
                         <form action="{{ route('public.account.post.settings') }}" id="setting-form" method="POST">
                         @csrf
-                        <!-- Name -->
+                        <!-- Full Name -->
                             <div class="form-group mb-3">
-                                <label for="first_name">{{ trans('plugins/real-estate::dashboard.first_name') }}</label>
-                                <input type="text" class="form-control" name="first_name" id="first_name" required value="{{ old('first_name') ?? $user->first_name }}">
+                                <label for="full_name">{{ trans('plugins/real-estate::dashboard.full_name') }}</label>
+                                <input type="text" class="form-control" name="full_name" id="full_name" required value="{{ old('full_name') ?? $user->full_name }}">
                             </div>
-                            <!-- Name -->
+                            <!--Company Name -->
                             <div class="form-group mb-3">
-                                <label for="last_name">{{ trans('plugins/real-estate::dashboard.last_name') }}</label>
-                                <input type="text" class="form-control" name="last_name" id="last_name" required value="{{ old('last_name') ?? $user->last_name }}">
+                                <label for="company_name">{{ trans('plugins/real-estate::dashboard.company_name') }}</label>
+                                <input type="text" class="form-control" name="company_name" id="company_name" required value="{{ old('company_name') ?? $user->company_name }}">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="username">{{ trans('plugins/real-estate::dashboard.username') }}</label>
@@ -66,6 +66,11 @@
                             <div class="form-group mb-3">
                                 <label for="phone">{{ trans('plugins/real-estate::dashboard.phone') }}</label>
                                 <input type="text" class="form-control" name="phone" id="phone" required value="{{ old('phone') ?? $user->phone }}">
+                            </div>
+                            <!--Alternate Mobile Number-->
+                            <div class="form-group mb-3">
+                                <label for="alternate_mobile_number">{{ trans('plugins/real-estate::dashboard.alternate_mobile_number') }}</label>
+                                <input type="text" class="form-control" name="alternate_mobile_number" id="alternate_mobile_number" value="{{ old('alternate_mobile_number') ?? $user->alternate_mobile_number }}">
                             </div>
                             <!--Short description-->
                             <div class="form-group mb-3">

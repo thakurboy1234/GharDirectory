@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="row flex-items-xs-middle flex-items-xs-center justify-content-center">
-                        {{-- @foreach($packages as $package)
+                        @foreach($packages as $package)
                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-top: 30px;">
                             <div class="packages__cardWrap">
                                 <h2><span>{{$package->name}}</span><small> (for property budget upto {{ format_price($package->maximal_property_budget)}})</small></h2>
@@ -38,8 +38,8 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach --}}
-                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-top: 30px;">
+                        @endforeach
+                        {{-- <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-top: 30px;">
                             <div class="packages__cardWrapNew">
                                 <h2>basic</h2>
                                 <ul class="price__area">
@@ -149,7 +149,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             @else

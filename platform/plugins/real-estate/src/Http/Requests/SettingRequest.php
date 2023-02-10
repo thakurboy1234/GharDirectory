@@ -11,8 +11,8 @@ class SettingRequest extends Request
     {
         return [
             'username' => 'required|max:60|min:2|unique:re_accounts,username,' . auth('account')->id(),
-            'first_name' => 'required|max:120',
-            'last_name' => 'required|max:120',
+            'full_name' => 'required|max:120',
+            'company_name' => 'required|max:120',
             'phone' => 'sometimes|' . BaseHelper::getPhoneValidationRule(),
             'dob' => 'max:20|sometimes',
         ];

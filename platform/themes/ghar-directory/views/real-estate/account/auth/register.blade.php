@@ -10,26 +10,26 @@
                     <br>
                     <form method="POST" action="{{ route('public.account.register') }}" id="register_form">
                         @csrf
-                        <div class="form-group">
-                            <input id="first_name" type="text"
-                                   class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}"
-                                   name="first_name" value="{{ old('first_name') }}" required autofocus
-                                   placeholder="{{ trans('plugins/real-estate::dashboard.first_name') }}">
-                            @if ($errors->has('first_name'))
+                        <div class="form-group mb-3">
+                            <input id="full_name" type="text"
+                                   class="form-control{{ $errors->has('full_name') ? ' is-invalid' : '' }}"
+                                   name="full_name" value="{{ old('full_name') }}" required autofocus
+                                   placeholder="{{ trans('plugins/real-estate::dashboard.full_name') }}">
+                            @if ($errors->has('full_name'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('first_name') }}</strong>
-                                    </span>
+                                <strong>{{ $errors->first('full_name') }}</strong>
+                                </span>
                             @endif
                         </div>
-                        <div class="form-group">
-                            <input id="last_name" type="text"
-                                   class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}"
-                                   name="last_name" value="{{ old('last_name') }}" required
-                                   placeholder="{{ trans('plugins/real-estate::dashboard.last_name') }}">
-                            @if ($errors->has('last_name'))
+                        <div class="form-group mb-3">
+                            <input id="company_name" type="text"
+                                   class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}"
+                                   name="company_name" value="{{ old('company_name') }}" required
+                                   placeholder="{{ trans('plugins/real-estate::dashboard.company_name') }}">
+                            @if ($errors->has('company_name'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('last_name') }}</strong>
-                                    </span>
+                                <strong>{{ $errors->first('company_name') }}</strong>
+                                </span>
                             @endif
                         </div>
                         <div class="form-group">
@@ -65,7 +65,17 @@
                                     </span>
                             @endif
                         </div>
-                        {{-- {{dd($cities)}} --}}
+                        <div class="form-group mb-3">
+                            <input id="alternate_mobile_number" type="text"
+                                   class="form-control{{ $errors->has('alternate_mobile_number') ? ' is-invalid' : '' }}"
+                                   name="alternate_mobile_number" value="{{ old('alternate_mobile_number') }}"
+                                   placeholder="{{ trans('plugins/real-estate::dashboard.alternate_mobile_number') }}">
+                            @if ($errors->has('alternate_mobile_number'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('alternate_mobile_number') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
                         <div class="form-group mb-3">
                             <select name="city_id" class="form-control">
                                 <option value="">Select City</option>

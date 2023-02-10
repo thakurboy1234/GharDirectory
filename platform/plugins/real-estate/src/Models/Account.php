@@ -42,8 +42,8 @@ class Account extends BaseModel implements
     protected $table = 're_accounts';
 
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'full_name',
+        'company_name',
         'username',
         'email',
         'password',
@@ -54,6 +54,7 @@ class Account extends BaseModel implements
         'gender',
         'company',
         'city_id',
+        'alternate_mobile_number',
     ];
 
     protected $hidden = [
