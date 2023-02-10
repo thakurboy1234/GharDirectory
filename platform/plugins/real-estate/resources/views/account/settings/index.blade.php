@@ -58,10 +58,10 @@
                                 <label for="username">{{ trans('plugins/real-estate::dashboard.username') }}</label>
                                 <input type="text" class="form-control" name="username" id="username" required value="{{ old('username') ?? $user->username }}">
                             </div>
-                            <div class="form-group mb-3">
+                            {{-- <div class="form-group mb-3">
                                 <label for="company">{{ trans('plugins/real-estate::dashboard.company') }}</label>
                                 <input type="text" class="form-control" name="company" id="company" required value="{{ old('company') ?? $user->company }}">
-                            </div>
+                            </div> --}}
                             <!-- Phone -->
                             <div class="form-group mb-3">
                                 <label for="phone">{{ trans('plugins/real-estate::dashboard.phone') }}</label>
