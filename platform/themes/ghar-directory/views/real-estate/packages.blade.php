@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="row flex-items-xs-middle flex-items-xs-center justify-content-center">
-                        @foreach($packages as $package)
+                        {{-- @foreach($packages as $package)
                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-top: 30px;">
                             <div class="packages__cardWrap">
                                 <h2><span>{{$package->name}}</span><small> (for property budget upto {{ format_price($package->maximal_property_budget)}})</small></h2>
@@ -38,7 +38,47 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach --}}
+
+                        @foreach($packages as $package)
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-top: 30px;">
+                            <div class="packages__cardWrapNew">
+                                <h2>{{$package->name}}</h2>
+                                <ul class="price__area">
+                                    <li><p class="old_price">₹ {{$package->price+1000}}</p></li>
+                                    <li><p class="new_price">₹ {{$package->price}}<br><small>exclusive of GST</small></p></li>
+                                    <li><p class="save_amount">You save: ₹ 1000</p></li>
+                                </ul>
+                                <div class="buy__btn">
+                                    <a href="{{route('public.account.package.subscribe', $package->id)}}">buy now</a>
+                                </div>
+                                <div class="list__detail">
+                                    <ul>
+                                        <li><p>{{$package->number_of_listings}} Property Listings</p></li>
+                                        <li><p>{{$package->duration}} Days Validity</p></li>
+                                        <li><p><sup>* </sup>{{$package->total_leads}} Qualified Leads<sup>*</sup></p></li>
+                                        <li><p>Budget Base Leads</p></li>
+                                        <li><p>Location Base Leads</p></li>
+                                        @if($package->id != 1)
+                                             <li><p>Expert Photography/Videography</p></li>
+                                         @endif
+                                        @if($package->id != 1 && $package->id !=2 && $package->id !=3 )
+                                            <li><p>Min. 80% Qualified Leads</p></li>
+                                            <li><p>Dedicated Executive</p></li>
+                                            <li><p>10000 WhatsApp Messaging</p></li>
+                                            <li><p>Voiceover Audio Ad (1 No.)</p></li>
+                                         @elseif($package->id != 1 && $package->id !=2)
+                                         <li><p>Min. 60% Qualified Leads</p></li>
+                                         <li><p>Dedicated Executive</p></li>
+                                        @endif
+                                        <li><p>Directory Expert Listing</p></li>
+                                        <li><p>Suitable For Property Budget upto {{format_price($package->maximal_property_budget)}} </p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
+
                         {{-- <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-top: 30px;">
                             <div class="packages__cardWrapNew">
                                 <h2>basic</h2>
