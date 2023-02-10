@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="row flex-items-xs-middle flex-items-xs-center justify-content-center">
-                        @foreach($packages as $package)
+                        {{-- @foreach($packages as $package)
                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-top: 30px;">
                             <div class="packages__cardWrap">
                                 <h2><span>{{$package->name}}</span><small> (for property budget upto {{ format_price($package->maximal_property_budget)}})</small></h2>
@@ -38,7 +38,118 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                        @endforeach --}}
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-top: 30px;">
+                            <div class="packages__cardWrapNew">
+                                <h2>basic</h2>
+                                <ul class="price__area">
+                                    <li><p class="old_price">₹ 9500</p></li>
+                                    <li><p class="new_price">₹ 8500<br><small>exclusive of GST</small></p></li>
+                                    <li><p class="save_amount">You save: ₹ 1000</p></li>
+                                </ul>
+                                <div class="buy__btn">
+                                    <a href="#!">buy now</a>
+                                </div>
+                                <div class="list__detail">
+                                    <ul>
+                                        <li><p>5 Property Listings</p></li>
+                                        <li><p>30 Days Validity</p></li>
+                                        <li><p><sup>*</sup>Qualified Leads<sup>*</sup></p></li>
+                                        <li><p>Budget Base Leads</p></li>
+                                        <li><p>Location Base Leads</p></li>
+                                        <li><p>Directory Expert Listing</p></li>
+                                        <li><p>Suitable For Property Budget upto 50 Lakhs<sup>*</sup></p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-top: 30px;">
+                            <div class="packages__cardWrapNew">
+                                <h2>premium</h2>
+                                <ul class="price__area">
+                                    <li><p class="old_price">₹ 14900</p></li>
+                                    <li><p class="new_price">₹ 15900<br><small>exclusive of GST</small></p></li>
+                                    <li><p class="save_amount">You save: ₹ 1000</p></li>
+                                </ul>
+                                <div class="buy__btn">
+                                    <a href="#!">buy now</a>
+                                </div>
+                                <div class="list__detail">
+                                    <ul>
+                                        <li><p>12 Property Listings</p></li>
+                                        <li><p>30 Days Validity</p></li>
+                                        <li><p><sup>*</sup>50 Qualified Leads<sup>*</sup></p></li>
+                                        <li><p>Budget Base Leads</p></li>
+                                        <li><p>Location Base Leads</p></li>
+                                        <li><p>Expert Photography/Videography</p></li>
+                                        <li><p>Directory Expert Listing</p></li>
+                                        <li><p>Suitable For Property Budget 50-70 Lakhs</p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-top: 30px;">
+                            <div class="packages__cardWrapNew">
+                                <h2>premium plus</h2>
+                                <ul class="price__area">
+                                    <li><p class="old_price">₹ 25900</p></li>
+                                    <li><p class="new_price">₹ 35900<br><small>exclusive of GST</small></p></li>
+                                    <li><p class="save_amount">You save: ₹ 1000</p></li>
+                                </ul>
+                                <div class="buy__btn">
+                                    <a href="#!">buy now</a>
+                                </div>
+                                <div class="list__detail">
+                                    <ul>
+                                        <li><p>15 Property Listings</p></li>
+                                        <li><p>1 Featured Project Listing</p></li>
+                                        <li><p>60 Days Validity</p></li>
+                                        <li><p><sup>*</sup>100 Qualified Leads<sup>*</sup></p></li>
+                                        <li><p>Location Base Leads</p></li>
+                                        <li><p>Budget Based Leads</p></li>
+                                        <li><p>Min. 60% Qualified Leads</p></li>
+                                        <li><p>Dedicated Executive</p></li>
+                                        <li><p>Expert Photography/Videography</p></li>
+                                        <li><p>Directory Expert Listing</p></li>
+                                        <li><p>Suitable For Property Budget 60- 80 Lakhs<sup>*</sup></p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-top: 30px;">
+                            <div class="packages__cardWrapNew">
+                                <h2>online assistance</h2>
+                                <ul class="price__area">
+                                    <li><p class="old_price">₹ 55900</p></li>
+                                    <li><p class="new_price">₹ 65900<br><small>exclusive of GST</small></p></li>
+                                    <li><p class="save_amount">You save: ₹ 1000</p></li>
+                                </ul>
+                                <div class="buy__btn">
+                                    <a href="#!">buy now</a>
+                                </div>
+                                <div class="list__detail">
+                                    <ul>
+                                        <li><p>30 Property Listings</p></li>
+                                        <li><p>5 Featured Project Listings</p></li>
+                                        <li><p>90 Days Validity</p></li>
+                                        <li><p><sup>*</sup>150 Qualified Leads<sup>*</sup></p></li>
+                                        <li><p>Location Base Leads</p></li>
+                                        <li><p>Project Base Leads</p></li>
+                                        <li><p>Budget Based Leads</p></li>
+                                        <li><p>Min. 80% Qualified Leads</p></li>
+                                        <li><p>Dedicated Executive</p></li>
+                                        <li><p>Expert Photography/Videography</p></li>
+                                        <li><p>10000 WhatsApp Messaging</p></li>
+                                        <li><p>Voiceover Audio Ad (1 No.)</p></li>
+                                        <li><p>Directory Expert Listing</p></li>
+                                        <li><p>Suitable For Property Budget above 80 Lakhs<sup>*</sup></p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             @else
