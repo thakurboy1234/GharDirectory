@@ -813,5 +813,11 @@ var __webpack_exports__ = {};
     });
   });
 })(jQuery);
+$(document).ready(function () {
+  $('#filter-agent-via-city').on('change', function () {
+    window.history.replaceState(null, null, "?city=" + $(this).val());
+    window.location.reload();
+  });
+});
 /******/ })()
 ;

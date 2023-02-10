@@ -31,19 +31,18 @@
                             <select name="sort_by" id="filter-agent-via-city" class="form-control">
                                 <option value="">Select City</option>
                                 @foreach($cites as $key => $cite)
-                                <option value="{{$cite->name}}" >{{ $cite->name }}</option>
-
+                                <option {{isset($city_id)?$city_id==$cite->id?'selected':'':''}} value="{{$cite->id}}" >{{ $cite->name }}</option>
                                 @endforeach
 
                             </select>
                             <i class="fas fa-angle-down"></i>
                         </div>
                     </div>
-                    @if (!empty($isChangeView))
+                    {{-- @if (!empty($isChangeView))
                         <div class="change-view ml-2">
                             <i class="fas fa-map-marker-alt view-type-map @if (Arr::get($_COOKIE, 'show_map_on_properties', 1)) active @endif"></i>
                         </div>
-                    @endif
+                    @endif --}}
                 </div>
             </div>
         </div>

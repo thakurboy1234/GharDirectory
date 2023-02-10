@@ -356,24 +356,51 @@ class FlexHomeController extends PublicController
      */
     public function getAgents(Request $request, AccountInterface $accountRepository)
     {
-        $accounts = $accountRepository->advancedGet([
-            'paginate' => [
-                'per_page' => 12,
-                'current_paged' => (int)$request->input('page'),
-            ],
-            'withCount' => [
-                'properties' => function ($query) {
-                    return RepositoryHelper::applyBeforeExecuteQuery($query, $query->getModel());
-                },
-            ],
-        ]);
+        $city_id=$request->city;
+        $is_city=false;
+        if(isset($city_id)){
+            $cites= app(CityInterface::class)->getModel()->find($city_id);
+            if(isset($cites)){
+                $is_city= true;
+            }
+        }
+
+        if($is_city){
+            $accounts = $accountRepository->advancedGet([
+                'paginate' => [
+                    'per_page' => 12,
+                    'current_paged' => (int)$request->input('page'),
+                ],
+                'withCount' => [
+                    'properties' => function ($query) {
+                        // dd($query->getModel());
+                        return RepositoryHelper::applyBeforeExecuteQuery($query, $query->getModel());
+                    },
+                ],
+            ])->where('city_id',$city_id);
+
+        }else{
+            $accounts = $accountRepository->advancedGet([
+                'paginate' => [
+                    'per_page' => 12,
+                    'current_paged' => (int)$request->input('page'),
+                ],
+                'withCount' => [
+                    'properties' => function ($query) {
+                        // dd($query->getModel());
+                        return RepositoryHelper::applyBeforeExecuteQuery($query, $query->getModel());
+                    },
+                ],
+            ]);
+        }
+        // dd($accounts);
         $cites= app(CityInterface::class)->getModel()->get();
         // dd($cites);
         SeoHelper::setTitle(__('Directory Experts'));
 
         Theme::breadcrumb()->add(__('Home'), route('public.index'))->add(__('Directory Experts'), route('public.agents'));
 
-        return Theme::scope('real-estate.agents', compact('accounts','cites'))->render();
+        return Theme::scope('real-estate.agents', compact('accounts','cites','is_city','city_id'))->render();
     }
 
     /**
