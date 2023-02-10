@@ -45,9 +45,9 @@
                             <div class="packages__cardWrapNew">
                                 <h2>{{$package->name}}</h2>
                                 <ul class="price__area">
-                                    <li><p class="old_price">₹ {{$package->price+1000}}</p></li>
+                                    <li><p class="old_price">₹ @if($package->id == 1){{$package->price+2000}}@endif @if($package->id == 2){{$package->price+3000}}@endif @if($package->id == 3){{$package->price+5000}}@endif  @if($package->id == 4){{$package->price+10000}}@endif</p></li>
                                     <li><p class="new_price">₹ {{$package->price}}<br><small>exclusive of GST</small></p></li>
-                                    <li><p class="save_amount">You save: ₹ 1000</p></li>
+                                    <li><p class="save_amount">You save: ₹ @if($package->id == 1)2000 @endif @if($package->id == 2)3000 @endif @if($package->id == 3)5000 @endif  @if($package->id == 4)10000 @endif</p></li>
                                 </ul>
                                 <div class="buy__btn">
                                     <a href="{{route('public.account.package.subscribe', $package->id)}}">buy now</a>
@@ -56,7 +56,7 @@
                                     <ul>
                                         <li><p>{{$package->number_of_listings}} Property Listings</p></li>
                                         <li><p>{{$package->duration}} Days Validity</p></li>
-                                        <li><p><sup>* </sup>{{$package->total_leads}} Qualified Leads<sup>*</sup></p></li>
+                                        <li><p><b>{{$package->total_leads}} Qualified Leads</b></p></li>
                                         <li><p>Budget Base Leads</p></li>
                                         <li><p>Location Base Leads</p></li>
                                         @if($package->id != 1)
