@@ -9506,7 +9506,7 @@ function normalizeComponent (
 
 "use strict";
 /* provided dependency */ var Buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js")["Buffer"];
-// Axios v1.3.2 Copyright (c) 2023 Matt Zabriskie and contributors
+// Axios v1.3.1 Copyright (c) 2023 Matt Zabriskie and contributors
 
 
 function bind(fn, thisArg) {
@@ -12120,7 +12120,7 @@ function mergeConfig(config1, config2) {
   return config;
 }
 
-const VERSION = "1.3.2";
+const VERSION = "1.3.1";
 
 const validators$1 = {};
 
