@@ -15,10 +15,12 @@
         <div class="fr-grid-detail">
             <div class="fr-grid-detail-flex">
                 <h5 class="fr-can-name">
-                    @if ($account->username)
+                    @if ($account->username && $account->fff_name)
+                        <a href="{{ route('public.agent', $account->username) }}">{{ $account->fff_name }}</a>
+                    @elseif($account->username && $account->name)
                         <a href="{{ route('public.agent', $account->username) }}">{{ $account->name }}</a>
                     @else
-                        {{ $account->name }}
+                        {{ $account->fff_name }}
                     @endif
                 </h5>
             </div>
