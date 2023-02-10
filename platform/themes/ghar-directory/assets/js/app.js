@@ -911,8 +911,11 @@
 
 $(document).ready(function(){
     $('#filter-agent-via-city').on('change',function(){
-        window.history.replaceState(null, null, "?city="+$(this).val());
-        // alert($(this).val());
+        if($(this).val() == ''){
+            window.history.replaceState(null, null, "");
+        }else{
+            window.history.replaceState(null, null, "?city="+$(this).val());
+        }
         window.location.reload();
     })
 })

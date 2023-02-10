@@ -49,11 +49,13 @@
                                 {!! Theme::partial('real-estate.agents.item', compact('account')) !!}
                             </div>
                         @endforeach
+                        @if(!$is_city)
                         <div class="colm10 col-sm-12">
                             <nav class="d-flex justify-content-center pt-3">
                                 {!! $accounts->withQueryString()->links() !!}
                             </nav>
                         </div>
+                        @endif
                     </div>
                 </div>
             @else
