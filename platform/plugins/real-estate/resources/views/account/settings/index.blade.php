@@ -46,13 +46,13 @@
                         @csrf
                         <!-- Full Name -->
                             <div class="form-group mb-3">
-                                <label for="full_name">{{ trans('plugins/real-estate::dashboard.full_name') }}</label>
-                                <input type="text" class="form-control" name="full_name" id="full_name" required value="{{ old('full_name') ?? $user->full_name }}">
+                                <label for="fff_name">{{ trans('plugins/real-estate::dashboard.fff_name') }}</label>
+                                <input type="text" class="form-control" name="fff_name" id="fff_name" required value="{{ old('fff_name') ?? $user->fff_name }}">
                             </div>
                             <!--Company Name -->
                             <div class="form-group mb-3">
-                                <label for="company_name">{{ trans('plugins/real-estate::dashboard.company_name') }}</label>
-                                <input type="text" class="form-control" name="company_name" id="company_name" required value="{{ old('company_name') ?? $user->company_name }}">
+                                <label for="company">{{ trans('plugins/real-estate::dashboard.company') }}</label>
+                                <input type="text" class="form-control" name="company" id="company" required value="{{ old('company') ?? $user->company }}">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="username">{{ trans('plugins/real-estate::dashboard.username') }}</label>

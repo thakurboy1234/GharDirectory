@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('re_accounts', function (Blueprint $table) {
-            $table->renameColumn('first_name', 'full_name');
-            $table->renameColumn('last_name', 'company_name');
+            $table->string('fff_name')->nullable();
+            $table->string('first_name')->nullable()->change();
+            $table->string('last_name')->nullable()->change();
             $table->string('alternate_mobile_number')->nullable();
         });
     }
@@ -28,8 +29,9 @@ return new class extends Migration
     public function down()
     {
         Schema::table('re_accounts', function (Blueprint $table) {
-            $table->renameColumn('full_name','first_name');
-            $table->renameColumn('company_name','last_name');
+            $table->dropColumn('fff_name');
+            $table->string('first_name')->nullable(false)->change();
+            $table->string('last_name')->nullable(false)->change();
             $table->dropColumn('alternate_mobile_number');
         });
     }

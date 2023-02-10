@@ -42,8 +42,7 @@ class Account extends BaseModel implements
     protected $table = 're_accounts';
 
     protected $fillable = [
-        'full_name',
-        'company_name',
+        'fff_name',
         'username',
         'email',
         'password',

@@ -11,24 +11,24 @@
                     <form method="POST" action="{{ route('public.account.register') }}" id="register_form">
                         @csrf
                         <div class="form-group mb-3">
-                            <input id="full_name" type="text"
-                                   class="form-control{{ $errors->has('full_name') ? ' is-invalid' : '' }}"
-                                   name="full_name" value="{{ old('full_name') }}" required autofocus
-                                   placeholder="{{ trans('plugins/real-estate::dashboard.full_name') }}">
-                            @if ($errors->has('full_name'))
+                            <input id="fff_name" type="text"
+                                   class="form-control{{ $errors->has('fff_name') ? ' is-invalid' : '' }}"
+                                   name="fff_name" value="{{ old('fff_name') }}" required autofocus
+                                   placeholder="{{ trans('plugins/real-estate::dashboard.fff_name') }}">
+                            @if ($errors->has('fff_name'))
                                 <span class="invalid-feedback">
-                                <strong>{{ $errors->first('full_name') }}</strong>
+                                <strong>{{ $errors->first('fff_name') }}</strong>
                                 </span>
                             @endif
                         </div>
                         <div class="form-group mb-3">
-                            <input id="company_name" type="text"
-                                   class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}"
-                                   name="company_name" value="{{ old('company_name') }}" required
-                                   placeholder="{{ trans('plugins/real-estate::dashboard.company_name') }}">
-                            @if ($errors->has('company_name'))
+                            <input id="company" type="text"
+                                   class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}"
+                                   name="company" value="{{ old('company') }}" required
+                                   placeholder="{{ trans('plugins/real-estate::dashboard.company') }}">
+                            @if ($errors->has('company'))
                                 <span class="invalid-feedback">
-                                <strong>{{ $errors->first('company_name') }}</strong>
+                                <strong>{{ $errors->first('company') }}</strong>
                                 </span>
                             @endif
                         </div>

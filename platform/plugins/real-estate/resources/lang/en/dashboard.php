@@ -49,7 +49,7 @@ return [
     'company' => 'Company Name',
     'phone' => 'Phone',
     'alternate_mobile_number' => 'Alternate Mobile Number',
-    'full_name' => 'Full Name',
+    'fff_name' => 'Full Name',
     'company_name' => 'Company Name',
     'description' => 'Short description',
     'description_placeholder' => 'Tell something about yourself...',
