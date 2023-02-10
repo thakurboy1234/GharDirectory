@@ -13,7 +13,7 @@
             </a>
         </div>
         @if (function_exists('shortcode') && Arr::get($attributes, 'with-short-code', false))
-            <div class="d-inline-block editor-action-item list-shortcode-items">
+            {{-- <div class="d-inline-block editor-action-item list-shortcode-items">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle add_shortcode_btn_trigger" data-result="{{ $result }}" type="button" data-bs-toggle="dropdown"><i class="fa fa-code"></i> {{ trans('core/base::forms.short_code') }}
                     </button>
@@ -30,7 +30,7 @@
                         @endforeach
                     </ul>
                 </div>
-            </div>
+            </div> --}}
             @once
                 @push('footer')
                     <div class="modal fade short_code_modal" tabindex="-1" role="dialog">
