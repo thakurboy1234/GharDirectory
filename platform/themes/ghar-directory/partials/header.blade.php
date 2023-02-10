@@ -80,7 +80,7 @@
                         @if (is_plugin_active('real-estate') && RealEstateHelper::isRegisterEnabled())
                             <ul class="topbar-items">
                                 @if (auth('account')->check())
-                                    <li class="login-item"><a href="{{ route('public.account.dashboard') }}" rel="nofollow"><i class="fas fa-user"></i> <span>{{ auth('account')->user()->name }}</span></a></li>
+                                    <li class="login-item"><a href="{{ route('public.account.dashboard') }}" rel="nofollow"><i class="fas fa-user"></i> <span>{{ auth('account')->user()->name != ' ' ? auth('account')->user()->name : auth('account')->user()->fff_name }}</span></a></li>
                                     <li class="login-item"><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" rel="nofollow"><i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}</a></li>
                                 @else
                                     <li class="login-item">
