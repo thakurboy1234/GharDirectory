@@ -174,7 +174,7 @@
                                     <p>
                                         <strong>
                                             <i class="fa fa-user"></i>
-                                            {{ ($author->fff_name != '') ? $author->fff_name : $author->name }}
+                                            {{ $author->name }}
                                         </strong>
                                     </p>
                                 </div>
