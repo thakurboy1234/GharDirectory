@@ -60,6 +60,10 @@ class PropertyTable extends TableAbstract
             ->editColumn('moderation_status', function ($item) {
                 return BaseHelper::clean($item->moderation_status->toHtml());
             })
+            ->editColumn('is_featured_status', function ($item) {
+                $status = ($item->is_featured == 1) ? 'Yes' : 'No';
+                return $status;
+            })
             ->addColumn('operations', function ($item) {
                 return $this->getOperations('property.edit', 'property.destroy', $item);
             });
@@ -76,6 +80,7 @@ class PropertyTable extends TableAbstract
             'status',
             'moderation_status',
             'created_at',
+            'is_featured',
         ]);
 
         return $this->applyScopes($query);
@@ -111,6 +116,10 @@ class PropertyTable extends TableAbstract
             'moderation_status' => [
                 'title' => trans('plugins/real-estate::property.moderation_status'),
                 'width' => '150px',
+            ],
+            'is_featured_status' => [
+                'title' => trans('core/base::tables.is_featured'),
+                'width' => '70px',
             ],
         ];
     }
