@@ -194,7 +194,7 @@
                                                 <a href="{{ route('public.agent', $author->username) }}">{{ $author->fff_name }}</a>
                                             @else --}}
                                             <i class="fa fa-user"></i>
-                                            {{ $author->name != ' ' ? $author->name : $author->fff_name }}
+                                            {{ $author->fff_name != ' ' ? $author->fff_name : $author->name }}
                                             {{-- @endif --}}
                                         </strong>
                                     </p>
