@@ -22,6 +22,7 @@ return [
     'subscribe_package' => 'Subscribe package ":name"',
     'first_name' => 'First Name',
     'last_name' => 'Last Name',
+    'fff_name' => 'Full Name',
     'username' => 'Username',
     'username_placeholder' => 'Ex: john_smith',
     'company' => 'Company Name',

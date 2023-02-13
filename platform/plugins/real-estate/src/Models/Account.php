@@ -54,7 +54,7 @@ class Account extends BaseModel implements
         'company',
         'city_id',
         'alternate_mobile_number',
-        'full_name',
+        'first_name',
         'last_name',
     ];
 

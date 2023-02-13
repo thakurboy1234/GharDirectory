@@ -22,19 +22,27 @@ class AccountForm extends FormAbstract
             ->setupModel(new Account())
             ->setValidatorClass(AccountCreateRequest::class)
             ->withCustomFields()
-            ->add('first_name', 'text', [
-                'label' => trans('plugins/real-estate::account.first_name'),
+            // ->add('first_name', 'text', [
+            //     'label' => trans('plugins/real-estate::account.first_name'),
+            //     'label_attr' => ['class' => 'control-label required'],
+            //     'attr' => [
+            //         'placeholder' => trans('plugins/real-estate::account.first_name'),
+            //         'data-counter' => 120,
+            //     ],
+            // ])
+            // ->add('last_name', 'text', [
+            //     'label' => trans('plugins/real-estate::account.last_name'),
+            //     'label_attr' => ['class' => 'control-label required'],
+            //     'attr' => [
+            //         'placeholder' => trans('plugins/real-estate::account.last_name'),
+            //         'data-counter' => 120,
+            //     ],
+            // ])
+            ->add('fff_name', 'text', [
+                'label' => trans('plugins/real-estate::account.fff_name'),
                 'label_attr' => ['class' => 'control-label required'],
                 'attr' => [
-                    'placeholder' => trans('plugins/real-estate::account.first_name'),
-                    'data-counter' => 120,
-                ],
-            ])
-            ->add('last_name', 'text', [
-                'label' => trans('plugins/real-estate::account.last_name'),
-                'label_attr' => ['class' => 'control-label required'],
-                'attr' => [
-                    'placeholder' => trans('plugins/real-estate::account.last_name'),
+                    'placeholder' => trans('plugins/real-estate::account.fff_name'),
                     'data-counter' => 120,
                 ],
             ])
