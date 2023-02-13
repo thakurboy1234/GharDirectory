@@ -39,10 +39,10 @@ class AccountTable extends TableAbstract
             ->eloquent($this->query())
             ->editColumn('first_name', function ($item) {
                 if (! Auth::user()->hasPermission('account.edit')) {
-                    return BaseHelper::clean($item->fff_name);
+                    return BaseHelper::clean($item->name);
                 }
 
-                return Html::link(route('account.edit', $item->id), BaseHelper::clean($item->fff_name));
+                return Html::link(route('account.edit', $item->id), BaseHelper::clean($item->name));
             })
             ->editColumn('avatar_id', function ($item) {
                 return Html::image(

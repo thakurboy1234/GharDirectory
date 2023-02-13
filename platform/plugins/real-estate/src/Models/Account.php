@@ -102,9 +102,17 @@ class Account extends BaseModel implements
 
     protected function name(): Attribute
     {
-        return Attribute::make(
-            get: fn () => $this->first_name . ' ' . $this->last_name,
-        );
+        $name = $this->fff_name;
+        if($name){
+            return Attribute::make(
+                get: fn () => $this->fff_name,
+            );
+        }
+        else{
+            return Attribute::make(
+                get: fn () => $this->first_name . ' ' . $this->last_name,
+            );
+        }
     }
 
     protected function avatarUrl(): Attribute
