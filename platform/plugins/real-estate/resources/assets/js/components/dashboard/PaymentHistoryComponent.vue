@@ -12,7 +12,7 @@
         </div>
 
         <div v-if="!isLoading && data.meta.total === 0" class="tc light-gray-text pa3">
-            <div class="f5 mv2 b">{{ __('oops') }}</div>
+            <!-- <div class="f5 mv2 b">{{ __('oops') }}</div> -->
             <div class="f6 mv2">{{ __('no_transactions') }}</div>
         </div>
 

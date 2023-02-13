@@ -9306,10 +9306,6 @@ var render = function () {
     _vm._v(" "),
     !_vm.isLoading && _vm.data.meta.total === 0
       ? _c("div", { staticClass: "tc light-gray-text pa3" }, [
-          _c("div", { staticClass: "f5 mv2 b" }, [
-            _vm._v(_vm._s(_vm.__("oops"))),
-          ]),
-          _vm._v(" "),
           _c("div", { staticClass: "f6 mv2" }, [
             _vm._v(_vm._s(_vm.__("no_transactions"))),
           ]),
