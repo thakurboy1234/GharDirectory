@@ -4,7 +4,7 @@
             <p>{{ __('your_credits')}}: <strong>{{ account.credits }} {{ __('credits')}}</strong></p>
         </div>
         <div class="packages-listing">
-            <div class="row flex-items-xs-middle flex-items-xs-center">
+            <div class="row ">
                 <div style="margin: auto; width:30px;" v-if="isLoading">
                     <half-circle-spinner
                         :animation-duration="1000"
@@ -49,26 +49,41 @@
                             <div class="packages__cardWrapNew">
                                 <h2> {{ item.name }}</h2>
                                 <ul class="price__area">
-                                    <li><p class="old_price">₹ 25900</p></li>
+                                    <li>
+                                        <p class="old_price" v-if="( item.id == 1)">{{item.price+2000}}</p>
+                                        <p class="old_price" v-if="( item.id == 2)">{{item.price+3000}}</p>
+                                        <p class="old_price" v-if="( item.id == 3)">{{item.price+5000}}</p>
+                                        <p class="old_price" v-if="( item.id == 4)">{{item.price+10000}}</p>
+                                    </li>
                                     <li><p class="new_price">₹ {{ item.price }}<br><small>exclusive of GST</small></p></li>
-                                    <li><p class="save_amount">You save: ₹ 1000</p></li>
+                                    <li>
+                                        <p class="save_amount" v-if="(item.id == 1)">You save: ₹ 2000</p>
+                                        <p class="save_amount" v-if="(item.id == 2)">You save: ₹ 3000</p>
+                                        <p class="save_amount" v-if="(item.id == 3)">You save: ₹ 5000</p>
+                                        <p class="save_amount" v-if="(item.id == 4)">You save: ₹ 10000</p>
+                                    </li>
                                 </ul>
                                 <div class="buy__btn">
-                                    <a href="#!">buy now</a>
+                                    <button :class="isSubscribing && currentPackageId === item.id ? 'btn btn-primary mt-2 button-loading' : 'btn btn-primary mt-2'" @click="postSubscribe(item.id)" :disabled="isSubscribing">{{ __('buy now') }}</button>
+
+                                    <!-- <a href="#!">buy now</a> -->
                                 </div>
                                 <div class="list__detail">
                                     <ul>
                                         <li><p>{{item.number_of_listings }} Property Listings</p></li>
-                                        <li><p>1 Featured Project Listing</p></li>
                                         <li><p>{{ item.duration }}  Days Validity</p></li>
                                         <li><p><b>{{ item.total_leads }} Qualified Leads</b></p></li>
-                                        <li><p>Location Base Leads</p></li>
                                         <li><p>Budget Based Leads</p></li>
-                                        <li><p>Min. 60% Qualified Leads</p></li>
-                                        <li><p>Dedicated Executive</p></li>
-                                        <li><p>Expert Photography/Videography</p></li>
+                                        <li><p>Location Base Leads</p></li>
+                                        <li v-if="(item.id != 1)"><p>Expert Photography/Videography</p></li>
+                                        <li  v-if="(item.id != 1 && item.id !=2 && item.id !=3)"><p>Min. 80% Qualified Leads</p></li>
+                                        <li  v-if="(item.id != 1 && item.id !=2 && item.id !=3)"><p>Dedicated Executive</p></li>
+                                        <li  v-if="(item.id != 1 && item.id !=2 && item.id !=3)"><p>10000 WhatsApp Messaging</p></li>
+                                        <li  v-if="(item.id != 1 && item.id !=2 && item.id !=3)"><p>Voiceover Audio Ad (1 No.)</p></li>
+                                        <li  v-if="(item.id != 1 && item.id !=2)"><p>Min. 60% Qualified Leads</p></li>
+                                        <li v-if="(item.id != 1 && item.id !=2)"><p>Dedicated Executive</p></li>
                                         <li><p>Directory Expert Listing</p></li>
-                                        <li><p>Suitable For Property Budget 60- 80 Lakhs<sup>*</sup></p></li>
+                                        <li><p>Suitable For Property Budget upto {{item.maximal_property_budget}} </p></li>
                                     </ul>
                                 </div>
                             </div>
