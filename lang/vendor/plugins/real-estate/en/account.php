@@ -12,7 +12,7 @@ return [
     ],
     'forgot_password' => 'Forgot password',
     'login' => 'Login',
-    'buy_credits' => 'Buy credits',
+    'buy_credits' => 'Buy Listings',
     'credits' => 'credits',
     'account_settings' => 'Account settings',
     'update_profile_success' => 'Update profile successfully!',

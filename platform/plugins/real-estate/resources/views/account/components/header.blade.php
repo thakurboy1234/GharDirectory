@@ -55,7 +55,7 @@
           </li>
           @if (RealEstateHelper::isEnabledCreditsSystem())
               <li>
-                  <a class="no-underline mr2 black-50 hover-black-70 pv1 ph2 db mr2" style="text-decoration: none; line-height: 32px;" href="{{ route('public.account.packages') }}" title="{{ trans('plugins/real-estate::account.credits') }}">
+                  <a class="no-underline mr2 black-50 hover-black-70 pv1 ph2 db mr2" style="text-decoration: none; line-height: 32px;" href="{{ route('public.packages') }}" title="{{ trans('plugins/real-estate::account.credits') }}">
                       <i class="far fa-credit-card mr1"></i>{{ trans('plugins/real-estate::account.buy_credits') }} <span class="badge badge-info">{{ auth('account')->user()->credits }} {{ trans('plugins/real-estate::account.credits') }}</span>
                   </a>
               </li>

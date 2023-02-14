@@ -55,7 +55,7 @@
         @if (auth('account')->check() && !auth('account')->user()->canPost())
             <div class="container">
                 <div class="alert alert-warning">{{ trans('plugins/real-estate::package.add_credit_warning') }}
-                    <a href="{{ route('public.account.packages') }}">{{ trans('plugins/real-estate::package.add_credit') }}</a></div>
+                    <a href="{{ route('public.packages') }}">{{ trans('plugins/real-estate::package.add_credit') }}</a></div>
             </div>
             <br>
         @endif
