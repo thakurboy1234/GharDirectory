@@ -89,7 +89,7 @@ class DashboardController extends BaseController
        $totalLeads= app(ConsultInterface::class)
                         ->getModel()
                         ->count();
-       $inActiveVendorFilter = "filter_table_id=botble-real-estate-tables-account-table&class=Botble%5CRealEstate%5CTables%5CPropertyTable&filter_columns%5B0%5D=credits&filter_operators%5B0%5D=<=&filter_values%5B0%5D=1" ;
+       $inActiveVendorFilter = "filter_table_id=botble-real-estate-tables-account-table&class=Botble%5CRealEstate%5CTables%5CPropertyTable&filter_columns%5B0%5D=credits&filter_operators%5B0%5D=<&filter_values%5B0%5D=1" ;
        $activeVendorFilter = "filter_table_id=botble-real-estate-tables-account-table&class=Botble%5CRealEstate%5CTables%5CPropertyTable&filter_columns%5B0%5D=credits&filter_operators%5B0%5D=>=&filter_values%5B0%5D=1" ;
 
         $statWidgets = collect($widgetData)->where('type', '!=', 'widget')->pluck('view')->all();
