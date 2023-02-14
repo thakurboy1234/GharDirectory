@@ -28,7 +28,7 @@
                             <button :class="isSubscribing && currentPackageId === item.id ? 'btn btn-primary mt-2 button-loading' : 'btn btn-primary mt-2'" @click="postSubscribe(item.id)" :disabled="isSubscribing">{{ __('purchase') }}</button>
                         </div>
                     </div> -->
-                    <div class="packages__cardWrap">
+                    <!-- <div class="packages__cardWrap">
                         <h2> {{ item.name }}<br><small>(for property budget upto {{item.maximal_property_budget}})</small></h2>
 
                         <div class="ul__listing">
@@ -40,10 +40,39 @@
                         </div>
                         <h3>price: ₹{{ item.price }} <small v-if="item.price != 0"></small></h3>
                         <div class="buy__btn">
-                            <!-- <button class="btn">buy now</button> -->
                             <button :class="isSubscribing && currentPackageId === item.id ? 'btn btn-primary mt-2 button-loading' : 'btn btn-primary mt-2'" @click="postSubscribe(item.id)" :disabled="isSubscribing">{{ __('buy now') }}</button>
                         </div>
-                    </div>
+                    </div> -->
+
+
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-top: 30px;">
+                            <div class="packages__cardWrapNew">
+                                <h2> {{ item.name }}</h2>
+                                <ul class="price__area">
+                                    <li><p class="old_price">₹ 25900</p></li>
+                                    <li><p class="new_price">₹ {{ item.price }}<br><small>exclusive of GST</small></p></li>
+                                    <li><p class="save_amount">You save: ₹ 1000</p></li>
+                                </ul>
+                                <div class="buy__btn">
+                                    <a href="#!">buy now</a>
+                                </div>
+                                <div class="list__detail">
+                                    <ul>
+                                        <li><p>{{item.number_of_listings }} Property Listings</p></li>
+                                        <li><p>1 Featured Project Listing</p></li>
+                                        <li><p>{{ item.duration }}  Days Validity</p></li>
+                                        <li><p><b>{{ item.total_leads }} Qualified Leads</b></p></li>
+                                        <li><p>Location Base Leads</p></li>
+                                        <li><p>Budget Based Leads</p></li>
+                                        <li><p>Min. 60% Qualified Leads</p></li>
+                                        <li><p>Dedicated Executive</p></li>
+                                        <li><p>Expert Photography/Videography</p></li>
+                                        <li><p>Directory Expert Listing</p></li>
+                                        <li><p>Suitable For Property Budget 60- 80 Lakhs<sup>*</sup></p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

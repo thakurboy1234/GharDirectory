@@ -343,6 +343,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -9192,65 +9221,83 @@ var render = function () {
                     staticStyle: { "margin-top": "30px" },
                   },
                   [
-                    _c("div", { staticClass: "packages__cardWrap" }, [
-                      _c("h2", [
-                        _vm._v(" " + _vm._s(item.name)),
-                        _c("br"),
-                        _c("small", [
-                          _vm._v(
-                            "(for property budget upto " +
-                              _vm._s(item.maximal_property_budget) +
-                              ")"
-                          ),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "ul__listing" }, [
-                        _c("ul", [
-                          _c("li", [
-                            _vm._v(
-                              "free " + _vm._s(item.total_leads) + " leads"
-                            ),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12",
+                        staticStyle: { "margin-top": "30px" },
+                      },
+                      [
+                        _c("div", { staticClass: "packages__cardWrapNew" }, [
+                          _c("h2", [_vm._v(" " + _vm._s(item.name))]),
+                          _vm._v(" "),
+                          _c("ul", { staticClass: "price__area" }, [
+                            _vm._m(0, true),
+                            _vm._v(" "),
+                            _c("li", [
+                              _c("p", { staticClass: "new_price" }, [
+                                _vm._v("₹ " + _vm._s(item.price)),
+                                _c("br"),
+                                _c("small", [_vm._v("exclusive of GST")]),
+                              ]),
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(1, true),
                           ]),
                           _vm._v(" "),
-                          _c("li", [
-                            _vm._v(
-                              _vm._s(item.number_of_listings) +
-                                " property listing"
-                            ),
-                          ]),
+                          _vm._m(2, true),
                           _vm._v(" "),
-                          _c("li", [
-                            _vm._v(_vm._s(item.duration) + " days duration"),
+                          _c("div", { staticClass: "list__detail" }, [
+                            _c("ul", [
+                              _c("li", [
+                                _c("p", [
+                                  _vm._v(
+                                    _vm._s(item.number_of_listings) +
+                                      " Property Listings"
+                                  ),
+                                ]),
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(3, true),
+                              _vm._v(" "),
+                              _c("li", [
+                                _c("p", [
+                                  _vm._v(
+                                    _vm._s(item.duration) + "  Days Validity"
+                                  ),
+                                ]),
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [
+                                _c("p", [
+                                  _c("b", [
+                                    _vm._v(
+                                      _vm._s(item.total_leads) +
+                                        " Qualified Leads"
+                                    ),
+                                  ]),
+                                ]),
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(4, true),
+                              _vm._v(" "),
+                              _vm._m(5, true),
+                              _vm._v(" "),
+                              _vm._m(6, true),
+                              _vm._v(" "),
+                              _vm._m(7, true),
+                              _vm._v(" "),
+                              _vm._m(8, true),
+                              _vm._v(" "),
+                              _vm._m(9, true),
+                              _vm._v(" "),
+                              _vm._m(10, true),
+                            ]),
                           ]),
                         ]),
-                      ]),
-                      _vm._v(" "),
-                      _c("h3", [
-                        _vm._v("price: ₹" + _vm._s(item.price) + " "),
-                        item.price != 0 ? _c("small") : _vm._e(),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "buy__btn" }, [
-                        _c(
-                          "button",
-                          {
-                            class:
-                              _vm.isSubscribing &&
-                              _vm.currentPackageId === item.id
-                                ? "btn btn-primary mt-2 button-loading"
-                                : "btn btn-primary mt-2",
-                            attrs: { disabled: _vm.isSubscribing },
-                            on: {
-                              click: function ($event) {
-                                return _vm.postSubscribe(item.id)
-                              },
-                            },
-                          },
-                          [_vm._v(_vm._s(_vm.__("buy now")))]
-                        ),
-                      ]),
-                    ]),
+                      ]
+                    ),
                   ]
                 )
               : _vm._e()
@@ -9261,7 +9308,85 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("p", { staticClass: "old_price" }, [_vm._v("₹ 25900")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("p", { staticClass: "save_amount" }, [_vm._v("You save: ₹ 1000")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "buy__btn" }, [
+      _c("a", { attrs: { href: "#!" } }, [_vm._v("buy now")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("p", [_vm._v("1 Featured Project Listing")])])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("p", [_vm._v("Location Base Leads")])])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("p", [_vm._v("Budget Based Leads")])])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("p", [_vm._v("Min. 60% Qualified Leads")])])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("p", [_vm._v("Dedicated Executive")])])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("p", [_vm._v("Expert Photography/Videography")])])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("p", [_vm._v("Directory Expert Listing")])])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("p", [
+        _vm._v("Suitable For Property Budget 60- 80 Lakhs"),
+        _c("sup", [_vm._v("*")]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
