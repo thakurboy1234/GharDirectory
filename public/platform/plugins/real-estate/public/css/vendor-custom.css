@@ -110,6 +110,10 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
     right: 0;
     width: 100%;
 }
+.col-xs-12.col-lg-3 {
+    display: flex;
+    align-items: stretch;
+}
 .packages__cardWrapNew .buy__btn .btn {
     background-color: #f79534;
     font-size: 13px;
