@@ -110,7 +110,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
     right: 0;
     width: 100%;
 }
-.packages__cardWrap .buy__btn .btn {
+.packages__cardWrapNew .buy__btn .btn {
     background-color: #f79534;
     font-size: 13px;
     font-weight: bold;
@@ -118,10 +118,10 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     border-radius: 5px;
 }
-.packages__cardWrap .buy__btn .btn:hover {
+.packages__cardWrapNew .buy__btn .btn:hover {
     background-color: #063a5d;
 }
-.packages__cardWrap .buy__btn .btn:active {
+.packages__cardWrapNew .buy__btn .btn:active {
     color: #fff;
     background-color: #063a5d;
 }
