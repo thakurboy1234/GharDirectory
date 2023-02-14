@@ -21,10 +21,43 @@
                                 </span>
                             @endif
                         </div>
+                        <div class="form-group mb-3">
+                            <input id="company" type="text"
+                                   class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}"
+                                   name="company" value="{{ old('company') }}"
+                                   placeholder="{{ trans('plugins/real-estate::dashboard.company') }}">
+                            @if ($errors->has('company'))
+                                <span class="invalid-feedback">
+                                <strong>{{ $errors->first('company') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="form-group mb-3">
+                            <input id="phone" type="text"
+                            class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
+                            name="phone" value="{{ old('phone') }}" required
+                            placeholder="{{ trans('plugins/real-estate::dashboard.phone') }}">
+                            @if ($errors->has('phone'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('phone') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                        <div class="form-group mb-3">
+                            <input id="alternate_mobile_number" type="text"
+                                   class="form-control{{ $errors->has('alternate_mobile_number') ? ' is-invalid' : '' }}"
+                                   name="alternate_mobile_number" value="{{ old('alternate_mobile_number') }}"
+                                   placeholder="{{ trans('plugins/real-estate::dashboard.alternate_mobile_number') }}">
+                            @if ($errors->has('alternate_mobile_number'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('alternate_mobile_number') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
                         <div class="form-group">
                             <input id="username" type="text"
                             class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
-                            name="username" value="{{ old('username') }}" required
+                            name="username" value="{{ old('username') }}"
                             placeholder="{{ trans('plugins/real-estate::dashboard.username') }}">
                             @if ($errors->has('username'))
                             <span class="invalid-feedback">
@@ -44,17 +77,6 @@
                             @endif
                         </div>
                         <div class="form-group mb-3">
-                            <input id="phone" type="text"
-                            class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
-                            name="phone" value="{{ old('phone') }}" required
-                            placeholder="{{ trans('plugins/real-estate::dashboard.phone') }}">
-                            @if ($errors->has('phone'))
-                            <span class="invalid-feedback">
-                                <strong>{{ $errors->first('phone') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-                        <div class="form-group mb-3">
                             <select name="city_id" class="form-control">
                                 <option value="">Select City</option>
                                 @if(count($cities))
@@ -64,28 +86,6 @@
                                 @endif
                             </select>
 
-                        </div>
-                        <div class="form-group mb-3">
-                            <input id="company" type="text"
-                                   class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}"
-                                   name="company" value="{{ old('company') }}"
-                                   placeholder="{{ trans('plugins/real-estate::dashboard.company') }}">
-                            @if ($errors->has('company'))
-                                <span class="invalid-feedback">
-                                <strong>{{ $errors->first('company') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                        <div class="form-group mb-3">
-                            <input id="alternate_mobile_number" type="text"
-                                   class="form-control{{ $errors->has('alternate_mobile_number') ? ' is-invalid' : '' }}"
-                                   name="alternate_mobile_number" value="{{ old('alternate_mobile_number') }}"
-                                   placeholder="{{ trans('plugins/real-estate::dashboard.alternate_mobile_number') }}">
-                            @if ($errors->has('alternate_mobile_number'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('alternate_mobile_number') }}</strong>
-                                    </span>
-                            @endif
                         </div>
 
                         <div class="form-group">
@@ -176,9 +176,6 @@
             //     required: true,
             // },
 
-            username: {
-                required: true,
-            },
 
             email: {
                 required: true,
@@ -206,12 +203,6 @@
         messages: {
             fff_name: {
                 required: "Full Name is required.",
-            },
-            // company: {
-            //     required: "Last Name is required.",
-            // },
-            username: {
-                required: "Username is required.",
             },
             email: {
                 required: "Email is required.",
