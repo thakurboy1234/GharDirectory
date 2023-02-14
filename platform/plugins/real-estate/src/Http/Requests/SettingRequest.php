@@ -10,10 +10,12 @@ class SettingRequest extends Request
     public function rules(): array
     {
         return [
-            'username' => 'required|max:60|min:2|unique:re_accounts,username,' . auth('account')->id(),
+            // 'username' => 'required|max:60|min:2|unique:re_accounts,username,' . auth('account')->id(),
             'fff_name' => 'required|max:120',
             'phone' => 'sometimes|' . BaseHelper::getPhoneValidationRule(),
             'dob' => 'max:20|sometimes',
+            'city_id' => 'required'
+
         ];
     }
 }

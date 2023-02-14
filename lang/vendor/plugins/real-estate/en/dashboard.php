@@ -48,7 +48,7 @@ return [
     'uploading' => 'Uploading...',
     'company' => 'Company Name',
     'phone' => 'Mobile No',
-    'alternate_mobile_number' => 'WhatsApp Number',
+    'alternate_mobile_number' => 'WhatsApp No',
     'first_name' => 'First name',
     'last_name' => 'Last name',
     'description' => 'Short description',

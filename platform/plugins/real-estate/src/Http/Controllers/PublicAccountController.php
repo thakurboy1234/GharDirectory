@@ -44,6 +44,8 @@ use RealEstateHelper;
 use RvMedia;
 use SeoHelper;
 use Throwable;
+use Botble\Location\Repositories\Interfaces\CityInterface;
+
 
 class PublicAccountController extends Controller
 {
@@ -107,10 +109,10 @@ class PublicAccountController extends Controller
         SeoHelper::setTitle(trans('plugins/real-estate::account.account_settings'));
 
         $user = auth('account')->user();
-
+        $cities= app(CityInterface::class)->getModel()->get();
         Assets::addScriptsDirectly(['vendor/core/plugins/real-estate/libraries/cropper.js']);
 
-        return view('plugins/real-estate::account.settings.index', compact('user'));
+        return view('plugins/real-estate::account.settings.index', compact('user','cities'));
     }
 
     /**

@@ -225,10 +225,10 @@ class RegisterController extends Controller
             'fff_name' => 'required|max:120',
             'city_id' => 'required|exists:cities,id',
             // 'company_name' => 'required|max:120',
-            'username' => 'required|max:60|min:2|unique:re_accounts,username',
+            // 'username' => 'required|max:60|min:2|unique:re_accounts,username',
             'email' => 'required|email|max:255|unique:re_accounts',
             'password' => 'required|min:6|confirmed',
-            'phone' => 'required|' . BaseHelper::getPhoneValidationRule(),
+            'phone' => 'required|unique:re_accounts|' . BaseHelper::getPhoneValidationRule(),
         ];
 
         if (is_plugin_active('captcha') && setting('enable_captcha') && setting(
@@ -256,7 +256,7 @@ class RegisterController extends Controller
             'fff_name' => $data['fff_name'],
             'company' => $data['company'],
             'alternate_mobile_number' => $data['alternate_mobile_number'],
-            'username' => $data['username'],
+            // 'username' => $data['username'],
             'email' => $data['email'],
             'phone' => $data['phone'],
             'city_id' => $data['city_id'],

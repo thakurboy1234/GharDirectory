@@ -54,10 +54,10 @@
                                 <label for="company">{{ trans('plugins/real-estate::dashboard.company') }}</label>
                                 <input type="text" class="form-control" name="company" id="company" required value="{{ old('company') ?? $user->company }}">
                             </div>
-                            <div class="form-group mb-3">
+                            {{-- <div class="form-group mb-3">
                                 <label for="username">{{ trans('plugins/real-estate::dashboard.username') }}</label>
                                 <input type="text" class="form-control" name="username" id="username" required value="{{ old('username') ?? $user->username }}">
-                            </div>
+                            </div> --}}
                             {{-- <div class="form-group mb-3">
                                 <label for="company">{{ trans('plugins/real-estate::dashboard.company') }}</label>
                                 <input type="text" class="form-control" name="company" id="company" required value="{{ old('company') ?? $user->company }}">
@@ -65,29 +65,42 @@
                             <!-- Phone -->
                             <div class="form-group mb-3">
                                 <label for="phone">{{ trans('plugins/real-estate::dashboard.phone') }}</label>
-                                <input type="text" class="form-control" name="phone" id="phone" required value="{{ old('phone') ?? $user->phone }}">
+                                <input type="text" class="form-control" name="phone" id="phone" disabled="disabled"  required value="{{ old('phone') ?? $user->phone }}">
                             </div>
                             <!--Alternate Mobile Number-->
                             <div class="form-group mb-3">
                                 <label for="alternate_mobile_number">{{ trans('plugins/real-estate::dashboard.alternate_mobile_number') }}</label>
                                 <input type="text" class="form-control" name="alternate_mobile_number" id="alternate_mobile_number" value="{{ old('alternate_mobile_number') ?? $user->alternate_mobile_number }}">
                             </div>
-                            <!--Short description-->
-                            <div class="form-group mb-3">
-                                <label for="description">{{ trans('plugins/real-estate::dashboard.description') }}</label>
-                                <textarea class="form-control" name="description" id="description" rows="3" maxlength="300" placeholder="{{ trans('plugins/real-estate::dashboard.description_placeholder') }}">{{ old('description') ?? $user->description }}</textarea>
-                            </div>
                             <!-- Email -->
                             <div class="form-group mb-3">
                                 <label for="email">{{ trans('plugins/real-estate::dashboard.email') }}</label>
                                 <input type="email" class="form-control" name="email" id="email" disabled="disabled" placeholder="{{ trans('plugins/real-estate::dashboard.email_placeholder') }}" required value="{{ old('email') ?? $user->email }}">
                                 @if (setting('verify_account_email', false))
-                                    @if ($user->confirmed_at)
-                                        <small class="f7 green">{{ trans('plugins/real-estate::dashboard.verified') }}<i class="ml1 far fa-check-circle"></i></small>
-                                    @else
-                                        <small class="f7">{{ trans('plugins/real-estate::dashboard.verify_require_desc') }}<a href="{{ route('public.account.resend_confirmation', ['email' => $user->email]) }}" class="ml1">{{ trans('plugins/real-estate::dashboard.resend') }}</a></small>
-                                    @endif
+                                @if ($user->confirmed_at)
+                                <small class="f7 green">{{ trans('plugins/real-estate::dashboard.verified') }}<i class="ml1 far fa-check-circle"></i></small>
+                                @else
+                                <small class="f7">{{ trans('plugins/real-estate::dashboard.verify_require_desc') }}<a href="{{ route('public.account.resend_confirmation', ['email' => $user->email]) }}" class="ml1">{{ trans('plugins/real-estate::dashboard.resend') }}</a></small>
                                 @endif
+                                @endif
+                            </div>
+                            <!-- City -->
+                            <div class="form-group mb-3">
+                                <label for="city">{{ trans('plugins/real-estate::dashboard.city') }}</label>
+                                <select name="city_id" class="form-control">
+                                    <option value="">Select City</option>
+                                    @if(count($cities))
+                                        @foreach($cities as $key => $city)
+                                        <option value="{{$city->id}}" {{ $user->city_id == $city->id ? 'selected' : '' }}>{{$city->name}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+
+                            </div>
+                            <!--Short description-->
+                            <div class="form-group mb-3">
+                                <label for="description">{{ trans('plugins/real-estate::dashboard.description') }}</label>
+                                <textarea class="form-control" name="description" id="description" rows="3" maxlength="300" placeholder="About Your Company...">{{ old('description') ?? $user->description }}</textarea>
                             </div>
                             <!-- Birthday -->
                             <div class="form-group mb-3">

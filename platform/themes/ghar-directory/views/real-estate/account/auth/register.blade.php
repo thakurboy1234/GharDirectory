@@ -55,17 +55,6 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <input id="username" type="text"
-                            class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
-                            name="username" value="{{ old('username') }}"
-                            placeholder="{{ trans('plugins/real-estate::dashboard.username') }}">
-                            @if ($errors->has('username'))
-                            <span class="invalid-feedback">
-                                <strong>{{ $errors->first('username') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-                        <div class="form-group">
                             <input id="email" type="email"
                             class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                             name="email" value="{{ old('email') }}" required
@@ -76,6 +65,17 @@
                             </span>
                             @endif
                         </div>
+                        {{-- <div class="form-group">
+                            <input id="username" type="text"
+                            class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
+                            name="username" value="{{ old('username') }}"
+                            placeholder="{{ trans('plugins/real-estate::dashboard.username') }}">
+                            @if ($errors->has('username'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('username') }}</strong>
+                            </span>
+                            @endif
+                        </div> --}}
                         <div class="form-group mb-3">
                             <select name="city_id" class="form-control">
                                 <option value="">Select City</option>
@@ -208,7 +208,7 @@
                 required: "Email is required.",
             },
             phone: {
-                required: "Phone Number is required.",
+                required: "Mobile Number is required.",
             },
             password: {
                 required: "Password is required.",
