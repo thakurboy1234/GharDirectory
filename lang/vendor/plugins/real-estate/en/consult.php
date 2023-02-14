@@ -13,7 +13,7 @@ return [
     'email' => [
         'header' => 'Email',
         'title' => 'New consult from your site',
-        'success' => 'Send consult successfully!',
+        'success' => 'Thanks, your details have been submitted successfully!',
         'failed' => 'Can\'t send request on this time, please try again later!',
     ],
     'form' => [
