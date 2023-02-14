@@ -120,6 +120,7 @@ class PropertyTable extends TableAbstract
             'is_featured_status' => [
                 'title' => trans('core/base::tables.is_featured'),
                 'width' => '70px',
+                'orderable' => false,
             ],
         ];
     }
