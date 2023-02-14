@@ -5,7 +5,7 @@ return [
     'dob' => 'Born :date',
     'email' => 'Email',
     'username' => 'Username',
-    'email_or_username' => 'Email/Username',
+    'email_or_username' => 'Email',
     'password' => 'Password',
     'password-confirmation' => 'Confirm Password',
     'remember-me' => 'Remember Me',
