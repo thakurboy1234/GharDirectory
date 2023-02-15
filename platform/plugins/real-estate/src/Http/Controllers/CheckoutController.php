@@ -149,7 +149,7 @@ class CheckoutController extends Controller
 
 
 
-        $action = $PAYU_BASE_URL . '_payment';
+        $action = $PAYU_BASE_URL . '/_payment';
 
         // $ship = Session::get('shipping_address');
 
