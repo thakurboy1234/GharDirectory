@@ -123,6 +123,7 @@ class CheckoutController extends Controller
             'token' => '',
 
         ];
+
         Log::info('selected_payment_method '.Auth::check());
         session()->put('selected_payment_method', $data['type']);
         $paymentData = apply_filters(PAYMENT_FILTER_PAYMENT_DATA, [], $request);
