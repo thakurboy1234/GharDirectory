@@ -50,7 +50,7 @@
                                     <li><p class="save_amount">You save: ₹ @if($package->id == 1)2000 @endif @if($package->id == 2)3000 @endif @if($package->id == 3)5000 @endif  @if($package->id == 4)10000 @endif</p></li>
                                 </ul>
                                 <div class="buy__btn">
-                                    <a href="{{route('public.account.packages')}}">buy now</a>
+                                    <a href="{{route('public.account.package.subscribe', $package->id)}}">buy now</a>
                                 </div>
                                 <div class="list__detail">
                                     <ul>

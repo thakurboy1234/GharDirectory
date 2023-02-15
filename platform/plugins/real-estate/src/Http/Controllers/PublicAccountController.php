@@ -201,6 +201,7 @@ class PublicAccountController extends Controller
      */
     public function ajaxGetPackages(PackageInterface $packageRepository, BaseHttpResponse $response)
     {
+        // dd(!11);
         if (! RealEstateHelper::isEnabledCreditsSystem()) {
             abort(404);
         }
@@ -345,12 +346,15 @@ class PublicAccountController extends Controller
      */
     public function getSubscribePackage($id, PackageInterface $packageRepository)
     {
+        // dd(11);
         if (! RealEstateHelper::isEnabledCreditsSystem()) {
             abort(404);
         }
 
         $package = $packageRepository->findOrFail($id);
-
+        if(isset($package)){
+            session(['subscribed_packaged_id' => $package->id]);
+        }
         SeoHelper::setTitle(trans('plugins/real-estate::package.subscribe_package', ['name' => $package->name]));
 
         return view('plugins/real-estate::account.checkout', compact('package'));
