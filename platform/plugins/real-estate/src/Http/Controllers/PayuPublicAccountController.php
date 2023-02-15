@@ -396,9 +396,7 @@ class PayuPublicAccountController extends Controller
         TransactionInterface $transactionRepository,
         BaseHttpResponse $response
         ) {
-            if(!auth('account')->check()){
-                return redirect()->route('public.account.login');
-            }
+
 
             if($request->check != ''){
               $checkCallbackViaPayu= Crypt::decryptString($request->check);
