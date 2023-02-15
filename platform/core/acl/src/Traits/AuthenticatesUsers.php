@@ -118,6 +118,9 @@ trait AuthenticatesUsers
      */
     protected function credentials(Request $request)
     {
+        if(is_numeric($request->get('email'))){
+            return ['phone'=>$request->get('email'),'password'=>$request->get('password')];
+        }
         return $request->only($this->username(), 'password');
     }
 
