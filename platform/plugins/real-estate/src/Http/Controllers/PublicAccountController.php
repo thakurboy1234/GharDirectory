@@ -215,6 +215,7 @@ class PublicAccountController extends Controller
             ->where('status', BaseStatusEnum::PUBLISHED)
             ->get();
 
+
         $packages = $packages->filter(function ($package) use ($account) {
             return $package->account_limit === null || $account->packages->where(
                 'id',
