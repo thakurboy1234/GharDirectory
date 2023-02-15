@@ -12,7 +12,7 @@
                         <div class="form-group">
                             <input id="email" type="text"
                                    class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                   placeholder="{{ trans('plugins/real-estate::dashboard.email_or_username') }}"
+                                   placeholder="{{ trans('plugins/real-estate::dashboard.email_or_username') }}/Phone"
                                    name="email" value="{{ old('email') }}" autofocus>
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback">
