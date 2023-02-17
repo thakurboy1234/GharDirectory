@@ -46,14 +46,14 @@ class AccountForm extends FormAbstract
                     'data-counter' => 120,
                 ],
             ])
-            ->add('username', 'text', [
-                'label' => trans('plugins/real-estate::account.username'),
-                'label_attr' => ['class' => 'control-label required'],
-                'attr' => [
-                    'placeholder' => trans('plugins/real-estate::account.username_placeholder'),
-                    'data-counter' => 120,
-                ],
-            ])
+            // ->add('username', 'text', [
+            //     'label' => trans('plugins/real-estate::account.username'),
+            //     'label_attr' => ['class' => 'control-label required'],
+            //     'attr' => [
+            //         'placeholder' => trans('plugins/real-estate::account.username_placeholder'),
+            //         'data-counter' => 120,
+            //     ],
+            // ])
             ->add('company', 'text', [
                 'label' => trans('plugins/real-estate::account.company'),
                 'label_attr' => ['class' => 'control-label'],
