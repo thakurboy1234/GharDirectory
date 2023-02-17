@@ -8,6 +8,7 @@ use Botble\Base\Forms\FormAbstract;
 use Botble\RealEstate\Http\Requests\AccountCreateRequest;
 use Botble\RealEstate\Models\Account;
 use RealEstateHelper;
+use Botble\Location\Repositories\Interfaces\CityInterface;
 
 class AccountForm extends FormAbstract
 {
@@ -17,6 +18,9 @@ class AccountForm extends FormAbstract
     {
         Assets::addStylesDirectly('vendor/core/plugins/real-estate/css/account-admin.css')
             ->addScriptsDirectly(['/vendor/core/plugins/real-estate/js/account-admin.js']);
+
+            $cities = app(CityInterface::class)->pluck('name','id');
+// dd($cities);
 
         $this
             ->setupModel(new Account())
@@ -61,6 +65,11 @@ class AccountForm extends FormAbstract
                     'placeholder' => trans('plugins/real-estate::account.company_placeholder'),
                     'data-counter' => 255,
                 ],
+            ])
+            ->add('city_id', 'customSelect', [
+                'label' => trans('plugins/real-estate::account.city'),
+                'label_attr' => ['class' => 'control-label'],
+                'choices' => [null => trans('plugins/location::city.select_city')] + $cities,
             ])
             ->add('phone', 'text', [
                 'label' => trans('plugins/real-estate::account.phone'),

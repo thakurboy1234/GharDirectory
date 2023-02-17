@@ -15,7 +15,9 @@ class AccountCreateRequest extends Request
             'email' => 'required|max:60|min:6|email|unique:re_accounts',
             'password' => 'required|min:6|confirmed',
             'fff_name' => 'required|max:120|min:2',
-            // 'city_id' => 'required'
+            'phone' => 'required',
+            'city_id' => 'required',
+
 
 
         ];

@@ -33,4 +33,5 @@ return [
     'dob' => 'Date of birth',
     'number_of_properties' => 'Number of properties',
     'agents' => 'Agents',
+    'city' => 'City',
 ];
