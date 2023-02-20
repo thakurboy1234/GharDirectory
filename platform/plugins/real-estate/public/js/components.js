@@ -372,6 +372,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -9189,7 +9204,7 @@ var render = function () {
     _c("div", { staticClass: "packages-listing" }, [
       _c(
         "div",
-        { staticClass: "row flex-items-xs-middle flex-items-xs-center" },
+        { staticClass: "row " },
         [
           _vm.isLoading
             ? _c(
@@ -9216,16 +9231,17 @@ var render = function () {
                     key: item.id,
                     class:
                       _vm.data.length === 2
-                        ? "col-xs-12 col-lg-6"
-                        : "col-xs-12 col-lg-4",
-                    staticStyle: { "margin-top": "30px" },
+                        ? "col-xs-12 col-lg-4"
+                        : _vm.data.length === 3
+                        ? "col-xs-12 col-lg-4"
+                        : "col-xs-12 col-lg-3",
                   },
                   [
                     _c(
                       "div",
                       {
                         staticClass:
-                          "col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12",
+                          "col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12",
                         staticStyle: { "margin-top": "30px" },
                       },
                       [
@@ -9233,7 +9249,31 @@ var render = function () {
                           _c("h2", [_vm._v(" " + _vm._s(item.name))]),
                           _vm._v(" "),
                           _c("ul", { staticClass: "price__area" }, [
-                            _vm._m(0, true),
+                            _c("li", [
+                              item.id == 1
+                                ? _c("p", { staticClass: "old_price" }, [
+                                    _vm._v(_vm._s(item.price + 2000)),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              item.id == 2
+                                ? _c("p", { staticClass: "old_price" }, [
+                                    _vm._v(_vm._s(item.price + 3000)),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              item.id == 3
+                                ? _c("p", { staticClass: "old_price" }, [
+                                    _vm._v(_vm._s(item.price + 5000)),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              item.id == 4
+                                ? _c("p", { staticClass: "old_price" }, [
+                                    _vm._v(_vm._s(item.price + 10000)),
+                                  ])
+                                : _vm._e(),
+                            ]),
                             _vm._v(" "),
                             _c("li", [
                               _c("p", { staticClass: "new_price" }, [
@@ -9243,10 +9283,52 @@ var render = function () {
                               ]),
                             ]),
                             _vm._v(" "),
-                            _vm._m(1, true),
+                            _c("li", [
+                              item.id == 1
+                                ? _c("p", { staticClass: "save_amount" }, [
+                                    _vm._v("You save: ₹ 2000"),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              item.id == 2
+                                ? _c("p", { staticClass: "save_amount" }, [
+                                    _vm._v("You save: ₹ 3000"),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              item.id == 3
+                                ? _c("p", { staticClass: "save_amount" }, [
+                                    _vm._v("You save: ₹ 5000"),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              item.id == 4
+                                ? _c("p", { staticClass: "save_amount" }, [
+                                    _vm._v("You save: ₹ 10000"),
+                                  ])
+                                : _vm._e(),
+                            ]),
                           ]),
                           _vm._v(" "),
-                          _vm._m(2, true),
+                          _c("div", { staticClass: "buy__btn" }, [
+                            _c(
+                              "button",
+                              {
+                                class:
+                                  _vm.isSubscribing &&
+                                  _vm.currentPackageId === item.id
+                                    ? "btn btn-primary mt-2 button-loading"
+                                    : "btn btn-primary mt-2",
+                                attrs: { disabled: _vm.isSubscribing },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.postSubscribe(item.id)
+                                  },
+                                },
+                              },
+                              [_vm._v(_vm._s(_vm.__("buy now")))]
+                            ),
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "list__detail" }, [
                             _c("ul", [
@@ -9258,8 +9340,6 @@ var render = function () {
                                   ),
                                 ]),
                               ]),
-                              _vm._v(" "),
-                              _vm._m(3, true),
                               _vm._v(" "),
                               _c("li", [
                                 _c("p", [
@@ -9280,19 +9360,73 @@ var render = function () {
                                 ]),
                               ]),
                               _vm._v(" "),
-                              _vm._m(4, true),
+                              _vm._m(0, true),
                               _vm._v(" "),
-                              _vm._m(5, true),
+                              _vm._m(1, true),
                               _vm._v(" "),
-                              _vm._m(6, true),
+                              item.id != 1
+                                ? _c("li", [
+                                    _c("p", [
+                                      _vm._v("Expert Photography/Videography"),
+                                    ]),
+                                  ])
+                                : _vm._e(),
                               _vm._v(" "),
-                              _vm._m(7, true),
+                              item.id != 1 && item.id != 2 && item.id != 3
+                                ? _c("li", [
+                                    _c("p", [
+                                      _vm._v("Min. 80% Qualified Leads"),
+                                    ]),
+                                  ])
+                                : _vm._e(),
                               _vm._v(" "),
-                              _vm._m(8, true),
+                              item.id != 1 && item.id != 2 && item.id != 3
+                                ? _c("li", [
+                                    _c("p", [_vm._v("Dedicated Executive")]),
+                                  ])
+                                : _vm._e(),
                               _vm._v(" "),
-                              _vm._m(9, true),
+                              item.id != 1 && item.id != 2 && item.id != 3
+                                ? _c("li", [
+                                    _c("p", [
+                                      _vm._v("10000 WhatsApp Messaging"),
+                                    ]),
+                                  ])
+                                : _vm._e(),
                               _vm._v(" "),
-                              _vm._m(10, true),
+                              item.id != 1 && item.id != 2 && item.id != 3
+                                ? _c("li", [
+                                    _c("p", [
+                                      _vm._v("Voiceover Audio Ad (1 No.)"),
+                                    ]),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              item.id != 1 && item.id != 2
+                                ? _c("li", [
+                                    _c("p", [
+                                      _vm._v("Min. 60% Qualified Leads"),
+                                    ]),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              item.id != 1 && item.id != 2
+                                ? _c("li", [
+                                    _c("p", [_vm._v("Dedicated Executive")]),
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm._m(2, true),
+                              _vm._v(" "),
+                              _c("li", [
+                                _c("p", [
+                                  _vm._v(
+                                    "Suitable For Property Budget upto " +
+                                      _vm._s(item.maximal_property_budget) +
+                                      " "
+                                  ),
+                                ]),
+                              ]),
                             ]),
                           ]),
                         ]),
@@ -9313,31 +9447,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("p", { staticClass: "old_price" }, [_vm._v("₹ 25900")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("p", { staticClass: "save_amount" }, [_vm._v("You save: ₹ 1000")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "buy__btn" }, [
-      _c("a", { attrs: { href: "#!" } }, [_vm._v("buy now")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [_c("p", [_vm._v("1 Featured Project Listing")])])
+    return _c("li", [_c("p", [_vm._v("Budget Based Leads")])])
   },
   function () {
     var _vm = this
@@ -9349,42 +9459,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", [_c("p", [_vm._v("Budget Based Leads")])])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [_c("p", [_vm._v("Min. 60% Qualified Leads")])])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [_c("p", [_vm._v("Dedicated Executive")])])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [_c("p", [_vm._v("Expert Photography/Videography")])])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("li", [_c("p", [_vm._v("Directory Expert Listing")])])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("p", [
-        _vm._v("Suitable For Property Budget 60- 80 Lakhs"),
-        _c("sup", [_vm._v("*")]),
-      ]),
-    ])
   },
 ]
 render._withStripped = true
@@ -9623,7 +9698,7 @@ function normalizeComponent (
 
 "use strict";
 /* provided dependency */ var Buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js")["Buffer"];
-// Axios v1.2.3 Copyright (c) 2023 Matt Zabriskie and contributors
+// Axios v1.3.3 Copyright (c) 2023 Matt Zabriskie and contributors
 
 
 function bind(fn, thisArg) {
@@ -10142,7 +10217,7 @@ const matchAll = (regExp, str) => {
 const isHTMLForm = kindOfTest('HTMLFormElement');
 
 const toCamelCase = str => {
-  return str.toLowerCase().replace(/[_-\s]([a-z\d])(\w*)/g,
+  return str.toLowerCase().replace(/[-_\s]([a-z\d])(\w*)/g,
     function replacer(m, p1, p2) {
       return p1.toUpperCase() + p2;
     }
@@ -10226,6 +10301,37 @@ const toFiniteNumber = (value, defaultValue) => {
   return Number.isFinite(value) ? value : defaultValue;
 };
 
+const ALPHA = 'abcdefghijklmnopqrstuvwxyz';
+
+const DIGIT = '0123456789';
+
+const ALPHABET = {
+  DIGIT,
+  ALPHA,
+  ALPHA_DIGIT: ALPHA + ALPHA.toUpperCase() + DIGIT
+};
+
+const generateString = (size = 16, alphabet = ALPHABET.ALPHA_DIGIT) => {
+  let str = '';
+  const {length} = alphabet;
+  while (size--) {
+    str += alphabet[Math.random() * length|0];
+  }
+
+  return str;
+};
+
+/**
+ * If the thing is a FormData object, return true, otherwise return false.
+ *
+ * @param {unknown} thing - The thing to check.
+ *
+ * @returns {boolean}
+ */
+function isSpecCompliantForm(thing) {
+  return !!(thing && isFunction(thing.append) && thing[Symbol.toStringTag] === 'FormData' && thing[Symbol.iterator]);
+}
+
 const toJSONObject = (obj) => {
   const stack = new Array(10);
 
@@ -10303,6 +10409,9 @@ var utils = {
   findKey,
   global: _global,
   isContextDefined,
+  ALPHABET,
+  generateString,
+  isSpecCompliantForm,
   toJSONObject
 };
 
@@ -10401,10 +10510,8 @@ AxiosError.from = (error, code, config, request, response, customProps) => {
   return axiosError;
 };
 
-/* eslint-env browser */
-var browser = typeof self == 'object' ? self.FormData : window.FormData;
-
-var FormData$2 = browser;
+// eslint-disable-next-line strict
+var httpAdapter = null;
 
 /**
  * Determines if the given thing is a array or js object.
@@ -10462,17 +10569,6 @@ const predicates = utils.toFlatObject(utils, {}, null, function filter(prop) {
 });
 
 /**
- * If the thing is a FormData object, return true, otherwise return false.
- *
- * @param {unknown} thing - The thing to check.
- *
- * @returns {boolean}
- */
-function isSpecCompliant(thing) {
-  return thing && utils.isFunction(thing.append) && thing[Symbol.toStringTag] === 'FormData' && thing[Symbol.iterator];
-}
-
-/**
  * Convert a data object to FormData
  *
  * @param {Object} obj
@@ -10501,7 +10597,7 @@ function toFormData(obj, formData, options) {
   }
 
   // eslint-disable-next-line no-param-reassign
-  formData = formData || new (FormData$2 || FormData)();
+  formData = formData || new (FormData)();
 
   // eslint-disable-next-line no-param-reassign
   options = utils.toFlatObject(options, {
@@ -10519,7 +10615,7 @@ function toFormData(obj, formData, options) {
   const dots = options.dots;
   const indexes = options.indexes;
   const _Blob = options.Blob || typeof Blob !== 'undefined' && Blob;
-  const useBlob = _Blob && isSpecCompliant(formData);
+  const useBlob = _Blob && utils.isSpecCompliantForm(formData);
 
   if (!utils.isFunction(visitor)) {
     throw new TypeError('visitor must be a function');
@@ -10564,7 +10660,7 @@ function toFormData(obj, formData, options) {
         value = JSON.stringify(value);
       } else if (
         (utils.isArray(value) && isFlatArray(value)) ||
-        (utils.isFileList(value) || utils.endsWith(key, '[]') && (arr = utils.toArray(value))
+        ((utils.isFileList(value) || utils.endsWith(key, '[]')) && (arr = utils.toArray(value))
         )) {
         // eslint-disable-next-line no-param-reassign
         key = removeBrackets(key);
@@ -10816,7 +10912,7 @@ var transitionalDefaults = {
 
 var URLSearchParams$1 = typeof URLSearchParams !== 'undefined' ? URLSearchParams : AxiosURLSearchParams;
 
-var FormData$1 = FormData;
+var FormData$1 = typeof FormData !== 'undefined' ? FormData : null;
 
 /**
  * Determine if we're running in a standard browser environment
@@ -11218,9 +11314,13 @@ function isValidHeaderName(str) {
   return /^[-_a-zA-Z]+$/.test(str.trim());
 }
 
-function matchHeaderValue(context, value, header, filter) {
+function matchHeaderValue(context, value, header, filter, isHeaderNameFilter) {
   if (utils.isFunction(filter)) {
     return filter.call(this, value, header);
+  }
+
+  if (isHeaderNameFilter) {
+    value = header;
   }
 
   if (!utils.isString(value)) return;
@@ -11326,7 +11426,7 @@ class AxiosHeaders {
     if (header) {
       const key = utils.findKey(this, header);
 
-      return !!(key && (!matcher || matchHeaderValue(this, this[key], key, matcher)));
+      return !!(key && this[key] !== undefined && (!matcher || matchHeaderValue(this, this[key], key, matcher)));
     }
 
     return false;
@@ -11359,8 +11459,20 @@ class AxiosHeaders {
     return deleted;
   }
 
-  clear() {
-    return Object.keys(this).forEach(this.delete.bind(this));
+  clear(matcher) {
+    const keys = Object.keys(this);
+    let i = keys.length;
+    let deleted = false;
+
+    while (i--) {
+      const key = keys[i];
+      if(!matcher || matchHeaderValue(this, this[key], key, matcher, true)) {
+        delete this[key];
+        deleted = true;
+      }
+    }
+
+    return deleted;
   }
 
   normalize(format) {
@@ -11451,7 +11563,7 @@ class AxiosHeaders {
   }
 }
 
-AxiosHeaders.accessor(['Content-Type', 'Content-Length', 'Accept', 'Accept-Encoding', 'User-Agent']);
+AxiosHeaders.accessor(['Content-Type', 'Content-Length', 'Accept', 'Accept-Encoding', 'User-Agent', 'Authorization']);
 
 utils.freezeMethods(AxiosHeaders.prototype);
 utils.freezeMethods(AxiosHeaders);
@@ -11503,9 +11615,6 @@ function CanceledError(message, config, request) {
 utils.inherits(CanceledError, AxiosError, {
   __CANCEL__: true
 });
-
-// eslint-disable-next-line strict
-var httpAdapter = null;
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -12207,7 +12316,7 @@ function mergeConfig(config1, config2) {
   return config;
 }
 
-const VERSION = "1.2.3";
+const VERSION = "1.3.3";
 
 const validators$1 = {};
 
