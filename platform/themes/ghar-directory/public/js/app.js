@@ -834,21 +834,24 @@ var downloadTimer = setInterval(function () {
     clearInterval(downloadTimer);
   }
 }, 1000);
-
 // // //phone verify js
 
-// let digitValidate = function(ele){
-//     console.log(ele.value);
-//     ele.value = ele.value.replace(/[^0-9]/g,'');
-//   }
-
-//   let tabChange = function(val){
-//       let ele = document.querySelectorAll('input');
-//       if(ele[val-1].value != ''){
-//         ele[val].focus()
-//       }else if(ele[val-1].value == ''){
-//         ele[val-2].focus()
-//       }
-//    }
+var tabChange = function tabChange(val) {
+  var ele = document.querySelectorAll('input');
+  if (ele[val - 1].value != '') {
+    ele[val].focus();
+  } else if (ele[val - 1].value == '') {
+    ele[val - 2].focus();
+  }
+};
+$(document).ready(function () {
+  if ($(".focus-defau").val() == '') {
+    $(".focus-defau").focus();
+  }
+  $('.auto-focus').on('keyup', function () {
+    var val = $(this).data('val');
+    return tabChange(val);
+  });
+});
 /******/ })()
 ;
