@@ -56,6 +56,8 @@ class Account extends BaseModel implements
         'alternate_mobile_number',
         'first_name',
         'last_name',
+        'phone_otp',
+        'phone_number_verify_via_admin',
     ];
 
     protected $hidden = [

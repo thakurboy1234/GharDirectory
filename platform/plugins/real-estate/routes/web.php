@@ -204,6 +204,9 @@ Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' 
                         Route::get('verify', 'RegisterController@getVerify')
                             ->name('verify');
 
+                        Route::get('phone/verify/{user_id}/{password}/{login?}','RegisterController@phone_verify_page')->name('phone.verify');
+                        Route::get('verify/otp/{user_id}/{password}','RegisterController@verify_otp');
+
                         Route::get(
                             'password/request',
                             'ForgotPasswordController@showLinkRequestForm'

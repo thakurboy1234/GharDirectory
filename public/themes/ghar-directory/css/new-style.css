@@ -919,3 +919,53 @@ span#eyeicon_confirm {
         height: 22px !important;
     } */
 }
+
+/* otp form css */
+/* .card {
+    width: 350px;
+    padding: 10px;
+    border-radius: 20px;
+    background: #fff;
+    border: none;
+    height: 350px;
+    position: relative;
+  } */
+
+  /* .container {
+    height: 100vh;
+  } */
+
+  /* body {
+    background: #eee;
+  } */
+
+  .otp-form .mobile-text {
+    color: #989696b8;
+    font-size: 15px;
+  }
+
+  .otp-form .form-control {
+    margin-right: 12px;
+    text-align: center;
+  }
+
+  .otp-form .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ff8880;
+    outline: 0;
+    box-shadow: none;
+  }
+  .otp-form input::-webkit-outer-spin-button,
+  .otp-form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.disabled-link {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+  .otp-form .cursor {
+    cursor: pointer;
+  }
