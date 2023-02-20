@@ -930,21 +930,26 @@ var timeleft = 60;
         clearInterval(downloadTimer);
     }
     },1000);
+   // // //phone verify js
 
+    let tabChange = function(val){
 
-    // // //phone verify js
+          let ele = document.querySelectorAll('input');
 
-    // let digitValidate = function(ele){
-    //     console.log(ele.value);
-    //     ele.value = ele.value.replace(/[^0-9]/g,'');
-    //   }
+            if(ele[val-1].value != ''){
+                ele[val].focus()
+            }else if(ele[val-1].value == ''){
+                ele[val-2].focus()
+            }
+        }
+            $(document).ready(function(){
 
-    //   let tabChange = function(val){
-    //       let ele = document.querySelectorAll('input');
-    //       if(ele[val-1].value != ''){
-    //         ele[val].focus()
-    //       }else if(ele[val-1].value == ''){
-    //         ele[val-2].focus()
-    //       }
-    //    }
+                if($(".focus-defau").val() ==''){
+                    $(".focus-defau").focus();
+                }
+                $('.auto-focus').on('keyup',function(){
+                    let val = $(this).data('val');
+                    return tabChange(val);
+                })
+            });
 

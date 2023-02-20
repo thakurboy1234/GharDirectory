@@ -1,5 +1,4 @@
 
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -13,10 +12,10 @@
                     <form action="{{url('verify/otp/'.$en_user_id.'/'.$password)}}" method="get" id="phone_verify">
                         <div class="form-group">
                             <div class="d-flex flex-row mt-3">
-                                <input type="number" name="otp[]" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1  class="form-control auto-focus" autofocus="">
-                                <input type="number" name="otp[]"  oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1  class="form-control auto-focus">
-                                <input type="number" name="otp[]" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1  class="form-control auto-focus">
-                                <input type="number" name="otp[]"  oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1 class="form-control auto-focus">
+                                <input type="number" name="otp[]" required data-val='1'  maxlength='1'  class="form-control auto-focus focus-defau" autofocus>
+                                <input type="number" name="otp[]" required data-val='2'  maxlength='1'  class="form-control auto-focus">
+                                <input type="number" name="otp[]" required data-val='3'  maxlength='1'  class="form-control auto-focus">
+                                <input type="number" name="otp[]"  required data-val='4'  maxlength='1' class="form-control auto-focus">
                             </div>
                         </div>
                         <div class="form-group">
@@ -36,33 +35,3 @@
     </div>
 </div>
 
-<script>
-
-    let digitValidate = function(ele){
-        console.log(ele.value);
-        ele.value = ele.value.replace(/[^0-9]/g,'');
-      }
-
-      let tabChange = function(val){
-          let ele = document.querySelectorAll('input');
-          if(ele[val-1].value != ''){
-            ele[val].focus()
-          }else if(ele[val-1].value == ''){
-            ele[val-2].focus()
-          }
-       }
-       //    otp timer
-var timeleft = 60;
-    var downloadTimer = setInterval(function(){
-        if(timeleft <= 2){
-            $('#disabled-link-id').removeClass('disabled-link');
-         }else{
-            $('#disabled-link-id').addClass('disabled-link');
-        }
-    timeleft--;
-    document.getElementById("countdowntimer").textContent = timeleft;
-    if(timeleft <= 0){
-        clearInterval(downloadTimer);
-    }
-    },1000);
-</script>
