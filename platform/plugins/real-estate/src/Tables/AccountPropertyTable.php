@@ -65,6 +65,10 @@ class AccountPropertyTable extends PropertyTable
             ->editColumn('moderation_status', function ($item) {
                 return BaseHelper::clean($item->moderation_status->toHtml());
             })
+            ->editColumn('is_featured_status', function ($item) {
+                $status = ($item->is_featured == 1) ? 'Yes' : 'No';
+                return $status;
+            })
             ->addColumn('operations', function ($item) {
                 $edit = 'public.account.properties.edit';
                 $delete = 'public.account.properties.destroy';
@@ -86,6 +90,8 @@ class AccountPropertyTable extends PropertyTable
                 'status',
                 'moderation_status',
                 'expire_date',
+                'is_featured',
+
             ])
             ->where([
                 'author_id' => auth('account')->id(),

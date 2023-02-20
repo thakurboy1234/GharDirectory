@@ -324,9 +324,9 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
     text-decoration: none;
 }
 .packages__cardWrapNew .list__detail {
-    display: flex;
-    justify-content: center;
-    margin: 0 35px 0;
+    /* display: flex; */
+    /* justify-content: center; */
+    margin: 0 20px 0;
 }
 .packages__cardWrapNew .list__detail ul {
     padding: 0 0 0;

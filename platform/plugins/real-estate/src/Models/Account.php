@@ -174,4 +174,17 @@ class Account extends BaseModel implements
     {
         return $this->belongsToMany(Package::class, 're_account_packages', 'account_id', 'package_id');
     }
+
+    public static function propertyExpiredDaysAccountWise()
+    {
+        $packages = auth('account')->user()->packages()->get();
+        if ($packages) {
+            $duration = $packages->pluck('duration')->toArray();
+            if ($duration) {
+                //max duration is used for filter highest duration in user all packages
+                $max_duration = max($duration);
+                return $max_duration;
+            }
+        }
+    }
 }

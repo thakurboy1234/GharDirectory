@@ -131,8 +131,7 @@ class AccountPropertyController extends Controller
             'author_type' => Account::class,
         ]));
 
-        $property->expire_date = now()->addDays(RealEstateHelper::propertyExpiredDays());
-
+        $property->expire_date = now()->addDays((Account::propertyExpiredDaysAccountWise()) ? Account::propertyExpiredDaysAccountWise() : RealEstateHelper::propertyExpiredDays());
         if (setting('enable_post_approval', 1) == 0) {
             $property->moderation_status = ModerationStatusEnum::APPROVED;
         }

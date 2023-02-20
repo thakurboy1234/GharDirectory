@@ -75,7 +75,7 @@
                                         <li><p><b>{{ item.total_leads }} Qualified Leads</b></p></li>
                                         <li><p>Budget Based Leads</p></li>
                                         <li><p>Location Base Leads</p></li>
-                                        <li v-if="(item.id != 1)"><p>Expert Photography/Videography</p></li>
+                                        <li v-if="(item.id != 1)"><p>Expert Photography/ Videography</p></li>
                                         <li  v-if="(item.id != 1 && item.id !=2 && item.id !=3)"><p>Min. 80% Qualified Leads</p></li>
                                         <li  v-if="(item.id != 1 && item.id !=2 && item.id !=3)"><p>Dedicated Executive</p></li>
                                         <li  v-if="(item.id != 1 && item.id !=2 && item.id !=3)"><p>10000 WhatsApp Messaging</p></li>
