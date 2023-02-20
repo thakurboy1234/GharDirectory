@@ -316,7 +316,6 @@ class RegisterController extends Controller
                     if ($diff <= 600) {
                         // dump(1);
                         $encrypt_user_id =  \Crypt::encryptString($checkOtp->user_id);
-                        $encrypt_otp =  \Crypt::encryptString($checkOtp->otp);
                         // dump(2);
                         return redirect(url('phone/verify/' . $encrypt_user_id . '/' . $form_data['password']));
                     } else {
@@ -346,17 +345,24 @@ class RegisterController extends Controller
 
 
 
-    public function phone_verify_page($user_id = null, $password = null,$login=false)
+    public function phone_verify_page($en_user_id = null, $password = null,$login=false)
     {
-        if($login){
-
+        $user_id='';
+        try {
+            $user_id = \Crypt::decryptString($en_user_id);
+        } catch (DecryptException $e) {
+                if($e->getMessage() !=''){
+                    return Redirect(route('public.account.login'));
+                }
 
         }
-
+        $checkAccount = app(AccountInterface::class)
+        ->getmodel()
+        ->find($user_id);
         SeoHelper::setTitle(__('Verify'));
 
         // dd(auth('account')->check());
-        return Theme::scope('real-estate.account.auth.phoneVerify', compact('user_id', 'password'))->render();
+        return Theme::scope('real-estate.account.auth.phoneVerify', compact('en_user_id', 'password','checkAccount'))->render();
         // return view('phoneVerify');
 
 
@@ -379,19 +385,20 @@ class RegisterController extends Controller
                     }
 
             }
-        $user_id = \Crypt::decryptString($en_user_id);
+        // $user_id = \Crypt::decryptString($en_user_id);
         $checkOtp =   PhoneVerify::where('user_id', $user_id)->OrderBy('id', 'desc')->first();
 
         $checkAccount = app(AccountInterface::class)
         ->getmodel()
         ->find($user_id);
         //check user phone number verifed or not
+        // dd($checkAccount);
             if(isset($checkAccount->phone_otp)){
               return redirect()->route('public.account.login');
             }
          // end check user phone number verifed or not
 
-        $current = \Carbon\Carbon::now();
+
         $diff = now()->diffInSeconds($checkOtp->updated_at);
 
       //time diff check 1o mint
@@ -403,6 +410,8 @@ class RegisterController extends Controller
                         $fullOtp .= $value;
                     }
                 }
+                // dd(2);
+
                 // match opt here
                 if ($checkOtp->otp == $fullOtp) {
                     $checkAccount->update(['phone_otp' => $checkOtp->otp, 'confirmed_at', now()]);
@@ -410,6 +419,8 @@ class RegisterController extends Controller
                     if (Auth::guard('account')->attempt($attempt)) {
                         return  redirect()->route('public.account.dashboard');
                     }
+                    // dd(3);
+                    ///
                 } else {
                     //otp not match
                     return Redirect()->back()->withErrors(['msg' => 'Otp is invalid ! ']);
@@ -433,34 +444,65 @@ class RegisterController extends Controller
         $phoneVerify->user_id = $user_details->id;
         $phoneVerify->otp = $otp;
 
-        //twilio
-          // $receiverNumber = 7248307698;
-                    // $message = "This is testing from CodeSolutionStuff.com";
+        // twilio
+        //   $receiverNumber = $user_details;
+                    $message = $otp." is your Account Login OTP. Team GharDirectory ";
 
-                    // try {
+                    try {
 
-                    //     $account_sid = getenv("TWILIO_SID");
-                    //     $auth_token = getenv("TWILIO_TOKEN");
-                    //     $twilio_number = getenv("TWILIO_FROM");
+                        $account_sid = getenv("TWILIO_SID");
+                        $auth_token = getenv("TWILIO_TOKEN");
+                        $twilio_number = getenv("TWILIO_FROM");
 
-                    //     $client = new Client($account_sid, $auth_token);
-                    //     $client->messages->create($receiverNumber, [
-                    //         'from' => $twilio_number,
-                    //         'body' => $message]);
+                        $client = new Client($account_sid, $auth_token);
+                        $client->messages->create('+91'.$user_details->phone, [
+                            'from' => $twilio_number,
+                            'body' => $message]);
 
-                    //     dd('SMS Sent Successfully.');
+                        // dd('SMS Sent Successfully.');
 
-                    // } catch (\Exception $e) {
-                    //     dd("Error: ". $e->getMessage());
-                    // }
+                    } catch (\Exception $e) {
+                        Log::info("twilio Error: ". $e->getMessage());
+                        // dd("Error: ". $e->getMessage());
+                    }
 
-        //end
+        // end
 
 
         if ($phoneVerify->save()) {
             $encrypt_user_id =  \Crypt::encryptString($phoneVerify->user_id);
-            $encrypt_otp =  \Crypt::encryptString($phoneVerify->otp);
             return redirect(url('phone/verify/' . $encrypt_user_id . '/' . $form_data['password']));
+        }
+
+    }
+    public function resend_otp($en_user_id,$password)
+    {
+        $form_data['password'] = $password;
+        // dd($en_user_id);
+
+        $user_id='';
+        try {
+            $user_id = \Crypt::decryptString($en_user_id);
+        } catch (DecryptException $e) {
+                if($e->getMessage() !=''){
+                    return Redirect(route('public.account.login'));
+                }
+
+        }
+        $checkAccount = app(AccountInterface::class)
+        ->getmodel()
+        ->find($user_id);
+        if (isset($checkAccount)) {
+            if(!$checkAccount->phone_otp){
+                return $this->generate_new_otp($checkAccount,$form_data);
+
+            }else{
+                return Redirect(route('public.account.login'));
+            }
+
+        }else{
+
+            return Redirect()->back()->withErrors(['msg' => 'User not found !']);
         }
 
     }
