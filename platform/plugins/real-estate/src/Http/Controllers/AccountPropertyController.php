@@ -321,7 +321,7 @@ class AccountPropertyController extends Controller
             return $response->setError(true)->setMessage(__('You don\'t have enough credit to renew this property!'));
         }
 
-        $job->expire_date = $job->expire_date->addDays(RealEstateHelper::propertyExpiredDays());
+        $job->expire_date = $job->expire_date->addDays((Account::propertyExpiredDaysAccountWise()) ? Account::propertyExpiredDaysAccountWise() : RealEstateHelper::propertyExpiredDays());
         $job->save();
 
         if (RealEstateHelper::isEnabledCreditsSystem()) {

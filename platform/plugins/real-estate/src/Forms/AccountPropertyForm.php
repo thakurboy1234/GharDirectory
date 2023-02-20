@@ -6,6 +6,7 @@ use Assets;
 use Botble\RealEstate\Forms\Fields\CustomEditorField;
 use Botble\RealEstate\Forms\Fields\MultipleUploadField;
 use Botble\RealEstate\Http\Requests\AccountPropertyRequest;
+use Botble\RealEstate\Models\Account;
 use Botble\RealEstate\Models\Property;
 use RealEstateHelper;
 
@@ -37,7 +38,7 @@ class AccountPropertyForm extends PropertyForm
             ->remove('images[]')
             ->remove('never_expired')
             ->modify('auto_renew', 'onOff', [
-                'label' => trans('plugins/real-estate::property.renew_notice', ['days' => RealEstateHelper::propertyExpiredDays()]),
+                'label' => trans('plugins/real-estate::property.renew_notice', ['days' => (Account::propertyExpiredDaysAccountWise()) ? Account::propertyExpiredDaysAccountWise() : RealEstateHelper::propertyExpiredDays()]),
                 'label_attr' => ['class' => 'control-label'],
                 'default_value' => false,
             ], true)
