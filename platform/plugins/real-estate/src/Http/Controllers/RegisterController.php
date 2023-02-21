@@ -8,6 +8,7 @@ use Botble\ACL\Traits\RegistersUsers;
 use Botble\Base\Http\Responses\BaseHttpResponse;
 use Botble\Location\Repositories\Interfaces\CityInterface;
 use Botble\RealEstate\Models\Account;
+use Botble\RealEstate\Models\PhoneVerify;
 use Botble\RealEstate\Repositories\Interfaces\AccountInterface;
 use EmailHandler;
 use Illuminate\Auth\Events\Registered;
@@ -15,12 +16,18 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use RealEstateHelper;
 use Response;
 use SeoHelper;
 use Theme;
 use URL;
+use Twilio\Rest\Client;
+use Illuminate\Contracts\Encryption\DecryptException;
+
 
 class RegisterController extends Controller
 {
@@ -67,17 +74,17 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        if (! RealEstateHelper::isRegisterEnabled()) {
+        if (!RealEstateHelper::isRegisterEnabled()) {
             abort(404);
         }
-        $cities= app(CityInterface::class)->getModel()->get();
+        $cities = app(CityInterface::class)->getModel()->get();
         SeoHelper::setTitle(__('Register'));
 
         if (view()->exists(Theme::getThemeNamespace() . '::views.real-estate.account.auth.register')) {
-            return Theme::scope('real-estate.account.auth.register',compact('cities'))->render();
+            return Theme::scope('real-estate.account.auth.register', compact('cities'))->render();
         }
 
-        return view('plugins/real-estate::account.auth.register',compact('cities'));
+        return view('plugins/real-estate::account.auth.register', compact('cities'));
     }
 
     /**
@@ -91,11 +98,11 @@ class RegisterController extends Controller
      */
     public function confirm($id, Request $request, BaseHttpResponse $response, AccountInterface $accountRepository)
     {
-        if (! RealEstateHelper::isRegisterEnabled()) {
+        if (!RealEstateHelper::isRegisterEnabled()) {
             abort(404);
         }
 
-        if (! URL::hasValidSignature($request)) {
+        if (!URL::hasValidSignature($request)) {
             abort(404);
         }
 
@@ -134,12 +141,12 @@ class RegisterController extends Controller
         AccountInterface $accountRepository,
         BaseHttpResponse $response
     ) {
-        if (! RealEstateHelper::isRegisterEnabled()) {
+        if (!RealEstateHelper::isRegisterEnabled()) {
             abort(404);
         }
 
         $account = $accountRepository->getFirstBy(['email' => $request->input('email')]);
-        if (! $account) {
+        if (!$account) {
             return $response
                 ->setError()
                 ->setMessage(__('Cannot find this account!'));
@@ -175,8 +182,12 @@ class RegisterController extends Controller
      */
     public function register(Request $request, BaseHttpResponse $response)
     {
+        // dump(['email'=>'user@gmail.com','password'=>'123456']);
+        // Auth::guard('account')->attempt(['email'=>'user@gmail.com','password'=>'password']);
+        // dd(Auth::check());
+        // dd(11);
 
-        if (! RealEstateHelper::isRegisterEnabled()) {
+        if (!RealEstateHelper::isRegisterEnabled()) {
             abort(404);
         }
 
@@ -184,29 +195,47 @@ class RegisterController extends Controller
 
         event(new Registered($account = $this->create($request->input())));
 
-        EmailHandler::setModule(REAL_ESTATE_MODULE_SCREEN_NAME)
-        ->setVariableValues([
-            'account_name' =>  $account->name,
-            'account_email' => $account->email,
-            ])
-            ->sendUsingTemplate('new-account-registered', $account->email,);
+        // EmailHandler::setModule(REAL_ESTATE_MODULE_SCREEN_NAME)
+        // ->setVariableValues([
+        //     'account_name' =>  $account->name,
+        //     'account_email' => $account->email,
+        //     ])
+        //     ->sendUsingTemplate('new-account-registered', $account->email,);
 
-        EmailHandler::setModule(REAL_ESTATE_MODULE_SCREEN_NAME)
-            ->setVariableValues([
-                'account_name' => $account->name,
-                'account_email' => $account->email,
-            ])
-            ->sendUsingTemplate('account-registered');
+        // EmailHandler::setModule(REAL_ESTATE_MODULE_SCREEN_NAME)
+        //     ->setVariableValues([
+        //         'account_name' => $account->name,
+        //         'account_email' => $account->email,
+        //     ])
+        //     ->sendUsingTemplate('account-registered');
 
-        if (setting('verify_account_email', false)) {
-            $this->sendConfirmationToUser($account);
+        // if (setting('verify_account_email', false)) {
+        //     $this->sendConfirmationToUser($account);
 
-            return $this->registered($request, $account)
-                ?: $response->setNextUrl((string)$this->redirectPath())
-                    ->setMessage(__('Please confirm your email address.'));
+        //     return $this->registered($request, $account)
+        //         ?: $response->setNextUrl((string)$this->redirectPath())
+        //             ->setMessage(__('Please confirm your email address.'));
+        // }
+        $user_details =   app(AccountInterface::class)
+            ->getModel()
+            ->where('id', $account->id)
+            ->first();
+        if ($user_details->phone_number_verify_via_admin == 0 && !isset($user_details->phone_otp)) {
+            return  $otpstatus = $this->check_phone_verify($user_details, $request->all());
+            //    Log::info( $otpstatus);
+            if ($otpstatus) {
+                $account->confirmed_at = now();
+
+                $this->accountRepository->createOrUpdate($account);
+                $this->guard()->login($account);
+                redirect()->route('dashboard.index');
+
+                // return $response->setNextUrl((string)$this->redirectPath())->setMessage(__('Registered successfully!'));
+            }
         }
-
+        // dd(11);
         $account->confirmed_at = now();
+
         $this->accountRepository->createOrUpdate($account);
         $this->guard()->login($account);
 
@@ -269,10 +298,212 @@ class RegisterController extends Controller
      */
     public function getVerify()
     {
-        if (! RealEstateHelper::isRegisterEnabled()) {
+        if (!RealEstateHelper::isRegisterEnabled()) {
             abort(404);
         }
 
         return view('plugins/real-estate::account.auth.verify');
+    }
+    public function check_phone_verify($user_details = null, $form_data)
+    {
+        // dd($form_data);
+        if (isset($user_details)) {
+            if ($user_details->phone_number_verify_via_admin == 0 && !isset($user_details->phone_otp)) {
+                $checkOtp =   PhoneVerify::where('user_id', $user_details->id)->OrderBy('id', 'desc')->first();
+                if (isset($checkOtp)) {
+                    $current = \Carbon\Carbon::now();
+                    $diff = now()->diffInSeconds($checkOtp->updated_at);
+                    if ($diff <= 600) {
+                        // dump(1);
+                        $encrypt_user_id =  \Crypt::encryptString($checkOtp->user_id);
+                        // dump(2);
+                        return redirect(url('phone/verify/' . $encrypt_user_id . '/' . $form_data['password']));
+                    } else {
+                        return $this->generate_new_otp($user_details,$form_data);
+                    }
+                } else {
+
+                    return $this->generate_new_otp($user_details,$form_data);
+                    // // dd(312312);
+                    // $otp = rand(1000, 9999);
+                    // $phoneVerify = new  PhoneVerify();
+                    // $phoneVerify->user_id = $user_details->id;
+                    // $phoneVerify->otp = $otp;
+
+
+                    // if ($phoneVerify->save()) {
+                    //     $encrypt_user_id =  \Crypt::encryptString($phoneVerify->user_id);
+                    //     $encrypt_otp =  \Crypt::encryptString($phoneVerify->otp);
+                    //     return redirect(url('phone/verify/' . $encrypt_user_id . '/' . $form_data['password']));
+                    // }
+                    // // dump(6);
+                }
+
+            }
+        }
+    }
+
+
+
+    public function phone_verify_page($en_user_id = null, $password = null,$login=false)
+    {
+        $user_id='';
+        try {
+            $user_id = \Crypt::decryptString($en_user_id);
+        } catch (DecryptException $e) {
+                if($e->getMessage() !=''){
+                    return Redirect(route('public.account.login'));
+                }
+
+        }
+        $checkAccount = app(AccountInterface::class)
+        ->getmodel()
+        ->find($user_id);
+        SeoHelper::setTitle(__('Verify'));
+
+        // dd(auth('account')->check());
+        return Theme::scope('real-estate.account.auth.phoneVerify', compact('en_user_id', 'password','checkAccount'))->render();
+        // return view('phoneVerify');
+
+
+    }
+    public function verify_otp(Request $request, $en_user_id, $password)
+    {
+        // dd(1121);
+        //     dump(['email'=>'user@gmail.com','password'=>'123456']);
+        // Auth::guard('account')->attempt(['email'=>'user@gmail.com','password'=>'password']);
+        //     // dd(11);
+        // redirect()->route('dashboard.index');
+
+
+            $user_id='';
+            try {
+                $user_id = \Crypt::decryptString($en_user_id);
+            } catch (DecryptException $e) {
+                    if($e->getMessage() !=''){
+                        return Redirect(route('public.account.login'));
+                    }
+
+            }
+        // $user_id = \Crypt::decryptString($en_user_id);
+        $checkOtp =   PhoneVerify::where('user_id', $user_id)->OrderBy('id', 'desc')->first();
+
+        $checkAccount = app(AccountInterface::class)
+        ->getmodel()
+        ->find($user_id);
+        //check user phone number verifed or not
+        // dd($checkAccount);
+            if(isset($checkAccount->phone_otp)){
+              return redirect()->route('public.account.login');
+            }
+         // end check user phone number verifed or not
+
+
+        $diff = now()->diffInSeconds($checkOtp->updated_at);
+
+      //time diff check 1o mint
+        if ($diff <= 600) {
+            if (isset($checkAccount)) {
+                $fullOtp = '';
+                if (count($request->otp)) {
+                    foreach ($request->otp as $key => $value) {
+                        $fullOtp .= $value;
+                    }
+                }
+                // dd(2);
+
+                // match opt here
+                if ($checkOtp->otp == $fullOtp) {
+                    $checkAccount->update(['phone_otp' => $checkOtp->otp, 'confirmed_at', now()]);
+                    $attempt = ['email' => $checkAccount->email, 'password' => $password];
+                    if (Auth::guard('account')->attempt($attempt)) {
+                        return  redirect()->route('public.account.dashboard');
+                    }
+                    // dd(3);
+                    ///
+                } else {
+                    //otp not match
+                    return Redirect()->back()->withErrors(['msg' => 'Otp is invalid ! ']);
+                }
+            } else {
+                //user not found
+                return Redirect()->back()->withErrors(['msg' => 'User not found !']);
+            }
+        } else {
+            //token is expire
+            return Redirect()->back()->withErrors( ['msg' => 'Your token otp expire please send agian ']);
+
+        }
+        return Redirect()->back()->withErrors( ['msg' => 'Some Issue.........']);
+    }
+
+    public static function generate_new_otp($user_details = null, $form_data)
+    {
+        $otp = rand(1000, 9999);
+        $phoneVerify = new  PhoneVerify();
+        $phoneVerify->user_id = $user_details->id;
+        $phoneVerify->otp = $otp;
+
+        // twilio
+        //   $receiverNumber = $user_details;
+                    $message = $otp." is your Account Login OTP. Team GharDirectory ";
+
+                    try {
+
+                        $account_sid = getenv("TWILIO_SID");
+                        $auth_token = getenv("TWILIO_TOKEN");
+                        $twilio_number = getenv("TWILIO_FROM");
+
+                        $client = new Client($account_sid, $auth_token);
+                        $client->messages->create('+91'.$user_details->phone, [
+                            'from' => $twilio_number,
+                            'body' => $message]);
+
+                        // dd('SMS Sent Successfully.');
+
+                    } catch (\Exception $e) {
+                        Log::info("twilio Error: ". $e->getMessage());
+                        // dd("Error: ". $e->getMessage());
+                    }
+
+        // end
+
+
+        if ($phoneVerify->save()) {
+            $encrypt_user_id =  \Crypt::encryptString($phoneVerify->user_id);
+            return redirect(url('phone/verify/' . $encrypt_user_id . '/' . $form_data['password']));
+        }
+
+    }
+    public function resend_otp($en_user_id,$password)
+    {
+        $form_data['password'] = $password;
+        // dd($en_user_id);
+
+        $user_id='';
+        try {
+            $user_id = \Crypt::decryptString($en_user_id);
+        } catch (DecryptException $e) {
+                if($e->getMessage() !=''){
+                    return Redirect(route('public.account.login'));
+                }
+
+        }
+        $checkAccount = app(AccountInterface::class)
+        ->getmodel()
+        ->find($user_id);
+        if (isset($checkAccount)) {
+            if(!$checkAccount->phone_otp){
+                return $this->generate_new_otp($checkAccount,$form_data);
+
+            }else{
+                return Redirect(route('public.account.login'));
+            }
+
+        }else{
+
+            return Redirect()->back()->withErrors(['msg' => 'User not found !']);
+        }
+
     }
 }

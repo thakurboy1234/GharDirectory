@@ -10832,31 +10832,31 @@ a {
 }
 
 .dark-text {
-  color: hsl(0deg, 0%, 13%);
+  color: hsl(0, 0%, 13%);
 }
 .dark-text:hover, .dark-text:focus {
-  color: hsl(0deg, 0%, 13%);
+  color: hsl(0, 0%, 13%);
 }
 
 .gray-text {
-  color: hsl(0deg, 0%, 29%);
+  color: hsl(0, 0%, 29%);
 }
 .gray-text:hover, .gray-text:focus {
-  color: hsl(0deg, 0%, 29%);
+  color: hsl(0, 0%, 29%);
 }
 
 .light-gray-text {
-  color: hsl(0deg, 0%, 45%);
+  color: hsl(0, 0%, 45%);
 }
 .light-gray-text:hover, .light-gray-text:focus {
-  color: hsl(0deg, 0%, 45%);
+  color: hsl(0, 0%, 45%);
 }
 
 .lightest-gray-text {
-  color: hsl(0deg, 0%, 75%);
+  color: hsl(0, 0%, 75%);
 }
 .lightest-gray-text:hover, .lightest-gray-text:focus {
-  color: hsl(0deg, 0%, 75%);
+  color: hsl(0, 0%, 75%);
 }
 
 .darkest-red {
@@ -10903,7 +10903,7 @@ a {
 }
 
 .link-gray-dark {
-  color: hsl(0deg, 0%, 13%) !important;
+  color: hsl(0, 0%, 13%) !important;
 }
 .link-gray-dark:hover {
   color: #0366d6 !important;

@@ -819,5 +819,39 @@ $(document).ready(function () {
     window.location.reload();
   });
 });
+
+//    otp timer
+var timeleft = 60;
+var downloadTimer = setInterval(function () {
+  if (timeleft <= 2) {
+    $('#disabled-link-id').removeClass('disabled-link');
+  } else {
+    $('#disabled-link-id').addClass('disabled-link');
+  }
+  timeleft--;
+  document.getElementById("countdowntimer").textContent = timeleft;
+  if (timeleft <= 0) {
+    clearInterval(downloadTimer);
+  }
+}, 1000);
+// // //phone verify js
+
+var tabChange = function tabChange(val) {
+  var ele = document.querySelectorAll('input');
+  if (ele[val - 1].value != '') {
+    ele[val].focus();
+  } else if (ele[val - 1].value == '') {
+    ele[val - 2].focus();
+  }
+};
+$(document).ready(function () {
+  if ($(".focus-defau").val() == '') {
+    $(".focus-defau").focus();
+  }
+  $('.auto-focus').on('keyup', function () {
+    var val = $(this).data('val');
+    return tabChange(val);
+  });
+});
 /******/ })()
 ;
