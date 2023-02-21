@@ -3,12 +3,35 @@
         <div class="col-md-6">
             <div class="wrapper"><h2 class="h2">{{ __('Contact information') }}</h2>
                 <div class="contact-main">
-                    <p>{{ theme_option('about-us') }}</p>
+                    {{-- <p>{{ theme_option('about-us') }}</p> --}}
                     <div class="contact-name" style="text-transform: uppercase">{{ theme_option('company_name') }}</div>
-                    <div class="contact-address">{{ __('Address') }}: {{ theme_option('address') }}
+                    <div class="address_row contact-address">
+                        <span class="icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </span>
+                        <p>
+                            <span class="heading">{{ __('Address') }}:</span>
+                            <span class="text">{{ theme_option('address') }}</span>
+                        </p>
                     </div>
-                    <div class="contact-phone">{{ __('Hotline') }}: {{ theme_option('hotline') }}</div>
-                    <div class="contact-email">{{ __('Email') }}: {{ theme_option('email') }}</div>
+                    <div class="address_row contact-phone">
+                        <span class="icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </span>
+                        <p>
+                            <span class="heading">{{ __('Hotline') }}:</span>
+                            <span class="text">{{ theme_option('hotline') }}</span>
+                        </p>
+                    </div>
+                    <div class="address_row contact-email">
+                        <span class="icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </span>
+                        <p>
+                            <span class="heading">{{ __('Email') }}:</span>
+                            <span class="text">{{ theme_option('email') }}</span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
