@@ -11,6 +11,7 @@ use Botble\Payment\Services\Gateways\CodPaymentService;
 use Botble\Payment\Services\Gateways\PayuPaymentService;
 use Botble\RealEstate\Http\Requests\CheckoutRequest;
 use Botble\RealEstate\Models\Account;
+use GuzzleHttp\Client;
 // use Botble\Support\Http\Requests\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
@@ -178,6 +179,55 @@ class CheckoutController extends Controller
         Log::info('return '.Auth::check());
 
         if(isset($MERCHANT_KEY) &&  isset($salt)){
+            $client = new Client();
+            $response = $client->request('POST',$action, [
+                'allow_redirects' => false,
+                'form_params' => [
+                    'key' => $MERCHANT_KEY,
+                    'hash' => $hash,
+                    'txnid' => $txnid,
+                    'amount' => !empty($posted['amount']) ? $posted['amount'] : '',
+                    'firstname' => !empty($posted['firstname']) ? $posted['firstname'] : '',
+                    'phone' => !empty($posted['phone']) ? $posted['phone'] : '',
+                    'productinfo' =>!empty($posted['productinfo']) ? $posted['productinfo'] : '',
+                    'surl' => $data['checkoutUrl'],
+                    'furl' => $returnUrl,
+                    'service_provider' => 'payu_paisa',
+                    'email' => !empty($posted['email']) ? $posted['email'] : '',
+                ]
+                ]);
+            $status=false;
+            $redirect_link='';
+            // Log::info('this is payu  checkout ',print_r($response,true));
+            // dd( $response->getStatusCode());
+            if(!empty($response->getStatusCode())){
+                if(!empty($response->getHeaders())){
+                    if(!empty( $response->getHeaders()['Location'][0])){
+                            $status= true;
+                            $redirect_link=$response->getHeaders()['Location'][0];
+                    }
+                }
+            }
+            if($status){
+                return response()->json([
+                    'status'=>$status,
+                    'url'=>$redirect_link,
+                ]);
+            }else{
+                return response()->json([
+                    'status'=>$status,
+                    'url'=>$redirect_link,
+                    'msg'=> 'There is some problem on it please contact the admin'
+                ]);
+
+            }
+            // $array = $response->getHeaders();
+            // //print_r($array['Location'][0]);
+            // return $array['Location'][0];
+
+
+
+
             return response()->json([
                 'status' => true,
                 'html' => view('plugins/payment::partials.payu-checkout-model',compact('hash','action','MERCHANT_KEY','txnid','posted','data','salt','returnUrl'))->render()
