@@ -1443,7 +1443,7 @@ footer .copyright {
   font-weight: normal !important;
   margin: 0;
   display: inline-block;
-  background-color: hsla(0, 0%, 100%, 0.7) !important;
+  background-color: hsla(0deg, 0%, 100%, 0.7) !important;
   color: var(--primary-color);
   float: left;
   border-right: 1px solid #ffffff !important;
@@ -1459,7 +1459,7 @@ footer .copyright {
 }
 
 .topsearch .input-group-lg {
-  background-color: hsla(0, 0%, 100%, 0.7);
+  background-color: hsla(0deg, 0%, 100%, 0.7);
   padding: 25px 20px 5px;
   justify-content: center;
 }

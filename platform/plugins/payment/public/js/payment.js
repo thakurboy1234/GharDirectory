@@ -102,6 +102,7 @@ BPayment.init = function () {
         data: $('form').serialize(),
         success: function success(data) {
           if (data.status) {
+            window.location.href = data.url;
             $('#apand_payu_form').append(data.html);
             $('#payuForm').submit();
           } else {
