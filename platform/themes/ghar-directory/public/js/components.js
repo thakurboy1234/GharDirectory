@@ -25478,7 +25478,11 @@ Vue.compile = compileToFunctions;
 
 "use strict";
 /* provided dependency */ var Buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js")["Buffer"];
+<<<<<<< HEAD
 // Axios v1.3.1 Copyright (c) 2023 Matt Zabriskie and contributors
+=======
+// Axios v1.3.3 Copyright (c) 2023 Matt Zabriskie and contributors
+>>>>>>> 7a850fbb577159395a779e19329c3a64c9310bc7
 
 
 function bind(fn, thisArg) {
@@ -26692,7 +26696,7 @@ var transitionalDefaults = {
 
 var URLSearchParams$1 = typeof URLSearchParams !== 'undefined' ? URLSearchParams : AxiosURLSearchParams;
 
-var FormData$1 = FormData;
+var FormData$1 = typeof FormData !== 'undefined' ? FormData : null;
 
 /**
  * Determine if we're running in a standard browser environment
@@ -27094,9 +27098,13 @@ function isValidHeaderName(str) {
   return /^[-_a-zA-Z]+$/.test(str.trim());
 }
 
-function matchHeaderValue(context, value, header, filter) {
+function matchHeaderValue(context, value, header, filter, isHeaderNameFilter) {
   if (utils.isFunction(filter)) {
     return filter.call(this, value, header);
+  }
+
+  if (isHeaderNameFilter) {
+    value = header;
   }
 
   if (!utils.isString(value)) return;
@@ -27242,7 +27250,11 @@ class AxiosHeaders {
 
     while (i--) {
       const key = keys[i];
+<<<<<<< HEAD
       if(!matcher || matchHeaderValue(this, this[key], key, matcher)) {
+=======
+      if(!matcher || matchHeaderValue(this, this[key], key, matcher, true)) {
+>>>>>>> 7a850fbb577159395a779e19329c3a64c9310bc7
         delete this[key];
         deleted = true;
       }
@@ -28092,7 +28104,11 @@ function mergeConfig(config1, config2) {
   return config;
 }
 
+<<<<<<< HEAD
 const VERSION = "1.3.1";
+=======
+const VERSION = "1.3.3";
+>>>>>>> 7a850fbb577159395a779e19329c3a64c9310bc7
 
 const validators$1 = {};
 

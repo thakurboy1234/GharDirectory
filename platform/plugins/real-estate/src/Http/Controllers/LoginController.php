@@ -5,12 +5,14 @@ namespace Botble\RealEstate\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Botble\ACL\Traits\LogoutGuardTrait;
 use Botble\ACL\Traits\AuthenticatesUsers;
+use Botble\RealEstate\Repositories\Interfaces\AccountInterface;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use RealEstateHelper;
 use SeoHelper;
 use Theme;
 use URL;
+use Botble\RealEstate\Http\Controllers\RegisterController;
 
 class LoginController extends Controller
 {
@@ -109,6 +111,14 @@ class LoginController extends Controller
             $this->sendLockoutResponse($request);
         }
 
+        $checkAccount = app(AccountInterface::class)
+        ->getmodel()
+        ->where('email',$request->email)
+        ->orWhere('phone',$request->email)
+        ->first();
+        if(isset($checkAccount) && !isset($checkAccount->phone_otp)){
+        return    RegisterController::generate_new_otp($checkAccount,$request->all());
+        }
         if ($this->attemptLogin($request)) {
             return $this->sendLoginResponse($request);
         }
