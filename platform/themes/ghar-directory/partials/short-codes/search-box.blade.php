@@ -8,11 +8,11 @@
     <div class="topsearch">
         @if (theme_option('home_banner_description'))<h1 class="text-center text-white mb-4 banner-text-description">{{ $shortcode->title ?: theme_option('home_banner_description') }}</h1>@endif
         <form @if ($enableProjectsSearch && $defaultSearchType == 'project') action="{{ route('public.projects') }}" @else action="{{ route('public.properties') }}" @endif method="GET" id="frmhomesearch">
-            <div class="typesearch" id="hometypesearch">
+            <div class="typesearch" id="hometypesearch" style="display:none;">
                 {{-- @if ($enableProjectsSearch)
                     <a href="javascript:void(0)" @if ($defaultSearchType == 'project') class="active" @endif rel="project" data-url="{{ route('public.projects') }}">{{ __('Projects') }}</a>
                 @endif --}}
-                {{-- <a href="javascript:void(0)" rel="sale" @if ($defaultSearchType == 'sale') class="active" @endif data-url="{{ route('public.properties') }}">{{ __('Sale') }}</a> --}}
+                <a href="javascript:void(0)" rel="sale" class="active"  data-url="{{ route('public.properties') }}">{{ __('Sale') }}</a>
                 {{-- <a href="javascript:void(0)" rel="rent" @if ($defaultSearchType == 'rent') class="active" @endif data-url="{{ route('public.properties') }}">{{ __('Rent') }}</a> --}}
             </div>
             <div class="input-group input-group-lg">
