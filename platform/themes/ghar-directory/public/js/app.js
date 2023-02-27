@@ -230,8 +230,11 @@ var __webpack_exports__ = {};
         parent.find('.spinner-icon').show();
         clearTimeout(timeout);
         timeout = setTimeout(function () {
+          var searchCityId = $('#search_city_id').val();
+          var searchcategory_id = $('#select-category').val();
+          // console.log(searchCityId);
           // Do AJAX shit here
-          $.get($('#hometypesearch a.active').data('url') + '?type=' + typeSearch + '&k=' + k + '&minimal=true', function (data) {
+          $.get($('#hometypesearch a.active').data('url') + '?type=' + typeSearch + '&k=' + k + '&minimal=true' + '&city_id=' + searchCityId + '&category_id=' + searchcategory_id, function (data) {
             if (!data.error && data.data !== '') {
               $('.listsuggest').html(data.data).show();
             } else {
@@ -293,6 +296,9 @@ var __webpack_exports__ = {};
       $(this).parents('.location-input').find('.suggestion').html('').hide();
     }).on('keyup', function () {
       var k = $(this).val();
+      if (k == '') {
+        $('#search_city_id').val('');
+      }
       if (k) {
         var parent = $(this).parents('.location-input');
         parent.find('.input-has-icon i').hide();
