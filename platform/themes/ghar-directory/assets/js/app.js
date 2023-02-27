@@ -326,8 +326,12 @@
             })
             .on('keyup', function () {
                 var k = $(this).val();
+                if(k == ''){
+                    $('#search_city_id').val('');
+                    }
                 if (k) {
                     var parent = $(this).parents('.location-input');
+
                     parent.find('.input-has-icon i').hide();
                     parent.find('.spinner-icon').show();
                     clearTimeout(locationTimeout);
