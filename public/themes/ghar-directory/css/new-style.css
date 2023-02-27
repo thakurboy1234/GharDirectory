@@ -859,7 +859,7 @@ span#eyeicon_confirm {
         margin-top: 10px !important;
     }
     .topsearch .location-input {
-        margin-top: 10px !important;
+        margin-top: 0px !important;
     }
     .topsearch .select__input {
         display: none;
