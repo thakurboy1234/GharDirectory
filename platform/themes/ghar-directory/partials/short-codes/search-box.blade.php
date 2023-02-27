@@ -20,19 +20,10 @@
                 <input type="hidden" name="type" @if ($enableProjectsSearch && $defaultSearchType == 'project') value="project" @else value="{{ $defaultSearchType ?: 'sale' }}" @endif id="txttypesearch">
 
                 <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="far fa-search"></i></span>
-                </div>
-                <div class="keyword-input">
-                    <input type="text" class="form-control" name="k" placeholder="{{ __('Enter keyword...') }}" id="txtkey" autocomplete="off">
-                    <div class="spinner-icon">
-                        <i class="fas fa-spin fa-spinner"></i>
-                    </div>
-                </div>
-                <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-location-arrow "></i></span>
                 </div>
                 <div class="location-input" data-url="{{ route('public.ajax.cities') }}">
-                    <input type="hidden" name="city_id">
+                    <input type="hidden" id="search_city_id" name="city_id">
                     <input class="select-city-state form-control" name="location" value="{{ request()->input('location') }}" placeholder="{{ __('City, State') }}" autocomplete="off">
                     <div class="spinner-icon">
                         <i class="fas fa-spin fa-spinner"></i>
@@ -41,6 +32,16 @@
 
                     </div>
                 </div>
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-search"></i></span>
+                </div>
+                <div class="keyword-input">
+                    <input type="text" class="form-control" name="k" placeholder="{{ __('Enter keyword...') }}" id="txtkey" autocomplete="off">
+                    <div class="spinner-icon">
+                        <i class="fas fa-spin fa-spinner"></i>
+                    </div>
+                </div>
+
                 <div class="select__input">
                     {!! Theme::partial('real-estate.filters.categories', compact('categories')) !!}
                 </div>

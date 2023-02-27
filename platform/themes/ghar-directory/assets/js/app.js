@@ -232,6 +232,7 @@
             $('.listsuggest').html('').hide();
             txtKey.val('');
             typeSearch = $(this).attr('rel');
+
             homeTypeSearch.find('a').removeClass('active');
             $(this).addClass('active');
             $('#txttypesearch').val(typeSearch);
@@ -249,8 +250,11 @@
                 parent.find('.spinner-icon').show();
                 clearTimeout(timeout);
                 timeout = setTimeout(function () {
+                    let searchCityId = $('#search_city_id').val();
+                    let searchcategory_id    = $('#select-category').val();
+                    // console.log(searchCityId);
                     // Do AJAX shit here
-                    $.get($('#hometypesearch a.active').data('url') + '?type=' + typeSearch + '&k=' + k + '&minimal=true', function (data) {
+                    $.get($('#hometypesearch a.active').data('url') + '?type=' + typeSearch + '&k=' + k + '&minimal=true' + '&city_id='+searchCityId + '&category_id='+searchcategory_id, function (data) {
                         if (!data.error && data.data !== '') {
                             $('.listsuggest').html(data.data).show();
                         } else {
